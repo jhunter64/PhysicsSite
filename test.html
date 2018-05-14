@@ -3,11 +3,25 @@
 	<body>
 		<h1>Heading</h1>
 	</body>
-	<button type = "button" onclick = "test()">Test
-	</button>
+	<button type = "button" onclick = "test()">Test</button>
+	<button type = "button" onclick = "calculate()">Calculate</button>
 	<p id = "a"></p>
-	<script>function test() {
-	document.getElementById("a").innerHTML = "a";
-	}
-	</script>
+	<p id = "t"></p>
+	<form>
+		First name:<br>
+		<input id = "firstname" type="text" name="firstname"><br>
+		Last name:<br>
+		<input type="text" name="lastname">
+	</form>
 </html>
+
+<script>function test() {
+		document.getElementById("a").innerHTML = "a";
+	}
+</script>
+
+<script>function calculate() {
+		var t = document.getElementById("firstname");
+		
+	}
+</script>
