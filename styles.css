@@ -9,3 +9,8 @@ div.row {
     display: table;
     clear: both;
 }
+
+body {
+	background-color: green;
+	color: white;
+}

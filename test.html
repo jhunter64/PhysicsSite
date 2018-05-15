@@ -8,7 +8,7 @@
 			<body>
 				<h1>Momentum</h1>
 			</body>
-			<script type = "text/javascript" src = "testJS.js"></script>
+			<script type = "text/javascript" src = "test.js"></script>
 			<button type = "button" onclick = "changeColor()">Change Color</button>
 			<button type = "button" onclick = "momentumCalculate()">Calculate</button>
 			<p id = "momentum">Momentum: </p>
@@ -24,7 +24,21 @@
 		<div class = "column">
 			<h1>Work</h1>
 			<button type = "button" onclick = "workCalculate()">Calculate</button>
+			<button type = "button" onclick = "getMagnitude('1, 2, 3')">
+			Get Magnitude</button>
+			<button type = "button" onclick = "parseVector('1, 2, 3')">
+			Parse Vector</button>
 			<p id = "work">Work: </p>
+			<p id = "mag">Magnitude: </p>
+			<p id = "vec">Vector: </p>
+			<form>
+				<input type="radio" 
+				onclick = "changeType('force', 'number')"
+				name="inputType" value="m" checked> Magnitude<br>
+				<input type="radio" 
+				onclick = "changeType('force', 'text')"
+				name="inputType" value="v"> Vector<br>
+			</form> 
 			<form>
 				Force:<br>
 				<input type="number" id = "force" name="force"><br>
