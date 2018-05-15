@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<body>
-		<h1>Physics</h1>
-	</body>
-	<script type = "text/javascript" src = "testJS.js"></script>
-	<button type = "button" onclick = "changeColor()">Change Color</button>
-	<button type = "button" onclick = "momentumCalculate()">Calculate</button>
-	<p id = "momentum">Momentum: </p>
-	<form>
-		Mass:<br>
-		<input type="number" id = "mass" name="firstname"><br>
-		Velocity:<br>
-		<input type="number" id = "velocity" name="lastname">
-	</form>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<div class = "row">
+		<div class = "column">
+			<body>
+				<h1>Momentum</h1>
+			</body>
+			<script type = "text/javascript" src = "testJS.js"></script>
+			<button type = "button" onclick = "changeColor()">Change Color</button>
+			<button type = "button" onclick = "momentumCalculate()">Calculate</button>
+			<p id = "momentum">Momentum: </p>
+			<form>
+				Mass:<br>
+				<input type="number" id = "mass" name="mass"><br>
+				|Velocity|:<br>
+				<input type="number" id = "velocity" name="velocity">
+				Velocity:<br>
+				<input type="text" id = "velocity" name="velocity">
+			</form>
+		</div>
+		<div class = "column">
+			<h1>Work</h1>
+			<button type = "button" onclick = "workCalculate()">Calculate</button>
+			<p id = "work">Work: </p>
+			<form>
+				Force:<br>
+				<input type="number" id = "force" name="force"><br>
+				Angle:<br>
+				<input type = "number" id = "angle" name = "angle"></br>
+				Distance:<br>
+				<input type="number" id = "distance" name="distance">
+			</form>
+		</div>
+	</div>
 </html>
