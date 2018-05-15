@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<h1>Heading</h1>
+		<h1>Physics</h1>
 	</body>
+	<script type = "text/javascript" src = "testJS.js"></script>
 	<button type = "button" onclick = "changeColor()">Change Color</button>
-	<button type = "button" onclick = "submit()">Submit</button>
-	<p id = "momentum"></p>
+	<button type = "button" onclick = "momentumCalculate()">Calculate</button>
+	<p id = "momentum">Momentum: </p>
 	<form>
 		Mass:<br>
 		<input type="number" id = "mass" name="firstname"><br>
@@ -13,17 +14,3 @@
 		<input type="number" id = "velocity" name="lastname">
 	</form>
 </html>
-
-<script>function changeColor() {
-		var p = document.getElementById("momentum");
-		p.style.color = "red"
-	}
-</script>
-
-<script>function submit() {
-		var mass = document.getElementById("mass").value 
-		var velocity = document.getElementById("velocity").value
-		var momentum = mass * velocity
-		document.getElementById("momentum").innerHTML = momentum
-	}
-</script>
