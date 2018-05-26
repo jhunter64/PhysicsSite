@@ -33,8 +33,16 @@ function parseVector(str) {
 	str = str.slice(str.indexOf(",") + 1);
 	var z = parseFloat(str);
 	var values = [x, y, z];
-	document.getElementById("vec").innerHTML = "Vector: " + values;
 	return values;
+}
+
+function multiplyVector(v, n) {
+	var vector = parseVector(v);
+	var i;
+	for (i = 0; i < vector.length; i++) {
+		vector[i] *= n;
+	}
+	document.write(vector);
 }
 
 function getMagnitude(str) {
@@ -57,3 +65,27 @@ function resetMomentum() {
 	document.getElementById("velocity").value = ""
 	document.getElementById("momentum").value = ""
 }
+
+function resetCollision() {
+	document.getElementById("m1").value = ""
+	document.getElementById("m2").value = ""
+	document.getElementById("vi1").value = ""
+	document.getElementById("vi2").value = ""
+	document.getElementById("vf1").value = ""
+	document.getElementById("vf2").value = ""
+}
+
+function collisionCalculate() {
+	var m1 = document.getElementById("m1").value
+	var m2 = document.getElementById("m2").value
+	var vi1 = document.getElementById("vi1").value
+	var vi2 = document.getElementById("vi2").value
+	var vf1 = document.getElementById("vf1").value
+	var vf2 = document.getElementById("vf2").value
+}
+
+
+
+
+
+

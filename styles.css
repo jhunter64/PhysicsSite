@@ -1,16 +1,12 @@
-div.column {
-	float: left;
-	width: 35%;
-	margin: 25px;
-}
-
-div.row {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 body {
 	background-color: green;
 	color: white;
+}
+
+footer {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
 }

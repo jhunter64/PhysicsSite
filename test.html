@@ -2,51 +2,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="styles.css">
+		<script type = "text/javascript" src = "test.js"></script>
 	</head>
-	<div class = "row">
-		<div class = "column">
-			<body>
-				<h1>Momentum</h1>
-			</body>
-			<script type = "text/javascript" src = "test.js"></script>
-			<button type = "button" onclick = "changeColor()">Change Color</button>
-			<button type = "button" onclick = "momentumCalculate()">Calculate</button>
-			<p id = "momentum">Momentum: </p>
-			<form>
-				Mass:<br>
-				<input type="number" id = "mass" name="mass"><br>
-				|Velocity|:<br>
-				<input type="number" id = "velocity" name="velocity">
-				Velocity:<br>
-				<input type="text" id = "velocity" name="velocity">
-			</form>
-		</div>
-		<div class = "column">
-			<h1>Work</h1>
-			<button type = "button" onclick = "workCalculate()">Calculate</button>
-			<button type = "button" onclick = "getMagnitude('1, 2, 3')">
-			Get Magnitude</button>
-			<button type = "button" onclick = "parseVector('1, 2, 3')">
-			Parse Vector</button>
-			<p id = "work">Work: </p>
-			<p id = "mag">Magnitude: </p>
-			<p id = "vec">Vector: </p>
-			<form>
-				<input type="radio" 
-				onclick = "changeType('force', 'number')"
-				name="inputType" value="m" checked> Magnitude<br>
-				<input type="radio" 
-				onclick = "changeType('force', 'text')"
-				name="inputType" value="v"> Vector<br>
-			</form> 
-			<form>
-				Force:<br>
-				<input type="number" id = "force" name="force"><br>
-				Angle:<br>
-				<input type = "number" id = "angle" name = "angle"></br>
-				Distance:<br>
-				<input type="number" id = "distance" name="distance">
-			</form>
-		</div>
-	</div>
+	<p id = "title">Title</p>
+	<button type = "button" onclick = "multiplyVector('1, 2, 3', '3')">Button</button>
+	<footer>
+		<p>Will Hunter<br>2018</p>
+	</footer>
 </html>

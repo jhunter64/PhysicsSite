@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<script type = "text/javascript" src = "calculations.js"></script>
+	</head>
+	<h3><a href = "index.html">Home</a></h3>
+	<h1>Momentum</h1>
+	<form>
+		<input type="radio" 
+		onclick = "changeType('velocity', 'number'), 
+		changeType('momentum', 'number')"
+		name="inputType" value="m" checked> Magnitude<br>
+		<input type="radio"
+		onclick = "changeType('velocity', 'text'),
+		changeType('momentum', 'text')"
+		name="inputType" value="v"> Vector<br>
+	</form> 
+	<form>
+		Mass:<br><input type = "number" id = "mass"><br>
+		Velocity:<br><input type = "number" id = "velocity"><br>
+		Momentum:<br><input type = "number" id = "momentum">
+	</form>
+	<button type = "button" onclick = "resetMomentum()">Reset</button><br>
+	<button type = "button" onclick = "momentumCalculate()">Calculate</button><br>
+	<h1>2 Object Collision</h1>
+	<form>
+		Mass 1:<br><input type = "number" id = "m1"><br>
+		Mass 2:<br><input type = "number" id = "m2"><br>
+		Velocity initial 1:<br><input type = "number" id = "vi1"><br>
+		Velocity initial 2:<br><input type = "number" id = "vi2"><br>
+		Velocity final 1:<br><input type = "number" id = "vf1"><br>
+		Velocity final 2:<br><input type = "number" id = "vf2">
+	</form>
+	<button type = "button" onclick = "resetCollision()">Reset</button><br>
+	<button type = "button" onclick = "collisionCalculate()">Calculate</button><br>
+	<footer>
+		<p>Will Hunter<br>2018</p>
+	</footer>
+</html>
