@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="styles.css">
-		<script type = "text/javascript" src = "calculations.js"></script>
+		<script type = "text/javascript" src = "momentumJS.js"></script>
 	</head>
 	<h3><a href = "index.html">Home</a></h3>
 	<h1>Momentum</h1>
@@ -10,11 +10,11 @@
 		<input type="radio" 
 		onclick = "changeType('velocity', 'number'), 
 		changeType('momentum', 'number')"
-		name="inputType" value="m" checked> Magnitude<br>
+		name="inputType" value="m" id = "inputMagnitude" checked> Magnitude<br>
 		<input type="radio"
 		onclick = "changeType('velocity', 'text'),
 		changeType('momentum', 'text')"
-		name="inputType" value="v"> Vector<br>
+		name="inputType" value="v" id = "inputVector"> Vector<br>
 	</form> 
 	<form>
 		Mass:<br><input type = "number" id = "mass"><br>

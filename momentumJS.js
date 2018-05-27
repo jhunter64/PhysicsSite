@@ -2,16 +2,33 @@ function momentumCalculate() {
 	var mass = document.getElementById("mass").value 
 	var velocity = document.getElementById("velocity").value
 	var momentum = document.getElementById("momentum").value
+	var isMagnitude = document.getElementById("inputMagnitude").checked
+	var isVector = document.getElementById("inputVector").checked
 	if (momentum == "") {
-		momentum = mass * velocity
+		if (isMagnitude) {
+			momentum = mass * velocity	
+		}
+		else if (isVector) {
+			momentum = multiplyVector(velocity, mass)
+		}
 		document.getElementById("momentum").value = momentum
 	}
 	if (mass == "") {
-		mass = momentum / velocity
+		if (isMagnitude) {
+			mass = momentum / velocity	
+		}
+		else if (isVector) {
+			mass = 0
+		}
 		document.getElementById("mass").value = mass
 	}
 	if (velocity == "") {
-		velocity = momentum / mass
+		if (isMagnitude) {
+			velocity = momentum / mass
+		}
+		if (isVector) {
+			velocity = multiplyVector(momentum, 1.0 / mass)
+		}
 		document.getElementById("velocity").value = velocity
 	}
 }
@@ -42,7 +59,7 @@ function multiplyVector(v, n) {
 	for (i = 0; i < vector.length; i++) {
 		vector[i] *= n;
 	}
-	document.write(vector);
+	return vector;
 }
 
 function getMagnitude(str) {
