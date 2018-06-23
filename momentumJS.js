@@ -40,37 +40,6 @@ function workCalculate() {
 	document.getElementById("work").innerHTML = "Work: " + work
 }
 
-function parseVector(str) {
-	if (!str.includes(",")) {
-        return null;
-    }
-	var x = parseFloat(str);
-	str = str.slice(str.indexOf(",") + 1);
-	var y = parseFloat(str);
-	str = str.slice(str.indexOf(",") + 1);
-	var z = parseFloat(str);
-	var values = [x, y, z];
-	return values;
-}
-
-function multiplyVector(v, n) {
-	var vector = parseVector(v);
-	var i;
-	for (i = 0; i < vector.length; i++) {
-		vector[i] *= n;
-	}
-	return vector;
-}
-
-function getMagnitude(str) {
-	var values = parseVector(str);
-	var sum = 0;
-	for (var i = 0; i < values.length; i++) {
-		sum += values[i];
-	}
-	document.getElementById("mag").innerHTML = "Magnitude: " + Math.sqrt(sum);
-}
-
 function changeType(curr, newType) {
 	var f = "force";
 	var n = "text";

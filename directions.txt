@@ -1,0 +1,5 @@
+GITHUB
+
+git config --global user
+git init
+git remote add origin [url]

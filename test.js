@@ -1,7 +1,3 @@
-function changeColor() {
-	document.getElementById("title").innerHTML = "a";
-}
-
 function parseVector(str) {
 	if (!str.includes(",")) {
         return null;
@@ -23,4 +19,16 @@ function multiplyVector(v, n) {
 		vector[i] *= n;
 	}
 	document.write(vector);
+}
+
+function testRadio() {
+	var type = document.getElementById("inputMagnitude").checked;
+	document.write(type);
+}
+
+function testVector() {
+	v1 = new Vector([1, 2, 3]);
+	v2 = new Vector([2, 3, 4]);
+	document.write(add(v1, v2));
+	//testSeparateFile();
 }
