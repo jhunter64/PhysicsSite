@@ -24,7 +24,17 @@
 	</form>
 	<button type = "button" onclick = "resetMomentum()">Reset</button><br>
 	<button type = "button" onclick = "momentumCalculate()">Calculate</button><br>
-	<h1>2 Object Collision</h1>
+	<h1>2-Object Collision</h1>
+	<form>
+		<input type="radio" 
+		onclick = "changeType('vi1', 'number'), changeType('vi2', 'number'),
+		changeType('vf1', 'number'), changeType('vf2', 'number')"
+		name="collisionInputType" value="m" id = "collisionInputMagnitude" checked> Magnitude<br>
+		<input type="radio"
+		onclick = "changeType('vi1', 'text'), changeType('vi2', 'text'),
+		changeType('vf1', 'text'), changeType('vf2', 'text')"
+		name="collisionInputType" value="v" id = "collisionInputVector"> Vector<br>
+	</form>
 	<form>
 		Mass 1:<br><input type = "number" id = "m1"><br>
 		Mass 2:<br><input type = "number" id = "m2"><br>

@@ -9,7 +9,7 @@ function momentumCalculate() {
 			momentum = mass * velocity	
 		}
 		else if (isVector) {
-			var v1 = parseVector("1, 2, 3");
+			var v1 = parseVector(velocity);
 			var m1 = multiplyVector(v1, mass);
 			momentum = toStringVector(m1);
 		}
@@ -43,6 +43,37 @@ function momentumCalculate() {
 	}
 }
 
+function collisionCalculate() {
+	var m1 = document.getElementById("m1").value
+	var m2 = document.getElementById("m2").value
+	var vi1 = document.getElementById("vi1").value
+	var vi2 = document.getElementById("vi2").value
+	var vf1 = document.getElementById("vf1").value
+	var vf2 = document.getElementById("vf2").value
+	var isMagnitude = document.getElementById("inputMagnitude").checked
+	var isVector = document.getElementById("inputVector").checked
+	if (vf1 == "") {
+		var pi = m1 * vi1 + m2 * vi2;
+		var pf1 = pi - m2 * vf2;
+		vf1 = pf1 / m1;
+		document.getElementById("vf1").value = vf1;
+	}
+	if (vf2 == "") {
+		var pi = m1 * vi1 + m2 * vi2;
+		var pf2 = pi - m1 * vf1;
+		vf2 = pf2 / m2;
+		document.getElementById("vf2").value = vf2;
+	}
+}
+
+function timeStepCalculate() {
+	var position;
+	var force;
+	var velocity;
+	var mass;
+	var timeInterval;
+}
+
 function workCalculate() {
 	var force = document.getElementById("force").value
 	var distance = document.getElementById("distance").value
@@ -67,13 +98,4 @@ function resetCollision() {
 	document.getElementById("vi2").value = ""
 	document.getElementById("vf1").value = ""
 	document.getElementById("vf2").value = ""
-}
-
-function collisionCalculate() {
-	var m1 = document.getElementById("m1").value
-	var m2 = document.getElementById("m2").value
-	var vi1 = document.getElementById("vi1").value
-	var vi2 = document.getElementById("vi2").value
-	var vf1 = document.getElementById("vf1").value
-	var vf2 = document.getElementById("vf2").value
 }
