@@ -15,11 +15,11 @@ function parseVector(str) {
     return new Vector(components);
 }
 
-function toString(v1) {
-    return v1.arr;
+function toStringVector(v1) {
+    return "<" + v1.arr + ">";
 }
 
-function add(v1, v2) {
+function addVector(v1, v2) {
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] + v2.arr[i];
@@ -27,16 +27,18 @@ function add(v1, v2) {
     return new Vector(newComponents);
 }
 
-function subtract(v1, v2) {
+function subtractVector(v1, v2) {
+    newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] - v2.arr[i];
     }
     return new Vector(newComponents);
 }
 
-function multiply(v1, v2) {
+function multiplyVector(v1, num) {
+    newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
-        newComponents[i] = v1.arr[i] * v2.arr[i];
+        newComponents[i] = v1.arr[i] * num;
     }
     return new Vector(newComponents);
 }

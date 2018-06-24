@@ -9,16 +9,24 @@ function momentumCalculate() {
 			momentum = mass * velocity	
 		}
 		else if (isVector) {
-			momentum = multiplyVector(velocity, mass)
+			var v1 = parseVector("1, 2, 3");
+			var m1 = multiplyVector(v1, mass);
+			momentum = toStringVector(m1);
 		}
-		document.getElementById("momentum").value = momentum
+		document.getElementById("momentum").value = momentum;
 	}
 	if (mass == "") {
 		if (isMagnitude) {
 			mass = momentum / velocity	
 		}
 		else if (isVector) {
-			mass = 0
+			var v1 = parseVector(velocity);
+			var m1 = parseVector(momentum);
+			if ((m1.arr[0] / v1.arr[0]) == (m1.arr[1] / v1.arr[1])) {
+				mass = m1.arr[0] / v1.arr[0];
+			} else {
+				mass = 0;
+			}
 		}
 		document.getElementById("mass").value = mass
 	}
@@ -27,7 +35,9 @@ function momentumCalculate() {
 			velocity = momentum / mass
 		}
 		if (isVector) {
-			velocity = multiplyVector(momentum, 1.0 / mass)
+			var m1 = parseVector(momentum);
+			var v1 = multiplyVector(m1, 1.0 / mass);
+			velocity = toStringVector(v1);
 		}
 		document.getElementById("velocity").value = velocity
 	}
@@ -41,8 +51,6 @@ function workCalculate() {
 }
 
 function changeType(curr, newType) {
-	var f = "force";
-	var n = "text";
 	document.getElementById(curr).type = newType;
 }
 
@@ -69,9 +77,3 @@ function collisionCalculate() {
 	var vf1 = document.getElementById("vf1").value
 	var vf2 = document.getElementById("vf2").value
 }
-
-
-
-
-
-
