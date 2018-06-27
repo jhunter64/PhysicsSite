@@ -38,7 +38,7 @@ function subtractVector(v1, v2) {
 function multiplyVector(v1, num) {
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
-        newComponents[i] = v1.arr[i] * num;
+        newComponents[i] = Number(v1.arr[i]) * Number(num);
     }
     return new Vector(newComponents);
 }
