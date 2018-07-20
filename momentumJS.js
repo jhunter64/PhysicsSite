@@ -59,32 +59,45 @@ function collisionCalculate() {
 			vf1 = pf1 / m1;
 			document.getElementById("col_vf1").value = vf1;
 		} else if (isVector) {
-			v_i1 = parseVector(vi1);
-			v_i2 = parseVector(vi2);
-			v_f2 = parseVector(vf2);
+			var v_i1 = parseVector(vi1);
+			var v_i2 = parseVector(vi2);
+			var v_f2 = parseVector(vf2);
 			var pi1 = multiplyVector(v_i1, m1);
 			var pi2 = multiplyVector(v_i2, m2);
-			// document.write(toStringVector(pi2));
 			var pi = addVector(pi1, pi2);
-			// document.write(toStringVector(pi));
 			var pf2 = multiplyVector(v_f2, m2);
-			// document.write(toStringVector(pf2));
 			var pf1 = subtractVector(pi, pf2);
-			// document.write(toStringVector(pf1));
 			vf1 = multiplyVector(pf1, 1.0 / m1);
-			// document.write(toStringVector(v_f1));
 			document.getElementById("col_vf1").value = toStringVector(vf1);
 		}
 	}
-	if (vf2 == "") {
+	else if (vf2 == "") {
 		if (isMagnitude) {
 			var pi = m1 * vi1 + m2 * vi2;
 			var pf2 = pi - m1 * vf1;
 			vf2 = pf2 / m2;
 			document.getElementById("col_vf2").value = vf2;
 		} else if (isVector) {
-
+			var v_i1 = parseVector(vi1);
+			var v_i2 = parseVector(vi2);
+			var v_f1 = parseVector(vf1);
+			var pi1 = multiplyVector(v_i1, m1);
+			var pi2 = multiplyVector(vi_2, m2);
+			var pi = addVector(pi1, pi2);
+			var pf1 = multiplyVector(vf_1, m1);
+			var pf2 = subtractVector(pi, pf1);
+			vf2 = multiplyVector(pf2, 1.0 / m2);
+			document.getElementById("col_vf2").value = toStringVector(vf2);
 		}
+	}
+	else if (vi1 == "") {
+
+	} else if (vi2 == "") {
+
+	} else if (m1 == "") {
+
+	} else if (m2 == "") {
+		
 	}
 }
 

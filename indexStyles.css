@@ -1,0 +1,18 @@
+body {
+	background-color: #008080;
+	color: black;
+	columns: 3;
+}
+
+footer {
+	text-align: center;
+}
+
+h3 {
+	columns: 1;
+	text-align: center;
+}
+
+colgroup {
+	columns: 1;
+}

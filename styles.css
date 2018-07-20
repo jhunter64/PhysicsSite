@@ -1,5 +1,5 @@
 body {
-	background-color: green;
+	background-color: rgb(0, 80, 0);
 	color: white;
 }
 
@@ -7,6 +7,71 @@ footer {
 	text-align: center;
 }
 
-h3 {
+footer p:hover {
+	font-style: oblique;
+	font-size: 125%;
+	color: gold;
+}
+
+h1:hover {
+	text-decoration: underline;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h2 {
 	text-align: center;
+}
+
+form:hover {
+	color: rgb(219, 81, 81);
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Add a black background color to the top navigation */
+.navigation {
+    background-color: #333;
+	overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.navigation a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	font-size: 17px;
+	border: solid;
+	border-color: white;
+	border-top: #333;
+	border-bottom: #333;
+	border-left: #333;
+}
+
+/* Change the color of links on hover */
+.navigation a:hover {
+    background-color: rgb(43, 52, 136);
+    color: yellow;
+}
+
+/* Add a color to the active/current link */
+.navigation a.active {
+    background-color: #4CAF50;
+    color: white;
 }
