@@ -120,10 +120,6 @@ function timeStepCalculate() {
 	document.getElementById("ts_t").value = timeInterval;
 }
 
-function changeType(curr, newType) {
-	document.getElementById(curr).type = newType;
-}
-
 function resetMomentum() {
 	document.getElementById("mass").value = "";
 	document.getElementById("velocity").value = "";

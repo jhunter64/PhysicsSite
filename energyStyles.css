@@ -1,22 +1,6 @@
 body {
-	background-color: rgb(0, 80, 0);
-	color: white;
-}
-
-h1:hover {
-	text-decoration: underline;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-h2 {
-	text-align: center;
-}
-
-form:hover {
-	color: rgb(255, 110, 154);
+    background-color: rgba(48, 175, 184, 0.904);
+    color: rgb(0, 0, 0);
 }
 
 /* Create three equal columns that floats next to each other */
@@ -31,4 +15,8 @@ form:hover {
 	content: "";
 	display: table;
 	clear: both;
+}
+
+form:hover {
+    color: rgb(255, 72, 0);
 }

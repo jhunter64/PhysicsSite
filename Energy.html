@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="styles.css">
+        <link rel = "stylesheet" href = "energyStyles.css">
+        <script type = "text/javascript" src = "misc.js"></script>
+		<script type = "text/javascript" src = "energyJS.js"></script>
+		<script type = "text/javascript" src = "Vector.js"></script>
+    </head>
+    <div class="topNavigation">
+            <a href = "index.html">Home</a>
+            <a href = "Momentum.html">Momentum</a>
+            <a href = "Work.html">Work</a>
+    </div>
+    <body>
+        <div class = "row">
+            <div class = "column">
+                <h1>Energy</h1>
+                <form>
+                    <input type="radio" 
+                    onclick = "changeType('mass', 'number'), 
+                    changeType('velocity', 'number'), changeType('kineticEnergy', 'number')";
+                    name="inputType" id = "inputMagnitude" checked> Magnitude<br>
+                    <input type="radio"
+                    onclick = "changeType('mass', 'text'), 
+                    changeType('velocity', 'text'), changeType('kineticEnergy', 'text')";
+                    name="inputType" id = "inputVector"> Vector<br>
+                </form>
+                <form>
+                    Mass:<br><input type = "number" id = "mass"><br>
+                    Velocity:<br><input type = "number" id = "velocity"><br>
+                    Kinetic Energy:<br><input type = "number" id = "kineticEnergy"><br>
+                </form>
+                <button type = "button" onclick = "resetKinetic()">Reset</button><br>
+                <button type = "button" onclick = "kineticCalculate()">Calculate</button>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <p>JWH<br>2018</p>
+    </footer>
+</html>
