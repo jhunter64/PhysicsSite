@@ -16,24 +16,42 @@
     <body>
         <div class = "row">
             <div class = "column">
-                <h1>Energy</h1>
+                <h1>Kinetic Energy</h1>
                 <form>
                     <input type="radio" 
-                    onclick = "changeType('mass', 'number'), 
-                    changeType('velocity', 'number'), changeType('kineticEnergy', 'number')";
+                    onclick = "changeType('velocity', 'number'), 
+                    changeType('kineticEnergy', 'number')";
                     name="inputType" id = "inputMagnitude" checked> Magnitude<br>
                     <input type="radio"
-                    onclick = "changeType('mass', 'text'), 
-                    changeType('velocity', 'text'), changeType('kineticEnergy', 'text')";
+                    onclick = "changeType('velocity', 'text'),
+                    changeType('kineticEnergy', 'text')";
                     name="inputType" id = "inputVector"> Vector<br>
                 </form>
                 <form>
                     Mass:<br><input type = "number" id = "mass"><br>
                     Velocity:<br><input type = "number" id = "velocity"><br>
-                    Kinetic Energy:<br><input type = "number" id = "kineticEnergy"><br>
+                    Kinetic Energy:<br><input type = "number" id = "kineticEnergy">
                 </form>
                 <button type = "button" onclick = "resetKinetic()">Reset</button><br>
                 <button type = "button" onclick = "kineticCalculate()">Calculate</button>
+            </div>
+            <div class = "column">
+                <h1>Potential Gravitational Energy</h1>
+                <form>
+                    <input type="radio" 
+                    onclick = "changeType('uGravDisplacement', 'number'),
+                    changeType('uGravEnergy', 'number')";
+                    name="inputType" id = "uGravInputMagnitude" checked> Magnitude<br>
+                    <input type="radio"
+                    onclick = "changeType('uGravDisplacement', 'text'),
+                    changeType('uGravEnergy', 'text')";
+                    name="inputType" id = "uGravInputVector"> Vector<br>
+                </form>
+                <form>
+                    Mass:<br><input type = "number" id = "uGravMass"><br>
+                    Displacement:<br><input type = "number" id = "uGravDisplacement"><br>
+                    Potential Gravitational Energy:<br><input type = "number" id = "uGravEnergy">
+                </form>
             </div>
         </div>
     </body>

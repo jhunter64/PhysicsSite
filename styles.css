@@ -39,6 +39,7 @@ h2 {
 	border-top: #333;
 	border-bottom: #333;
 	border-left: #333;
+	border-width: 1px;
 }
 
 /* Change the color of links on hover */
