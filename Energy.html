@@ -4,9 +4,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="styles.css">
         <link rel = "stylesheet" href = "energyStyles.css">
-        <script type = "text/javascript" src = "misc.js"></script>
-		<script type = "text/javascript" src = "energyJS.js"></script>
-		<script type = "text/javascript" src = "Vector.js"></script>
+        <script type = "text/javascript" src = "Scripts/general.js"></script>
+		<script type = "text/javascript" src = "Scripts/energyJS.js"></script>
+		<script type = "text/javascript" src = "Scripts/Vector.js"></script>
     </head>
     <div class="topNavigation">
             <a href = "index.html">Home</a>
@@ -36,21 +36,41 @@
                 <button type = "button" onclick = "kineticCalculate()">Calculate</button>
             </div>
             <div class = "column">
-                <h1>Potential Gravitational Energy</h1>
-                <form>
+                <h1>Potential Energy</h1>
+                <h3>Gravitational</h3>
+                <!-- <form>
                     <input type="radio" 
-                    onclick = "changeType('uGravDisplacement', 'number'),
+                    onclick = "changeType('uGravHeight', 'number'),
                     changeType('uGravEnergy', 'number')";
                     name="inputType" id = "uGravInputMagnitude" checked> Magnitude<br>
                     <input type="radio"
-                    onclick = "changeType('uGravDisplacement', 'text'),
+                    onclick = "changeType('uGravHeight', 'text'),
                     changeType('uGravEnergy', 'text')";
                     name="inputType" id = "uGravInputVector"> Vector<br>
-                </form>
+                </form> -->
                 <form>
                     Mass:<br><input type = "number" id = "uGravMass"><br>
-                    Displacement:<br><input type = "number" id = "uGravDisplacement"><br>
+                    Height:<br><input type = "number" id = "uGravHeight"><br>
                     Potential Gravitational Energy:<br><input type = "number" id = "uGravEnergy">
+                </form>
+                <button type = "button" onclick = "resetUGrav()">Reset</button><br>
+                <button type = "button" onclick = "uGravCalculate()">Calculate</button>
+                <br>
+                <h3>Spring</h3>
+                <form>
+                    <input type="radio" 
+                    onclick = "changeType('uSpringRelaxed', 'number'),
+                    changeType('uSpringCurrent', 'number')";
+                    name="inputType" id = "uSpringInputMagnitude" checked> Magnitude<br>
+                    <input type="radio"
+                    onclick = "changeType('uSpringRelaxed', 'text'),
+                    changeType('uSpringCurrent', 'text')";
+                    name="inputType" id = "uSpringInputVector"> Vector<br>
+                </form>
+                <form>
+                    Relaxed Length:<br><input type = "number" id = "uSpringRelaxed"><br>
+                    Current Length:<br><input type = "number" id = "uSpringCurrent"><br>
+                    Spring Coefficient:<br><input type = "number" id = "uSpringK">
                 </form>
             </div>
         </div>
