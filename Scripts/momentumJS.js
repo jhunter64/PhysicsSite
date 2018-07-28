@@ -107,7 +107,7 @@ function collisionCalculate() {
 				vi1 = (pf - pi) / m1;
 				document.getElementById("col_vi1").value = vi1;
 			} else if (isVector) {
-				var 
+
 			}
 		} else if (vi2 == "") {
 			if (isMagnitude) {
@@ -137,7 +137,7 @@ function timeStepCalculate() {
 	var force = document.getElementById("ts_f").value;
 	var position = document.getElementById("ts_r").value;
 	var timeInterval = document.getElementById("ts_t").value;
-
+	
 	var pi = mass * velocity;
 	var pf = pi + force * timeInterval;
 	var vf = pf / mass;
