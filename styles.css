@@ -20,6 +20,10 @@ h2 {
 	text-align: center;
 }
 
+input {
+	border: solid white;
+}
+
 /* Add a black background color to the top navigation */
 .topNavigation {
     background-color: #333;

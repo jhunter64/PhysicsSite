@@ -45,7 +45,7 @@ function multiplyVector(v1, num) {
 
 function getMagnitude(v1) {
     sum = 0.0;
-    for (i = 0; i < v1.length; i++) {
+    for (i = 0; i < v1.arr.length; i++) {
         sum += v1.arr[i] * v1.arr[i];
     }
     return Math.sqrt(sum);

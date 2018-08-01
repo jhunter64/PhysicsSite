@@ -14,6 +14,7 @@ function momentumCalculate() {
 			momentum = toStringVector(m1);
 		}
 		document.getElementById("momentum").value = momentum;
+		highlight("momentum");
 	}
 	if (mass == "") {
 		if (isMagnitude) {
@@ -29,6 +30,7 @@ function momentumCalculate() {
 			}
 		}
 		document.getElementById("mass").value = mass;
+		highlight("mass");
 	}
 	if (velocity == "") {
 		if (isMagnitude) {
@@ -40,6 +42,7 @@ function momentumCalculate() {
 			velocity = toStringVector(v1);
 		}
 		document.getElementById("velocity").value = velocity;
+		highlight("velocity");
 	}
 }
 
@@ -80,8 +83,8 @@ function collisionCalculate() {
 				vf1 = multiplyVector(pf1, 1.0 / m1);
 				document.getElementById("col_vf1").value = toStringVector(vf1);
 			}
-		}
-		else if (vf2 == "") {
+			highlight("col_vf1");
+		} else if (vf2 == "") {
 			if (isMagnitude) {
 				var pi = m1 * vi1 + m2 * vi2;
 				var pf2 = pi - m1 * vf1;
@@ -99,22 +102,45 @@ function collisionCalculate() {
 				vf2 = multiplyVector(pf2, 1.0 / m2);
 				document.getElementById("col_vf2").value = toStringVector(vf2);
 			}
-		}
-		else if (vi1 == "") {
+			highlight("col_vf2");
+		} else if (vi1 == "") {
 			if (isMagnitude) {
 				var pi = vi2 * m2;
 				var pf = (vf1 * m1) + (vf2 * m2);
 				vi1 = (pf - pi) / m1;
 				document.getElementById("col_vi1").value = vi1;
 			} else if (isVector) {
-
+				vi2 = parseVector(vi2);
+				vf1 = parseVector(vf1);
+				vf2 = parseVector(vf2);
+				var pi2 = multiplyVector(vi2, m2);
+				var pf1 = multiplyVector(vf1, m1);
+				var pf2 = multiplyVector(vf2, m2);
+				var pf = addVector(pf1, pf2);
+				var pi1 = subtractVector(pf, pi2);
+				vi1 = multiplyVector(pi1, 1.0 / m1);
+				document.getElementById("col_vi1").value = toStringVector(vi1);
 			}
+			highlight("col_vi1");
 		} else if (vi2 == "") {
 			if (isMagnitude) {
-
+				var pi1 = vi1 * m1;
+				var pf = vf1 * m1 + vf2 * m2;
+				vi2 = (pf - pi1) / m2;
+				document.getElementById("col_vi2").value = vi2;
 			} else if (isVector) {
-
+				vi1 = parseVector(vi1);
+				vf1 = parseVector(vf1);
+				vf2 = parseVector(vf2);
+				var pi1 = multiplyVector(vi1, m1);
+				var pf1 = multiplyVector(vf1, m1);
+				var pf2 = multiplyVector(vf2, m2);
+				var pf = addVector(pf1, pf2);
+				var pi2 = subtractVector(pf, pi1);
+				vi2 = multiplyVector(pi2, 1.0 / m2);
+				document.getElementById("col_vi2").value = toStringVector(vi2);
 			}
+			highlight("col_vi2");
 		} else if (m1 == "") {
 			if (isMagnitude) {
 
@@ -152,23 +178,37 @@ function timeStepCalculate() {
 
 function resetMomentum() {
 	document.getElementById("mass").value = "";
+	document.getElementById("mass").style.borderColor = "white";
 	document.getElementById("velocity").value = "";
+	document.getElementById("velocity").style.borderColor = "white";
 	document.getElementById("momentum").value = "";
+	document.getElementById("momentum").style.borderColor = "white";
 }
 
 function resetCollision() {
 	document.getElementById("col_m1").value = "";
+	document.getElementById("col_m1").style.borderColor = "white";
 	document.getElementById("col_m2").value = "";
+	document.getElementById("col_m2").style.borderColor = "white";
 	document.getElementById("col_vi1").value = "";
+	document.getElementById("col_vi1").style.borderColor = "white";
 	document.getElementById("col_vi2").value = "";
+	document.getElementById("col_vi2").style.borderColor = "white";
 	document.getElementById("col_vf1").value = "";
+	document.getElementById("col_vf1").style.borderColor = "white";
 	document.getElementById("col_vf2").value = "";
+	document.getElementById("col_vf2").style.borderColor = "white";
 }
 
 function resetTimeStep() {
 	document.getElementById("ts_m").value = "";
+	document.getElementById("ts_m").style.borderColor = "white";
 	document.getElementById("ts_v").value = "";
+	document.getElementById("ts_v").style.borderColor = "white";
 	document.getElementById("ts_f").value = "";
+	document.getElementById("ts_f").style.borderColor = "white";
 	document.getElementById("ts_r").value = "";
+	document.getElementById("ts_r").style.borderColor = "white";
 	document.getElementById("ts_t").value = "";
+	document.getElementById("ts_t").style.borderColor = "white";
 }

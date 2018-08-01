@@ -7,7 +7,26 @@ function kineticCalculate() {
     if (kineticEnergy == "") {
         if (isMagnitude) {
             document.getElementById("kineticEnergy").value = 0.5 * mass * velocity * velocity;
+        } else if (isVector) {
+            var v = parseVector(velocity);
+            velocity = getMagnitude(v);
+            document.getElementById("kineticEnergy").value = 0.5 * mass * velocity * velocity;
         }
+        highlight("kineticEnergy");
+    } else if (velocity == "") {
+        if (isMagnitude) {
+            document.getElementById("velocity").value = Math.sqrt(2.0 * kineticEnergy / mass);
+        } else if (isVector) {
+
+        }
+        highlight("velocity");
+    } else if (mass == "") {
+        if (isMagnitude) {
+            document.getElementById("mass").value = 2.0 * kineticEnergy / (velocity * velocity);
+        } else if (isVector) {
+            
+        }
+        highlight("mass");
     }
 }
 
@@ -19,17 +38,24 @@ function uGravCalculate() {
     if (uGrav == "") {
         uGrav = mass * g * height;
         document.getElementById("uGravEnergy").value = uGrav;
+        highlight("uGravEnergy");
     }
 }
 
 function resetKinetic() {
     document.getElementById("mass").value = "";
+    document.getElementById("mass").style.borderColor = "white";
     document.getElementById("velocity").value = "";
+    document.getElementById("velocity").style.borderColor = "white";
     document.getElementById("kineticEnergy").value = "";
+    document.getElementById("kineticEnergy").style.borderColor = "white";
 }
 
 function resetUGrav() {
     document.getElementById("uGravMass").value = "";
+    document.getElementById("uGravMass").style.borderColor = "white";
     document.getElementById("uGravHeight").value = "";
+    document.getElementById("uGravHeight").style.borderColor = "white";
     document.getElementById("uGravEnergy").value = "";
+    document.getElementById("uGravEnergy").style.borderColor = "white";
 }

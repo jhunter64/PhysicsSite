@@ -9,3 +9,7 @@ function disableInput(elementId) {
 function enableInput(elementId) {
 	document.getElementById(elementId).disabled = false;	
 }
+
+function highlight(elementId) {
+	document.getElementById(elementId).style.border = "solid red";
+}
