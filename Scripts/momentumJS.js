@@ -63,7 +63,7 @@ function collisionCalculate() {
 	var isMagnitude = document.getElementById("collisionInputMagnitude").checked;
 	var isVector = document.getElementById("collisionInputVector").checked;
 	if (blankCount > 1) {
-		alert("Too many blanks");
+		alert("Not enough input");
 	} else {
 		if (vf1 == "") {
 			if (isMagnitude) {
@@ -143,7 +143,8 @@ function collisionCalculate() {
 			highlight("col_vi2");
 		} else if (m1 == "") {
 			if (isMagnitude) {
-
+				var pi2 = m2 * vi2;
+				var pf2 = m2 * vf2;
 			} else if (isVector) {
 
 			}
