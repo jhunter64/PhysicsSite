@@ -42,6 +42,19 @@ function uGravCalculate() {
     }
 }
 
+function uSpringCalculate() {
+    var relaxedLength = document.getElementById("uSpringRelaxed").value;
+    var currentLength = document.getElementById("uSpringCurrent").value;
+    var springCoefficient = document.getElementById("uSpringK").value;
+    var uSpring = document.getElementById("uSpring").value;
+    if (uSpring == "") {
+        var dx = Math.abs(relaxedLength - currentLength);
+        uSpring = .5 * dx * dx * springCoefficient;
+        document.getElementById("uSpring").value = uSpring;
+        highlight("uSpring");
+    }
+}
+
 function resetKinetic() {
     document.getElementById("mass").value = "";
     document.getElementById("mass").style.borderColor = "white";
@@ -58,4 +71,15 @@ function resetUGrav() {
     document.getElementById("uGravHeight").style.borderColor = "white";
     document.getElementById("uGravEnergy").value = "";
     document.getElementById("uGravEnergy").style.borderColor = "white";
+}
+
+function resetUSpring() {
+    document.getElementById("uSpringRelaxed").value = "";
+    document.getElementById("uSpringRelaxed").style.borderColor = "white";
+    document.getElementById("uSpringCurrent").value = "";
+    document.getElementById("uSpringCurrent").style.borderColor = "white";
+    document.getElementById("uSpringK").value = "";
+    document.getElementById("uSpringK").style.borderColor = "white";
+    document.getElementById("uSpring").value = "";
+    document.getElementById("uSpring").style.borderColor = "white";
 }
