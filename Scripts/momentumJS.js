@@ -144,16 +144,27 @@ function collisionCalculate() {
 		} else if (m1 == "") {
 			if (isMagnitude) {
 				var pi2 = m2 * vi2;
-				var pf2 = m2 * vf2;
+				m1 = pi2 / vi1;
 			} else if (isVector) {
-
+				vi1 = parseVector(vi1);
+				vi2 = parseVector(vi2);
+				var pi2 = getMagnitude(vi2) * m2;
+				m1 = pi2 / (getMagnitude(vi1));
 			}
+			document.getElementById("col_m1").value = m1;
+			highlight("col_m1");
 		} else if (m2 == "") {
 			if (isMagnitude) {
-
+				var pi1 = m1 * vi1;
+				m2 = pi1 / vi2;
 			} else if (isVector) {
-
+				vi1 = parseVector(vi1);
+				vi2 = parseVector(vi2);
+				var pi1 = getMagnitude(vi1) * m1;
+				m2 = pi1 / (getMagnitude(vi2));
 			}
+			document.getElementById("col_m2").value = m2;
+			highlight("col_m2");
 		}
 	}
 }

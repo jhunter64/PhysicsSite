@@ -17,14 +17,17 @@ function kineticCalculate() {
         if (isMagnitude) {
             document.getElementById("velocity").value = Math.sqrt(2.0 * kineticEnergy / mass);
         } else if (isVector) {
-
+            alert("Cannot calculate velocity vector, only magnitude");
+            document.getElementById("velocity").value = Math.sqrt(2.0 * kineticEnergy / mass);
         }
         highlight("velocity");
     } else if (mass == "") {
         if (isMagnitude) {
             document.getElementById("mass").value = 2.0 * kineticEnergy / (velocity * velocity);
         } else if (isVector) {
-            
+            var v = parseVector(velocity);
+            var vMag = getMagnitude(v);
+            document.getElementById("mass").value = 2.0 * kineticEnergy / (vMag * vMag);
         }
         highlight("mass");
     }
@@ -35,10 +38,20 @@ function uGravCalculate() {
     var height = document.getElementById("uGravHeight").value;
     var uGrav = document.getElementById("uGravEnergy").value;
     var g = 9.8;
-    if (uGrav == "") {
-        uGrav = mass * g * height;
-        document.getElementById("uGravEnergy").value = uGrav;
-        highlight("uGravEnergy");
+    if (checkBlanks(1, "uGravMass", "uGravHeight", "uGravEnergy")) {
+        if (uGrav == "") {
+            uGrav = mass * g * height;
+            document.getElementById("uGravEnergy").value = uGrav;
+            highlight("uGravEnergy");
+        } else if (height == "") {
+            height = uGrav / (mass * g);
+            document.getElementById("uGravHeight").value = height;
+            highlight("uGravHeight");
+        } else if (mass == "") {
+            mass = uGrav / (g * height);
+            document.getElementById("uGravMass").value = mass;
+            highlight("uGravMass");
+        }
     }
 }
 
