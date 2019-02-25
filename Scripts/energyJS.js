@@ -65,6 +65,27 @@ function uSpringCalculate() {
         uSpring = .5 * dx * dx * springCoefficient;
         document.getElementById("uSpring").value = uSpring;
         highlight("uSpring");
+    } else if (relaxedLength == "") {
+        var dx = Math.sqrt((2 * uSpring) / springCoefficient);
+        var relaxed1 = currentLength + dx;
+        var relaxed2 = currentLength - dx;
+        alert("Relaxed length could be " + relaxed1 + " or " + relaxed2
+             + "\n(relaxed = current +/- deltaX)");
+        document.getElementById("uSpringRelaxed").value = relaxed1;
+        highlight("uSpringRelaxed");
+    } else if (currentLength == "") {
+        var dx = Math.sqrt((2 * uSpring) / springCoefficient);
+        var current1 = relaxedLength + dx;
+        var current2 = relaxedLength - dx;
+        alert("Relaxed length could be " + current1 + " or " + current2
+             + "\n(current = relaxed +/- deltaX)");
+        document.getElementById("uSoringCurrent").value = current1;
+        highlight("uSpringCurrent");
+    } else if (springCoefficient == "") {
+        var dx = Math.abs(relaxedLength - currentLength);
+        springCoefficient = (2 * uSpring) / (dx * dx);
+        document.getElementById("uSpringK").value = springCoefficient;
+        highlight("uSpringK");
     }
 }
 
