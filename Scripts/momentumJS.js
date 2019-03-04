@@ -188,39 +188,35 @@ function timeStepCalculate() {
 	document.getElementById("ts_t").value = timeInterval;
 }
 
+function launchedProjectileCalculate() {
+	var heightInitial = document.getElementById("lp_hi").value;
+	var velocityInitial = document.getElementById("lp_vi").value;
+	var angle = document.getElementById("lp_angle").value;
+	var maxHeight = document.getElementById("lp_mh").value;
+	var maxDistance = document.getElementById("lp_md").value;
+	var timeMaxDistance = document.getElementById("lp_tmd").value;
+	var timeMaxHeight = document.getElementById("lp_tmh").value;
+
+	if (maxHeight == "" && maxDistance == "") {
+		viy = velocityInitial * Math.sin(angle);
+		maxHeight = heightInitial + (viy * viy) / (2 * 9.8);
+
+		document.getElementById("lp_mh").value = maxHeight;
+	}
+}
+
 function resetMomentum() {
-	document.getElementById("mass").value = "";
-	document.getElementById("mass").style.borderColor = "white";
-	document.getElementById("velocity").value = "";
-	document.getElementById("velocity").style.borderColor = "white";
-	document.getElementById("momentum").value = "";
-	document.getElementById("momentum").style.borderColor = "white";
+	reset("mass", "velocity", "momentum");
 }
 
 function resetCollision() {
-	document.getElementById("col_m1").value = "";
-	document.getElementById("col_m1").style.borderColor = "white";
-	document.getElementById("col_m2").value = "";
-	document.getElementById("col_m2").style.borderColor = "white";
-	document.getElementById("col_vi1").value = "";
-	document.getElementById("col_vi1").style.borderColor = "white";
-	document.getElementById("col_vi2").value = "";
-	document.getElementById("col_vi2").style.borderColor = "white";
-	document.getElementById("col_vf1").value = "";
-	document.getElementById("col_vf1").style.borderColor = "white";
-	document.getElementById("col_vf2").value = "";
-	document.getElementById("col_vf2").style.borderColor = "white";
+	reset("col_m1", "col_m2", "col_vi1", "col_vi2", "col_vf1", "col_vf2");
 }
 
 function resetTimeStep() {
-	document.getElementById("ts_m").value = "";
-	document.getElementById("ts_m").style.borderColor = "white";
-	document.getElementById("ts_v").value = "";
-	document.getElementById("ts_v").style.borderColor = "white";
-	document.getElementById("ts_f").value = "";
-	document.getElementById("ts_f").style.borderColor = "white";
-	document.getElementById("ts_r").value = "";
-	document.getElementById("ts_r").style.borderColor = "white";
-	document.getElementById("ts_t").value = "";
-	document.getElementById("ts_t").style.borderColor = "white";
+	reset("ts_m", "ts_v", "ts_f", "ts_r", "ts_t");
+}
+
+function resetLaunchedProjectile() {
+	reset("lp_hi", "lp_vi", "lp_angle", "lp_mh", "lp_md", "lp_tmd", "lp_tmh");
 }

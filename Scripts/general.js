@@ -27,3 +27,10 @@ function checkBlanks(maxBlanks) {
 	}
 	return true;
 }
+
+function reset() {
+	for (i = 0; i < arguments.length; i++) {
+		document.getElementById(arguments[i]).value = "";
+		document.getElementById(arguments[i]).style.borderColor = "white";
+	}
+}

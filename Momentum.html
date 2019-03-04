@@ -85,14 +85,16 @@
 			<div class = "column">
 				<h1>Launched Projectile</h1>
 				<form>
-					Height Initial<br><input type = "number"><br>
-					Velocity Initial<br><input type = "number"><br>
-					Angle<br><input type = "number"><br>
-					Max Height<br><input type = "number"><br>
-					Max Distance<br><input type = "number"><br>
-					Time to Max Distance<br><input type = "number"><br>
-					Time to Max Height<br><input type = "number"><br>
+					Height Initial<br><input type = "number" id = "lp_hi"><br>
+					Velocity Initial<br><input type = "number" id = "lp_vi"><br>
+					Angle (Radians)<br><input type = "number" id = "lp_angle"><br>
+					Max Height<br><input type = "number" id = "lp_mh"><br>
+					Max Distance<br><input type = "number" id = "lp_md"><br>
+					Time to Max Distance<br><input type = "number" id = "lp_tmd"><br>
+					Time to Max Height<br><input type = "number" id = "lp_tmh"><br>
 				</form>
+				<button type = "button" onclick = "resetLaunchedProjectile()">Reset</button><br>
+				<button type = "button" onclick = "launchedProjectileCalculate()">Calculate</button><br>
 			</div>
 		</div>
 	</body>
