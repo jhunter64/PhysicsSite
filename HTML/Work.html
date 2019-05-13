@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../CSS/styles.css">
+        <link rel = "stylesheet" href = "../CSS/workStyles.css">
+        <script type = "text/javascript" src = "../Scripts/general.js"></script>
+		<script type = "text/javascript" src = "../Scripts/workJS.js"></script>
+		<script type = "text/javascript" src = "../Scripts/Vector.js"></script>
+    </head>
+    <div class="topNavigation">
+            <a href = "index.html">Home</a>
+            <a href = "Momentum.html">Momentum</a>
+            <a href = "Energy.html">Energy</a>
+    </div>
+    <body>
+        <div class = "row">
+            <div class = "column">
+                <h1>Work</h1>
+                <form>
+                    <input type="radio" 
+                    onclick = "changeType('force', 'number'), 
+                    changeType('displacement', 'number'),
+                    changeType('work', 'number'), enableInput('angle')";
+                    name="inputType" id = "inputMagnitude" checked> Magnitude<br>
+                    <input type="radio"
+                    onclick = "changeType('force', 'text'), 
+                    changeType('displacement', 'text'),
+                    changeType('work', 'text'), disableInput('angle')";
+                    name="inputType" id = "inputVector"> Vector<br>
+                </form>
+                <form>
+                    Force:<br><input type = "number" id = "force"><br>
+                    Displacement:<br><input type = "number" id = "displacement"><br>
+                    Angle (Radians):<br><input type = "number" id = "angle"><br>
+                    Work:<br><input type = "number" id = "work">
+                </form>
+                <button type = "button" onclick = "resetWork()">Reset</button><br>
+                <button type = "button" onclick = "workCalculate()">Calculate</button>
+            </div>
+        </div>
+    </body>
+    <footer>
+	    <p>JWH</p>
+	</footer>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../CSS/styles.css">
+		<link rel = "stylesheet" href = "../CSS/momentumStyles.css">
+		<script type = "text/javascript" src = "../Scripts/general.js"></script>
+		<script type = "text/javascript" src = "../Scripts/momentumJS.js"></script>
+		<script type = "text/javascript" src = "../Scripts/Vector.js"></script>
+	</head>
+	<div class="topNavigation">
+		<a href = "index.html">Home</a>
+		<a href = "Work.html">Work</a>
+		<a href = "Energy.html">Energy</a>
+	</div>
+	<body>
+		<div class="row">
+			<div class="column">
+				<h1>Momentum</h1>
+				<form>
+					<input type="radio" 
+					onclick = "changeType('velocity', 'number'), 
+					changeType('momentum', 'number')"
+					name="inputType" id = "inputMagnitude" checked> Magnitude<br>
+					<input type="radio"
+					onclick = "changeType('velocity', 'text'),
+					changeType('momentum', 'text')"
+					name="inputType" id = "inputVector"> Vector<br>
+				</form>
+				<form>
+					Mass:<br><input type = "number" id = "mass"><br>
+					Velocity:<br><input type = "number" id = "velocity"><br>
+					Momentum:<br><input type = "number" id = "momentum">
+				</form>
+				<button type = "button" onclick = "resetMomentum()">Reset</button><br>
+				<button type = "button" onclick = "momentumCalculate()">Calculate</button>
+			</div>
+			<div class="column">
+				<h1>2-Object Collision</h1>
+				<form>
+					<input type="radio" 
+					onclick = "changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
+					changeType('col_vf1', 'number'), changeType('col_vf2', 'number')"
+					name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
+					<input type="radio"
+					onclick = "changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
+					changeType('col_vf1', 'text'), changeType('col_vf2', 'text')";
+					name="collisionInputType" id = "collisionInputVector"> Vector<br>
+				</form>
+				<form>
+					Mass 1:<br><input type = "number" id = "col_m1"><br>
+					Mass 2:<br><input type = "number" id = "col_m2"><br>
+					Velocity initial 1:<br><input type = "number" id = "col_vi1"><br>
+					Velocity initial 2:<br><input type = "number" id = "col_vi2"><br>
+					Velocity final 1:<br><input type = "number" id = "col_vf1"><br>
+					Velocity final 2:<br><input type = "number" id = "col_vf2">
+				</form>
+				<button type = "button" onclick = "resetCollision()">Reset</button><br>
+				<button type = "button" onclick = "collisionCalculate()">Calculate</button><br>
+			</div>
+			<div class="column">
+				<h1>Time Step</h1>
+				<form>
+					<input type="radio" 
+					onclick = "changeType('ts_v', 'number'), changeType('ts_f', 'number'),
+					changeType('ts_r', 'number')"
+					name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
+					<input type="radio"
+					onclick = "changeType('ts_v', 'text'), changeType('ts_f', 'text'),
+					changeType('ts_r', 'text')"
+					name="collisionInputType" id = "collisionInputVector"> Vector<br>
+				</form>
+				<form>
+					Mass:<br><input type = "number" id = "ts_m"><br>
+					Velocity:<br><input type = "number" id = "ts_v"><br>
+					Force:<br><input type = "number" id = "ts_f"><br>
+					Position:<br><input type = "number" id = "ts_r"><br>
+					Interval:<br><input type = "number" id = "ts_t"><br>
+				</form>
+				<button type = "button" onclick = "resetTimeStep()">Reset</button><br>
+				<button type = "button" onclick = "timeStepCalculate()">Calculate</button><br>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "column">
+				<h1>Launched Projectile</h1>
+				<form>
+					Height Initial<br><input type = "number" id = "lp_hi"><br>
+					Velocity Initial<br><input type = "number" id = "lp_vi"><br>
+					Angle (Radians)<br><input type = "number" id = "lp_angle"><br>
+					Max Height<br><input type = "number" id = "lp_mh"><br>
+					Max Distance<br><input type = "number" id = "lp_md"><br>
+					Time to Max Distance<br><input type = "number" id = "lp_tmd"><br>
+					Time to Max Height<br><input type = "number" id = "lp_tmh"><br>
+				</form>
+				<button type = "button" onclick = "resetLaunchedProjectile()">Reset</button><br>
+				<button type = "button" onclick = "launchedProjectileCalculate()">Calculate</button><br>
+			</div>
+		</div>
+	</body>
+	<footer>
+		<p>JWH</p>
+	</footer>
+</html>

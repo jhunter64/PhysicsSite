@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(141, 17, 17);
+    color: rgb(255, 255, 255);
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+form:hover {
+    color: rgb(243, 255, 68);
+}

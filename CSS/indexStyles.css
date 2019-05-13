@@ -1,0 +1,41 @@
+body {
+	background-color: #000a41;
+	color: white;
+}
+
+h3 {
+	columns: 1;
+	text-align: center;
+}
+
+.sideNavigation {
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.sideNavigation a {
+	padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+	border-top: #333;
+    border-left: #333;
+    border-right: #333;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sideNavigation a:hover {
+    background-color: rgb(43, 52, 136);
+    color: gold;
+}

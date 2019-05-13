@@ -189,19 +189,47 @@ function timeStepCalculate() {
 }
 
 function launchedProjectileCalculate() {
-	var heightInitial = document.getElementById("lp_hi").value;
-	var velocityInitial = document.getElementById("lp_vi").value;
+	var heightInitial = parseInt(document.getElementById("lp_hi").value);
+	var velocity = document.getElementById("lp_vi").value;
 	var angle = document.getElementById("lp_angle").value;
 	var maxHeight = document.getElementById("lp_mh").value;
 	var maxDistance = document.getElementById("lp_md").value;
 	var timeMaxDistance = document.getElementById("lp_tmd").value;
 	var timeMaxHeight = document.getElementById("lp_tmh").value;
+	var g = 9.8;
 
-	if (maxHeight == "" && maxDistance == "") {
-		viy = velocityInitial * Math.sin(angle);
-		maxHeight = heightInitial + (viy * viy) / (2 * 9.8);
+	if (maxHeight == "" || maxDistance == "" || timeMaxHeight == ""
+		|| timeMaxDistance == "") {
+		
+		if (velocity == "" || angle == "") {
+			alert("Missing initial velocity or angle");
+		}
+
+		viy = velocity * Math.sin(angle);
+
+		maxHeight = heightInitial + ((viy * viy) / (2 * 9.8));
+
+		var leftSide = (velocity * velocity / (2 * g));
+		var rightSide = 1 + Math.sqrt(1 + ((2 * g * heightInitial) / 
+			(velocity * velocity * Math.sin(angle) * Math.sin(angle))));
+		maxDistance = leftSide * rightSide * Math.sin(2 * angle);
+
+		timeMaxHeight = (Math.sin(angle) * velocity) / g;
+
+		timeMaxDistance = maxDistance / (Math.cos(angle) * velocity);
 
 		document.getElementById("lp_mh").value = maxHeight;
+		document.getElementById("lp_md").value = maxDistance;
+		document.getElementById("lp_tmh").value = timeMaxHeight;
+		document.getElementById("lp_tmd").value = timeMaxDistance;
+	}
+
+	if (angle == "") {
+		if (velocity == "" || maxDistance == "") {
+			alert("Missing velocity or distance");
+		}
+
+		
 	}
 }
 
