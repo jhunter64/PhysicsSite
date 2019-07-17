@@ -1,5 +1,8 @@
 function Vector(components) {
     this.arr = components;
+    this.x = components[0];
+    this.y = components[1];
+    this.z = components[2];
 }
 
 function parseVector(str) {
@@ -56,6 +59,14 @@ function getUnitVector(v1) {
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] / magnitude;
+    }
+    return new Vector(newComponents);
+}
+
+function dotProduct(v1, v2) {
+    newComponents = [];
+    for (i = 0; i < v1.arr.length; i++) {
+        newComponents[i] = v1.arr[i] * v2.arr[i];
     }
     return new Vector(newComponents);
 }

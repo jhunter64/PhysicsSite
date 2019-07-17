@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(141, 17, 17);
-    color: rgb(255, 255, 255);
+    background-color: rgba(48, 175, 184, 0.904);
+    color: rgb(0, 0, 0);
 }
 
 /* Create three equal columns that floats next to each other */
@@ -18,5 +18,5 @@ body {
 }
 
 form:hover {
-    color: rgb(243, 255, 68);
+    color: rgb(211, 60, 0);
 }

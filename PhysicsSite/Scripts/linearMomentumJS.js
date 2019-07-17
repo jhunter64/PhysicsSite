@@ -197,15 +197,31 @@ function launchedProjectileCalculate() {
 	var timeMaxDistance = document.getElementById("lp_tmd").value;
 	var timeMaxHeight = document.getElementById("lp_tmh").value;
 	var g = 9.8;
+	var isMagnitude = document.getElementById("lpInputMagnitude").checked;
+	var isVector = document.getElementById("lpInputVector").checked;
 
 	if (maxHeight == "" || maxDistance == "" || timeMaxHeight == ""
 		|| timeMaxDistance == "") {
 		
-		if (velocity == "" || angle == "") {
-			alert("Missing initial velocity or angle");
+		if (velocity == "") {
+			alert("Missing initial velocity");
 		}
 
-		viy = velocity * Math.sin(angle);
+		if (isMagnitude && angle == "") {
+			alert("Missing initial angle");
+		}
+
+		var viy;
+		if (isMagnitude) {
+			viy = velocity * Math.sin(angle);
+		} else if (isVector) {
+			v = parseVector(velocity);
+			viy = v.y;
+			document.write(viy);
+			velocity = getMagnitude(v);
+		} else {
+			alert("Error receiving input for magnitude/vector");
+		}
 
 		maxHeight = heightInitial + ((viy * viy) / (2 * 9.8));
 
@@ -216,6 +232,12 @@ function launchedProjectileCalculate() {
 
 		timeMaxHeight = (Math.sin(angle) * velocity) / g;
 
+		var vix;
+		if (isMagnitude) {
+			vix = Math.cos(angle) * velocity;
+		} else {
+
+		}
 		timeMaxDistance = maxDistance / (Math.cos(angle) * velocity);
 
 		document.getElementById("lp_mh").value = maxHeight;

@@ -1,3 +1,98 @@
+function workCalculate() {
+    var force = document.getElementById("force").value;
+    var displacement = document.getElementById("displacement").value;
+    var angle = document.getElementById("angle").value;
+    var work = document.getElementById("work").value;
+    var isMagnitude = document.getElementById("workMagnitude").checked;
+    var isVector = document.getElementById("workVector").checked;
+    if (isMagnitude && angle == "") {
+        if (force == "" || work == "" || displacement == "") {
+            angle = 0.0;
+        } else {
+            angle = Math.acos(work / (force * displacement));
+            document.getElementById("angle").value = angle;
+            highlight("angle");
+        }
+    }
+    if (work == "") {
+        if (isMagnitude) {
+            work = force * Math.cos(angle) * displacement;
+            document.getElementById("work").value = work;
+        } else if (isVector) {
+            force = parseVector(force);
+            displacement = parseVector(displacement);
+            var x = force.arr[0] * displacement.arr[0];
+            var y = force.arr[1] * displacement.arr[1];
+            var z = force.arr[2] * displacement.arr[2];
+            work = new Vector([x, y, z]);
+            document.getElementById("work").value = getMagnitude(work);
+        }
+        highlight("work");
+    } else if (force == "") {
+        if (isMagnitude) {
+            force = work / Math.cos(angle) / displacement;
+            document.getElementById("force").value = force;
+        } else if (isVector) {
+            work = parseVector(work);
+            displacement = parseVector(displacement);
+            var forceX = work.arr[0] / displacement.arr[0];
+            var forceY = work.arr[1] / displacement.arr[1];
+            var forceZ = work.arr[2] / displacement.arr[2];
+            force = new Vector([forceX, forceY, forceZ]);
+            document.getElementById("force").value = toStringVector(force);
+        }
+        highlight("force");
+    } else if (displacement == "") {
+        if (isMagnitude) {
+            displacement = work / (force * Math.cos(angle));
+            document.getElementById("displacement").value = displacement;
+        } else if (isVector) {
+            work = parseVector(work);
+            force = parseVector(force);
+            var dX = work.arr[0] / force.arr[0];
+            var dY = work.arr[1] / force.arr[1];
+            var dZ = work.arr[2] / force.arr[2];
+            displacement = new Vector([dX, dY, dZ]);
+            document.getElementById("displacement").value = 
+                toStringVector(displacement);
+        }
+        highlight("displacement");
+    }
+}
+
+function powerCalculate() {
+    var force = document.getElementById("power_force").value;
+    var displacement = document.getElementById("power_displacement").value;
+    var angle = document.getElementById("power_angle").value;
+    var time = document.getElementById("power_time").value;
+    var power = document.getElementById("power").value;
+    var isMagnitude = document.getElementById("powerMagnitude").checked;
+    var isVector = document.getElementById("powerVector").checked;
+
+    checkBlanks(2, "power_force", "power_displacement", "power_angle", "power_time", "power");
+
+    if (power == "") {
+        if (isMagnitude) {
+            power = (force * displacement * Math.cos(angle)) / time;
+        } else if (isVector) {
+            force = parseVector(force);
+            displacement = parseVector(displacement);
+            work = dotProduct(force, displacement);
+            power = getMagnitude(work) / time;
+        }
+        document.getElementById("power").value = power;
+        highlight("power");
+    }
+
+    if (force == "") {
+        if (isMagnitude) {
+            force = (power * time) / displacement;
+        } else if (isVector) {
+            displacement = parseVector(displacement);
+        }
+    }
+}
+
 function kineticCalculate() {
     var mass = document.getElementById("mass").value;
     var velocity = document.getElementById("velocity").value;

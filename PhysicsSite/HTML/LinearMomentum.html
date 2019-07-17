@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="styles.css">
-		<link rel = "stylesheet" href = "momentumStyles.css">
-		<script type = "text/javascript" src = "Scripts/general.js"></script>
-		<script type = "text/javascript" src = "Scripts/momentumJS.js"></script>
-		<script type = "text/javascript" src = "Scripts/Vector.js"></script>
+		<link rel="stylesheet" href="../CSS/styles.css">
+		<link rel = "stylesheet" href = "../CSS/linearMomentumStyles.css">
+		<script type = "text/javascript" src = "../Scripts/general.js"></script>
+		<script type = "text/javascript" src = "../Scripts/linearMomentumJS.js"></script>
+		<script type = "text/javascript" src = "../Scripts/Vector.js"></script>
 	</head>
 	<div class="topNavigation">
-		<a href = "index.html">Home</a>
-		<a href = "Work.html">Work</a>
-		<a href = "Energy.html">Energy</a>
+		<a href = "../../index.html">Home</a>
+		<a href = "WEP.html">Work, Energy, and Power</a>
 	</div>
 	<body>
 		<div class="row">
@@ -84,6 +83,16 @@
 		<div class = "row">
 			<div class = "column">
 				<h1>Launched Projectile</h1>
+				<form>
+					<input type="radio" 
+					onclick = "changeType('lp_vi', 'number'),
+					enableInput('lp_angle')"
+					name="lpInputType" id = "lpInputMagnitude" checked> Magnitude<br>
+					<input type="radio"
+					onclick = "changeType('lp_vi', 'text'),
+					disableInput('lp_angle')"
+					name="lpInputType" id = "lpInputVector"> Vector<br>
+				</form>
 				<form>
 					Height Initial<br><input type = "number" id = "lp_hi"><br>
 					Velocity Initial<br><input type = "number" id = "lp_vi"><br>
