@@ -1,3 +1,8 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
 footer {
 	text-align: center;
 }
@@ -52,8 +57,40 @@ input {
     color: yellow;
 }
 
-/* Add a color to the active/current link */
-.topNavigation a.active {
-    background-color: #4CAF50;
-    color: white;
+.sideNav {
+	background-color: blue;
+	width: 10%;
+	height: 80%;
+	float: left;
+	margin-top: 25px;
+	position: fixed;
+}
+
+.rightNav {
+	background-color: blue;
+	width: 10%;
+	height: 80%;
+	float: right;
+	margin-top: 25px;
+	position: fixed;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+}
+
+.row {
+	width: 75%;
+	margin: auto;
+	float: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
 }

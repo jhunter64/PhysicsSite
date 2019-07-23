@@ -3,20 +3,10 @@ body {
     color: rgb(0, 0, 0);
 }
 
-/* Create three equal columns that floats next to each other */
-.column {
-	float: left;
-	width: 33.33%;
-	padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 form:hover {
     color: rgb(211, 60, 0);
+}
+
+.mainContent {
+	/* height: 100%; */
 }

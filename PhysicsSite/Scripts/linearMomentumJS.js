@@ -199,14 +199,17 @@ function launchedProjectileCalculate() {
 	var g = 9.8;
 	var isMagnitude = document.getElementById("lpInputMagnitude").checked;
 	var isVector = document.getElementById("lpInputVector").checked;
+	
+	var solveHeight, solveAngle, solveVelocity;
+	solveHeight = (maxHeight == "" && maxDistance == "" && timeMaxHeight == "" && timeMaxDistance == "");
+	solveAngle = (angle == "");
+	solveVelocity = (velocity == "");
 
-	if (maxHeight == "" || maxDistance == "" || timeMaxHeight == ""
-		|| timeMaxDistance == "") {
+	if (solveHeight) {
 		
 		if (velocity == "") {
 			alert("Missing initial velocity");
 		}
-
 		if (isMagnitude && angle == "") {
 			alert("Missing initial angle");
 		}
@@ -217,7 +220,6 @@ function launchedProjectileCalculate() {
 		} else if (isVector) {
 			v = parseVector(velocity);
 			viy = v.y;
-			document.write(viy);
 			velocity = getMagnitude(v);
 		} else {
 			alert("Error receiving input for magnitude/vector");
@@ -226,8 +228,7 @@ function launchedProjectileCalculate() {
 		maxHeight = heightInitial + ((viy * viy) / (2 * 9.8));
 
 		var leftSide = (velocity * velocity / (2 * g));
-		var rightSide = 1 + Math.sqrt(1 + ((2 * g * heightInitial) / 
-			(velocity * velocity * Math.sin(angle) * Math.sin(angle))));
+		var rightSide = 1 + Math.sqrt(1 + ((2 * g * heightInitial) / (viy * viy)));
 		maxDistance = leftSide * rightSide * Math.sin(2 * angle);
 
 		timeMaxHeight = (Math.sin(angle) * velocity) / g;
@@ -236,22 +237,24 @@ function launchedProjectileCalculate() {
 		if (isMagnitude) {
 			vix = Math.cos(angle) * velocity;
 		} else {
-
+			v = parseVector(velocity);
+			vix = v.x;
 		}
-		timeMaxDistance = maxDistance / (Math.cos(angle) * velocity);
+		timeMaxDistance = maxDistance / vix;
 
 		document.getElementById("lp_mh").value = maxHeight;
 		document.getElementById("lp_md").value = maxDistance;
 		document.getElementById("lp_tmh").value = timeMaxHeight;
 		document.getElementById("lp_tmd").value = timeMaxDistance;
-	}
-
-	if (angle == "") {
+	} else if (solveAngle) {
 		if (velocity == "" || maxDistance == "") {
 			alert("Missing velocity or distance");
 		}
 
-		
+	} else if (solveVelocity) {
+
+	} else {
+		alert("Sorry! That calculation isn't supported yet.\nSend me a message and I'll fix the problem");
 	}
 }
 
