@@ -75,6 +75,10 @@ input {
 	position: fixed;
 }
 
+#rightNavColumn {
+	padding-left: 20%;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
