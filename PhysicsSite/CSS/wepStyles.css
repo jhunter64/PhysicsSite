@@ -1,12 +1,22 @@
-body {
-    background-color: rgba(48, 175, 184, 0.904);
-    color: rgb(0, 0, 0);
-}
-
 form:hover {
     color: rgb(211, 60, 0);
 }
-
-.mainContent {
-	/* height: 100%; */
+.sideNav h2 {
+	padding: 14px 16px;
+    text-decoration: none;
+	font-size: 23px;
+	border-bottom: 1px solid white;
+	border-width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin: 0px;
+}
+.sideNav a {
+	color: white;
+}
+.sideNav h2:hover {
+	background-color: rgb(43, 52, 136);
+}
+.sideNav h2:hover a {
+	color: yellow;
 }

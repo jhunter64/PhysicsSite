@@ -14,11 +14,14 @@
     </div>
     <body>
         <div class="sideNav">
-            SIDE<br>NAVIGATION
+            <h2><a href="#kineticEnergyTitle">Kinetic Energy</a></h2>
+            <h2><a href="#potentialEnergyTitle">Potential Energy</a></h2>
+            <h2><a href="#workTitle">Work</a></h2>
+            <h2><a href="#powerTitle">Power</a></h2>
         </div>
         <div class = "row">
             <div class = "column">
-                <h1>Kinetic Energy</h1>
+                <h1 id="kineticEnergyTitle">Kinetic Energy</h1>
                 <form>
                     <input type="radio" 
                     onclick = "changeType('velocity', 'number')";
@@ -36,7 +39,7 @@
                 <button type = "button" onclick = "kineticCalculate()">Calculate</button>
             </div>
             <div class = "column">
-                <h1>Work</h1>
+                <h1 id="workTitle">Work</h1>
                 <form>
                     <input type="radio" 
                     onclick = "changeType('force', 'number'), 
@@ -66,7 +69,7 @@
         </div>
         <div class = "row">
             <div class = "column">
-                <h1>Potential Energy</h1>
+                <h1 id="potentialEnergyTitle">Potential Energy</h1>
                 <h3>Gravitational</h3>
                 <form>
                     Mass:<br><input type = "number" id = "uGravMass"><br>
@@ -87,7 +90,7 @@
                 <button type = "button" onclick = "uSpringCalculate()">Calculate</button>
             </div>
             <div class = "column">
-                <h1>Power</h1>
+                <h1 id="powerTitle">Power</h1>
                 <form>
                         <input type="radio"
                         onclick = "changeType('power_force', 'number'), 

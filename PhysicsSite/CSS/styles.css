@@ -2,39 +2,44 @@ html, body {
 	height: 100%;
 	margin: 0;
 }
+body {
+	background-color: #000a41;
+    color: white;
+}
 
 footer {
 	text-align: center;
 }
-
 footer p:hover {
 	font-style: oblique;
 	font-size: 125%;
 	color: gold;
 }
-
 h1:hover {
 	text-decoration: underline;
 }
-
 * {
 	box-sizing: border-box;
 }
-
+h1 {
+	color: gold;
+}
 h2 {
 	text-align: center;
 }
-
+h3 {
+	color: aqua;
+}
 input {
 	border: solid white;
 }
-
 /* Add a black background color to the top navigation */
 .topNavigation {
     background-color: #333;
 	overflow: hidden;
+	position: fixed;
+	width: 100%;
 }
-
 /* Style the links inside the navigation bar */
 .topNavigation a {
     float: left;
@@ -50,48 +55,42 @@ input {
 	border-left: #333;
 	border-width: 1px;
 }
-
 /* Change the color of links on hover */
 .topNavigation a:hover {
     background-color: rgb(43, 52, 136);
     color: yellow;
 }
-
 .sideNav {
-	background-color: blue;
+	background-color: #333;
 	width: 10%;
 	height: 80%;
 	float: left;
-	margin-top: 25px;
+	margin-top: 85px;
 	position: fixed;
 }
-
 .rightNav {
-	background-color: blue;
+	background-color: #333;
 	width: 10%;
 	height: 80%;
 	float: right;
-	margin-top: 25px;
+	margin-top: 50px;
 	position: fixed;
 }
-
 #rightNavColumn {
 	padding-left: 20%;
 }
-
 /* Create three equal columns that floats next to each other */
 .column {
 	float: left;
 	width: 33.33%;
 	padding: 10px;
 }
-
 .row {
 	width: 75%;
 	margin: auto;
 	float: right;
+	margin-top: 25px;
 }
-
 /* Clear floats after the columns */
 .row:after {
 	content: "";
