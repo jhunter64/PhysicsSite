@@ -1,15 +1,9 @@
 h1:hover {
 	text-decoration: underline;
 }
-
 * {
 	box-sizing: border-box;
 }
-
 h2 {
 	text-align: center;
-}
-
-form:hover {
-	color: rgb(255, 110, 154);
 }

@@ -6,7 +6,9 @@ body {
 	background-color: #000a41;
     color: white;
 }
-
+form:hover {
+	color: rgb(255, 110, 154);
+}
 footer {
 	text-align: center;
 }
@@ -68,6 +70,26 @@ input {
 	margin-top: 85px;
 	position: fixed;
 }
+.sideNav h2 {
+	padding: 14px 16px;
+    text-decoration: none;
+	font-size: 23px;
+	border-bottom: 1px solid white;
+	border-width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin: 0px;
+}
+.sideNav a {
+	color: white;
+	text-decoration: none;
+}
+.sideNav h2:hover {
+	background-color: rgb(43, 52, 136);
+}
+.sideNav h2:hover a {
+	color: yellow;
+}
 .rightNav {
 	background-color: #333;
 	width: 10%;
@@ -75,6 +97,35 @@ input {
 	float: right;
 	margin-top: 50px;
 	position: fixed;
+}
+.navTitle {
+	width: 50%;
+	margin: auto;
+}
+.navTitle h1:hover {
+	text-decoration: none;
+}
+.emailInfo {
+	margin: 5px;
+	text-align: center;
+}
+.emailInfo h3 {
+	color: white;
+}
+.emailInfo p {
+	color: gray;
+}
+.emailInfo a {
+	color: cyan;
+}
+.logoContainer {
+	width: 50%;
+	margin: auto;
+	margin-top: 65px;
+}
+.logoContainer img {
+	width: 100%;
+	margin: auto;
 }
 #rightNavColumn {
 	padding-left: 20%;

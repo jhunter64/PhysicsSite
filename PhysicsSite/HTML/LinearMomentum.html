@@ -13,8 +13,17 @@
 		<a href = "WEP.html">Work, Energy, and Power</a>
 	</div>
 	<body>
+		<div class="sideNav">
+			<div class="navTitle">
+				<h1>Index</h1>
+			</div>
+			<h2><a href="#momentumTitle">Momentum</a></h2>
+			<h2><a href="#lpTitle">Launched Projectile</a></h2>
+			<h2><a href="#collisionTitle">2 Object Collision</a></h2>
+			<h2><a href="#timestepTitle">Time Step</a></h2>
+		</div>
 		<div class="row">
-			<div class="column">
+			<div class="column" id="momentumTitle">
 				<h1>Momentum</h1>
 				<form>
 					<input type="radio" 
@@ -34,7 +43,7 @@
 				<button type = "button" onclick = "resetMomentum()">Reset</button><br>
 				<button type = "button" onclick = "momentumCalculate()">Calculate</button>
 			</div>
-			<div class="column">
+			<div class="column" id="collisionTitle">
 				<h1>2-Object Collision</h1>
 				<form>
 					<input type="radio" 
@@ -57,31 +66,39 @@
 				<button type = "button" onclick = "resetCollision()">Reset</button><br>
 				<button type = "button" onclick = "collisionCalculate()">Calculate</button><br>
 			</div>
-			<div class="column">
-				<h1>Time Step</h1>
-				<form>
-					<input type="radio" 
-					onclick = "changeType('ts_v', 'number'), changeType('ts_f', 'number'),
-					changeType('ts_r', 'number')"
-					name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
-					<input type="radio"
-					onclick = "changeType('ts_v', 'text'), changeType('ts_f', 'text'),
-					changeType('ts_r', 'text')"
-					name="collisionInputType" id = "collisionInputVector"> Vector<br>
-				</form>
-				<form>
-					Mass:<br><input type = "number" id = "ts_m"><br>
-					Velocity:<br><input type = "number" id = "ts_v"><br>
-					Force:<br><input type = "number" id = "ts_f"><br>
-					Position:<br><input type = "number" id = "ts_r"><br>
-					Interval:<br><input type = "number" id = "ts_t"><br>
-				</form>
-				<button type = "button" onclick = "resetTimeStep()">Reset</button><br>
-				<button type = "button" onclick = "timeStepCalculate()">Calculate</button><br>
+			<div class="column" id="rightNavColumn">
+				<div class="rightNav">
+					<div class="emailInfo">
+						<h3>
+							See an incorrect answer or want to see other equations added?
+							<a href="mailto:jhunter64@gatech.edu" target="_top">Email me</a> and I'll look into it!
+						</h3>
+					</div>
+					<a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank">
+						<div class="logoContainer">
+							<img src="../Images/github.png">
+						</div>
+					</a>
+					<div class="emailInfo">
+						<p>
+							Find the code here
+						</p>
+					</div>
+					<a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank">
+						<div class="logoContainer">
+							<img src="../Images/linkedin.png">
+						</div>
+					</a>
+					<div class="emailInfo">
+						<p>
+							Find me on LinkedIn
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class = "row">
-			<div class = "column">
+			<div class = "column" id="lpTitle">
 				<h1>Launched Projectile</h1>
 				<form>
 					<input type="radio" 
@@ -105,6 +122,28 @@
 				<button type = "button" onclick = "resetLaunchedProjectile()">Reset</button><br>
 				<button type = "button" onclick = "launchedProjectileCalculate()">Calculate</button><br>
 			</div>
+			<div class="column" id="timestepTitle">
+					<h1>Time Step</h1>
+					<form>
+						<input type="radio" 
+						onclick = "changeType('ts_v', 'number'), changeType('ts_f', 'number'),
+						changeType('ts_r', 'number')"
+						name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
+						<input type="radio"
+						onclick = "changeType('ts_v', 'text'), changeType('ts_f', 'text'),
+						changeType('ts_r', 'text')"
+						name="collisionInputType" id = "collisionInputVector"> Vector<br>
+					</form>
+					<form>
+						Mass:<br><input type = "number" id = "ts_m"><br>
+						Velocity:<br><input type = "number" id = "ts_v"><br>
+						Force:<br><input type = "number" id = "ts_f"><br>
+						Position:<br><input type = "number" id = "ts_r"><br>
+						Interval:<br><input type = "number" id = "ts_t"><br>
+					</form>
+					<button type = "button" onclick = "resetTimeStep()">Reset</button><br>
+					<button type = "button" onclick = "timeStepCalculate()">Calculate</button><br>
+				</div>
 		</div>
 	</body>
 </html>
