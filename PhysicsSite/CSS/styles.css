@@ -12,11 +12,6 @@ form:hover {
 footer {
 	text-align: center;
 }
-footer p:hover {
-	font-style: oblique;
-	font-size: 125%;
-	color: gold;
-}
 h1:hover {
 	text-decoration: underline;
 }
@@ -101,6 +96,7 @@ input {
 .navTitle {
 	width: 50%;
 	margin: auto;
+	border-bottom: 2px solid gold;
 }
 .navTitle h1:hover {
 	text-decoration: none;

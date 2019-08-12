@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../CSS/styles.css">
+		<link rel = "stylesheet" href = "../CSS/linearMomentumStyles.css">
+		<script type = "text/javascript" src = "../Scripts/general.js"></script>
+		<script type = "text/javascript" src = "../Scripts/angularMomentumJS.js"></script>
+		<script type = "text/javascript" src = "../Scripts/Vector.js"></script>
+	</head>
+	<div class="topNavigation">
+		<a href = "../../index.html">Home</a>
+        <a href = "LinearMomentum.html">Linear Momentum</a>
+        <a href = "AngularMomentum.html">Angular Momentum</a>
+        <a href = "WEP.html">Work, Energy, and Power</a>
+	</div>
+	<body>
+		<div class="sideNav">
+			<div class="navTitle">
+				<h1>Index</h1>
+			</div>
+        </div>
+        <div class="row">
+			<div class="column" id="momentumTitle">
+				<h1>Moment of Inertia</h1>
+				<select id="momentSelect" onchange="momentSelect()">
+                    <option value="particle">Particle</option>
+                    <option value="solidSphere">Solid Sphere</option>
+                    <option value="hollowSphere">Hollow Sphere</option>
+                    <option value="solidCylinder">Solid Cylinder</option>
+                    <option value="hollowCylinder">Hollow Cylinder</option>
+                    <option value="ring">Ring</option>
+                    <option value="disk">Disk</option>
+                    <option value="rod">Rod</option>
+                </select>
+                <form>
+                    Mass:<br><input type="number" id="momentMass"><br>
+                    <a id="momentRL_text">Radius:</a><br><input type="number" id="momentRL"><br>
+                    Moment of Intertia:<br><input type="number" id="momentOfInertia">
+                </form>
+                <button type="button" onclick="momentCalculate()">Calculate</button>
+            </div>
+            <div class="column" id="torqueTitle">
+                <h1>Torque</h1>
+            </div>
+            <div class="column" id="rightNavColumn">
+                <div class="rightNav">
+                    <div class="emailInfo">
+                        <h3>
+                            See an incorrect answer or want to see other equations added? Please
+                            <a href="mailto:jhunter64@gatech.edu" target="_top">email me</a> and I'll look into it!
+                        </h3>
+                    </div>
+                    <a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank">
+                        <div class="logoContainer">
+                            <img src="../Images/github.png">
+                        </div>
+                    </a>
+                    <div class="emailInfo">
+                        <p>Find the code here</p>
+                    </div>
+                    <a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank">
+                        <div class="logoContainer">
+                            <img src="../Images/linkedin.png">
+                        </div>
+                    </a>
+                    <div class="emailInfo">
+                        <p>Find me on LinkedIn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

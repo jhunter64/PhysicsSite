@@ -206,7 +206,6 @@ function launchedProjectileCalculate() {
 	solveVelocity = (velocity == "");
 
 	if (solveHeight) {
-		
 		if (velocity == "") {
 			alert("Missing initial velocity");
 		}
@@ -247,12 +246,21 @@ function launchedProjectileCalculate() {
 		document.getElementById("lp_tmh").value = timeMaxHeight;
 		document.getElementById("lp_tmd").value = timeMaxDistance;
 	} else if (solveAngle) {
-		if (velocity == "" || maxDistance == "") {
-			alert("Missing velocity or distance");
-		}
-
+		alert("Sorry, this equation is not supported yet...");
 	} else if (solveVelocity) {
-
+		if (isMagnitude) {
+			console.log("Solving velocity");
+			var lhs = 1 / Math.cos(angle);
+			var numerator = (1/2) * g * maxDistance * maxDistance;
+			var denominator = maxDistance * Math.tan(angle) + heightInitial;
+			var rhs = Math.sqrt(numerator / denominator);
+			velocity = lhs * rhs;
+			console.log("Velocity: " + velocity);
+		} else if (isVector) {
+			alert("This calculation is not supported because it would require an initial direction. " + 
+			"If you have an initial direction, use the magnitude equation and plug the result into your direction unit vector.");
+		}
+		document.getElementById("lp_vi").value = velocity;
 	} else {
 		alert("Sorry! That calculation isn't supported yet.\nSend me a message and I'll fix the problem");
 	}

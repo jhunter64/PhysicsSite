@@ -10,6 +10,8 @@
 	</head>
 	<div class="topNavigation">
 		<a href = "../../index.html">Home</a>
+		<a href = "LinearMomentum.html">Linear Momentum</a>
+		<a href = "AngularMomentum.html">Angular Momentum</a>
 		<a href = "WEP.html">Work, Energy, and Power</a>
 	</div>
 	<body>
@@ -29,19 +31,19 @@
 					<input type="radio" 
 					onclick = "changeType('velocity', 'number'), 
 					changeType('momentum', 'number')"
-					name="inputType" id = "inputMagnitude" checked> Magnitude<br>
+					name="inputType" id="inputMagnitude" checked> Magnitude<br>
 					<input type="radio"
 					onclick = "changeType('velocity', 'text'),
 					changeType('momentum', 'text')"
-					name="inputType" id = "inputVector"> Vector<br>
+					name="inputType" id="inputVector"> Vector<br>
 				</form>
 				<form>
-					Mass:<br><input type = "number" id = "mass"><br>
-					Velocity:<br><input type = "number" id = "velocity"><br>
-					Momentum:<br><input type = "number" id = "momentum">
+					Mass:<br><input type="number" id="mass"><br>
+					Velocity:<br><input type="number" id="velocity"><br>
+					Momentum:<br><input type="number" id="momentum">
 				</form>
-				<button type = "button" onclick = "resetMomentum()">Reset</button><br>
-				<button type = "button" onclick = "momentumCalculate()">Calculate</button>
+				<button type="button" onclick="reset('mass', 'velocity', 'momentum')">Reset</button><br>
+				<button type="button" onclick="momentumCalculate()">Calculate</button>
 			</div>
 			<div class="column" id="collisionTitle">
 				<h1>2-Object Collision</h1>
@@ -49,11 +51,11 @@
 					<input type="radio" 
 					onclick = "changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
 					changeType('col_vf1', 'number'), changeType('col_vf2', 'number')"
-					name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
+					name="collisionInputType" id="collisionInputMagnitude" checked> Magnitude<br>
 					<input type="radio"
 					onclick = "changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
 					changeType('col_vf1', 'text'), changeType('col_vf2', 'text')";
-					name="collisionInputType" id = "collisionInputVector"> Vector<br>
+					name="collisionInputType" id="collisionInputVector"> Vector<br>
 				</form>
 				<form>
 					Mass 1:<br><input type = "number" id = "col_m1"><br>
@@ -63,15 +65,15 @@
 					Velocity final 1:<br><input type = "number" id = "col_vf1"><br>
 					Velocity final 2:<br><input type = "number" id = "col_vf2">
 				</form>
-				<button type = "button" onclick = "resetCollision()">Reset</button><br>
-				<button type = "button" onclick = "collisionCalculate()">Calculate</button><br>
+				<button type="button" onclick="reset('col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')">Reset</button><br>
+				<button type="button" onclick="collisionCalculate()">Calculate</button><br>
 			</div>
 			<div class="column" id="rightNavColumn">
 				<div class="rightNav">
 					<div class="emailInfo">
 						<h3>
-							See an incorrect answer or want to see other equations added?
-							<a href="mailto:jhunter64@gatech.edu" target="_top">Email me</a> and I'll look into it!
+							See an incorrect answer or want to see other equations added? Please
+							<a href="mailto:jhunter64@gatech.edu" target="_top">email me</a> and I'll look into it!
 						</h3>
 					</div>
 					<a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank">
@@ -80,9 +82,7 @@
 						</div>
 					</a>
 					<div class="emailInfo">
-						<p>
-							Find the code here
-						</p>
+						<p>Find the code here</p>
 					</div>
 					<a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank">
 						<div class="logoContainer">
@@ -90,9 +90,7 @@
 						</div>
 					</a>
 					<div class="emailInfo">
-						<p>
-							Find me on LinkedIn
-						</p>
+						<p>Find me on LinkedIn</p>
 					</div>
 				</div>
 			</div>
@@ -111,16 +109,16 @@
 					name="lpInputType" id = "lpInputVector"> Vector<br>
 				</form>
 				<form>
-					Height Initial<br><input type = "number" id = "lp_hi"><br>
-					Velocity Initial<br><input type = "number" id = "lp_vi"><br>
-					Angle (Radians)<br><input type = "number" id = "lp_angle"><br>
-					Max Height<br><input type = "number" id = "lp_mh"><br>
-					Max Distance<br><input type = "number" id = "lp_md"><br>
-					Time to Max Distance<br><input type = "number" id = "lp_tmd"><br>
-					Time to Max Height<br><input type = "number" id = "lp_tmh"><br>
+					Height Initial<br><input type="number" id="lp_hi"><br>
+					Velocity Initial<br><input type="number" id="lp_vi"><br>
+					Angle (Radians)<br><input type="number" id="lp_angle"><br>
+					Max Height<br><input type="number" id="lp_mh"><br>
+					Max Distance<br><input type="number" id="lp_md"><br>
+					Time to Max Distance<br><input type="number" id="lp_tmd"><br>
+					Time to Max Height<br><input type="number" id="lp_tmh"><br>
 				</form>
-				<button type = "button" onclick = "resetLaunchedProjectile()">Reset</button><br>
-				<button type = "button" onclick = "launchedProjectileCalculate()">Calculate</button><br>
+				<button type="button" onclick="reset('lp_hi', 'lp_vi', 'lp_angle', 'lp_mh', 'lp_md', 'lp_tmd', 'lp_tmh')">Reset</button><br>
+				<button type="button" onclick="launchedProjectileCalculate()">Calculate</button><br>
 			</div>
 			<div class="column" id="timestepTitle">
 					<h1>Time Step</h1>
@@ -135,14 +133,14 @@
 						name="collisionInputType" id = "collisionInputVector"> Vector<br>
 					</form>
 					<form>
-						Mass:<br><input type = "number" id = "ts_m"><br>
-						Velocity:<br><input type = "number" id = "ts_v"><br>
-						Force:<br><input type = "number" id = "ts_f"><br>
-						Position:<br><input type = "number" id = "ts_r"><br>
-						Interval:<br><input type = "number" id = "ts_t"><br>
+						Mass:<br><input type="number" id="ts_m"><br>
+						Velocity:<br><input type="number" id="ts_v"><br>
+						Force:<br><input type="number" id="ts_f"><br>
+						Position:<br><input type="number" id="ts_r"><br>
+						Interval:<br><input type="number" id="ts_t"><br>
 					</form>
-					<button type = "button" onclick = "resetTimeStep()">Reset</button><br>
-					<button type = "button" onclick = "timeStepCalculate()">Calculate</button><br>
+					<button type="button" onclick="reset('ts_m', 'ts_v', 'ts_f', 'ts_r', 'ts_t')">Reset</button><br>
+					<button type="button" onclick="timeStepCalculate()">Calculate</button><br>
 				</div>
 		</div>
 	</body>
