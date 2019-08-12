@@ -13,6 +13,25 @@ function momentSelect() {
 }
 
 function momentCalculate() {
-    var select = document.getElementById("momentSelect");
-    console.log(select.value);
+    var select = document.getElementById("momentSelect").value;
+    var validInput = checkBlanks(2, 'momentMass', 'momentRL', 'momentOfIntertia');
+    if (!validInput) {
+        alert("Missing input");
+    } else if (select == "particle") {
+
+    } else if (select == "solidSphere") {
+
+    } else if (select == "hollowSphere") {
+
+    } else if (select == "solidCylinder") {
+        
+    } else if (select == "hollowCylinder") {
+        
+    } else if (select == "ring") {
+        
+    } else if (select == "disk") {
+        
+    } else if (select == "rod") {
+        
+    }
 }

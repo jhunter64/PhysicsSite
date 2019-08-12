@@ -64,6 +64,7 @@ input {
 	float: left;
 	margin-top: 85px;
 	position: fixed;
+	overflow: hidden;
 }
 .sideNav h2 {
 	padding: 14px 16px;
@@ -92,6 +93,7 @@ input {
 	float: right;
 	margin-top: 50px;
 	position: fixed;
+	overflow: hidden;
 }
 .navTitle {
 	width: 50%;
