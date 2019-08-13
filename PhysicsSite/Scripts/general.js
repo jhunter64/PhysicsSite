@@ -17,7 +17,7 @@ function highlight(elementId) {
 function checkBlanks(maxBlanks) {
 	blanks = 0;
 	for (i = 1; i < arguments.length; i++) {
-		if (document.getElementById(arguments[i]).value == "") {
+		if (!document.getElementById(arguments[i]) || document.getElementById(arguments[i]).value == "") {
 			blanks++;
 		}
 		if (blanks > maxBlanks) {
