@@ -1,3 +1,7 @@
+function angularMomentumCalculate() {
+    
+}
+
 /**
  * Change the text for the input box on the moment of inertia
  * form since rods have Length and the other shapes have Radii
@@ -17,11 +21,9 @@ function momentCalculate() {
     var mass = document.getElementById("momentMass").value;
     var RL = document.getElementById("momentRL").value;
     var moment = document.getElementById("momentOfInertia").value;
-    var validInput = checkBlanks(2, 'momentMass', 'momentRL', 'momentOfIntertia');
+    var validInput = checkBlanks(1, 'momentMass', 'momentRL', 'momentOfIntertia');
 
-    if (!validInput) {
-        alert("Missing input");
-    } else if (select == "particle") { // I = MR^2
+    if (select == "particle") { // I = MR^2
         if (mass == "") {
             mass = moment / (RL * RL);
         } else if (RL == "") {
@@ -89,5 +91,36 @@ function momentCalculate() {
             document.getElementById("momentOfInertia").value = moment;
             highlight('momentOfInertia');
         }
+    }
+}
+
+function torqueCalculate() {
+    // T = r * F * sin(theta)
+    var radius = document.getElementById("torqueRadius").value;
+    var force = document.getElementById("torqueForce").value;
+    var angle = document.getElementById("torqueAngle").value;
+    var torque = document.getElementById("torque").value;
+    var validInput = checkBlanks(1, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
+
+    if (angle != "") {
+        var sin_theta = Math.sin(angle);
+    }
+    if (radius == "") {
+        radius = torque / (force * sin_theta);
+        document.getElementById("torqueRadius").value = radius;
+        highlight("torqueRadius");
+    } else if (force == "") {
+        force = torque / (radius * sin_theta);
+        document.getElementById("torqueForce").value = force;
+        highlight("torqueForce");
+    } else if (angle == "") {
+        var sin_theta = torque / (radius * force);
+        angle = Math.asin(sin_theta);
+        document.getElementById("torqueAngle").value = angle;
+        highlight("torqueAngle");
+    } else if (torque == "") {
+        torque = radius * force * sin_theta;
+        document.getElementById("torque").value = torque;
+        highlight("torque");
     }
 }

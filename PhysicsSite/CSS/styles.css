@@ -69,7 +69,7 @@ input {
 .sideNav h2 {
 	padding: 14px 16px;
     text-decoration: none;
-	font-size: 23px;
+	font-size: 18px;
 	border-bottom: 1px solid white;
 	border-width: 100%;
 	text-overflow: ellipsis;
@@ -96,7 +96,7 @@ input {
 	overflow: hidden;
 }
 .navTitle {
-	width: 50%;
+	width: 60%;
 	margin: auto;
 	border-bottom: 2px solid gold;
 }
