@@ -1,5 +1,22 @@
 function angularMomentumCalculate() {
-    
+    // L = Iw
+    var moment = document.getElementById("amMoment").value;
+    var angularVelocity = document.getElementById("amAngularVelocity").value;
+    var angularMomentum = document.getElementById("angularMomentum").value;
+    checkBlanks(1, 'amMoment', 'amAngularVelocity', 'angularMomentum');
+    if (moment == "") { // I = L / w
+        moment = angularMomentum / angularVelocity;
+        document.getElementById("amMoment").value = moment;
+        highlight('amMoment');
+    } else if (angularVelocity == "") { // w = L / I
+        angularVelocity = angularMomentum / moment;
+        document.getElementById("amAngularVelocity").value = angularVelocity;
+        highlight('amAngularVelocity');
+    } else if (angularMomentum == "") { // L = Iw
+        angularMomentum = moment * angularVelocity;
+        document.getElementById("angularMomentum").value = angularMomentum;
+        highlight('angularMomentum');
+    }
 }
 
 /**
@@ -100,7 +117,7 @@ function torqueCalculate() {
     var force = document.getElementById("torqueForce").value;
     var angle = document.getElementById("torqueAngle").value;
     var torque = document.getElementById("torque").value;
-    var validInput = checkBlanks(1, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
+    checkBlanks(1, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
 
     if (angle != "") {
         var sin_theta = Math.sin(angle);
@@ -122,5 +139,26 @@ function torqueCalculate() {
         torque = radius * force * sin_theta;
         document.getElementById("torque").value = torque;
         highlight("torque");
+    }
+}
+
+function angularVelocityCalculate() {
+    // w = v/r
+    var linearVelocity = document.getElementById("linearVelocity").value;
+    var radius = document.getElementById("avRadius").value;
+    var angularVelocity = document.getElementById("angularVelocity").value;
+    checkBlanks(1, 'linearVelocity', 'avRadius', 'angularVelocity');
+    if (linearVelocity == "") {
+        linearVelocity = angularVelocity * radius;
+        document.getElementById("linearVelocity").value = linearVelocity;
+        highlight('linearVelocity');
+    } else if (radius == "") {
+        radius = linearVelocity / angularVelocity;
+        document.getElementById("avRadius").value = radius;
+        highlight('avRadius');
+    } else if (angularVelocity == "") {
+        angularVelocity = linearVelocity / radius;
+        document.getElementById("angularVelocity").value = angularVelocity;
+        highlight('angularVelocity');
     }
 }

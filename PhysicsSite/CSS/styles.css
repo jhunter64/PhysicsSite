@@ -30,6 +30,12 @@ h3 {
 input {
 	border: solid white;
 }
+.homeTitle {
+	text-align: center;
+}
+.homeTitle h1:hover {
+	text-decoration: none;
+}
 /* Add a black background color to the top navigation */
 .topNavigation {
     background-color: #333;

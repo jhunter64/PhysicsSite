@@ -83,5 +83,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="column" id="angularVelocityTitle">
+                <h1>Angular Velocity</h1>
+                <form>
+                    Linear Velocity:<br><input type="number" id="linearVelocity"><br>
+                    Radius:<br><input type="number" id="avRadius"><br>
+                    Angular Velocity:<br><input type="number" id="angularVelocity"><br>
+                </form>
+                <button type="button" onclick="reset('linearVelocity', 'avRadius', 'angularVelocity')">Reset</button><br>
+                <button type="button" onclick="angularVelocityCalculate()">Calculate</button>
+            </div>
+            <div class="column" id="angularMomentumTitle">
+                <h1>Angular Momentum</h1>
+                <form>
+                    Moment of Inertia:<br><input type="number" id="amMoment"><br>
+                    Angular Velocity:<br><input type="number" id="amAngularVelocity"><br>
+                    Angular Momentum:<br><input type="number" id="angularMomentum"><br>
+                </form>
+                <button type="button" onclick="reset('amMoment', 'amAngularVelocity', 'angularMomentum')">Reset</button><br>
+                <button type="button" onclick="angularMomentumCalculate()">Calculate</button>
+            </div>
+        </div>
     </body>
 </html>
