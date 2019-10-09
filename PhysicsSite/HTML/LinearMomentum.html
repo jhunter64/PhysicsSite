@@ -3,16 +3,16 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../CSS/styles.css">
-		<link rel = "stylesheet" href = "../CSS/linearMomentumStyles.css">
-		<script type = "text/javascript" src = "../Scripts/general.js"></script>
-		<script type = "text/javascript" src = "../Scripts/linearMomentumJS.js"></script>
-		<script type = "text/javascript" src = "../Scripts/Vector.js"></script>
+		<script type="text/javascript" src="../Scripts/general.js"></script>
+		<script type="text/javascript" src="../Scripts/linearMomentumJS.js"></script>
+		<script type="text/javascript" src="../Scripts/Vector.js"></script>
 	</head>
 	<div class="topNavigation">
-		<a href = "../../index.html">Home</a>
-		<a href = "LinearMomentum.html">Linear Momentum</a>
-		<a href = "AngularMomentum.html">Angular Momentum</a>
-		<a href = "WEP.html">Work, Energy, and Power</a>
+		<a href="../../index.html">Home</a>
+		<a href="LinearMomentum.html">Linear Momentum</a>
+		<a href="AngularMomentum.html">Angular Momentum</a>
+		<a href="WEP.html">Work, Energy, and Power</a>
+		<a href="VectorMath.html">Vector Math</a>
 	</div>
 	<body>
 		<div class="sideNav">
@@ -29,11 +29,11 @@
 				<h1>Momentum</h1>
 				<form>
 					<input type="radio" 
-					onclick = "changeType('velocity', 'number'), 
+					onclick="changeType('velocity', 'number'), 
 					changeType('momentum', 'number')"
 					name="inputType" id="inputMagnitude" checked> Magnitude<br>
 					<input type="radio"
-					onclick = "changeType('velocity', 'text'),
+					onclick="changeType('velocity', 'text'),
 					changeType('momentum', 'text')"
 					name="inputType" id="inputVector"> Vector<br>
 				</form>
@@ -49,21 +49,21 @@
 				<h1>2-Object Collision</h1>
 				<form>
 					<input type="radio" 
-					onclick = "changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
+					onclick="changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
 					changeType('col_vf1', 'number'), changeType('col_vf2', 'number')"
 					name="collisionInputType" id="collisionInputMagnitude" checked> Magnitude<br>
 					<input type="radio"
-					onclick = "changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
+					onclick="changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
 					changeType('col_vf1', 'text'), changeType('col_vf2', 'text')";
 					name="collisionInputType" id="collisionInputVector"> Vector<br>
 				</form>
 				<form>
-					Mass 1:<br><input type = "number" id = "col_m1"><br>
-					Mass 2:<br><input type = "number" id = "col_m2"><br>
-					Velocity initial 1:<br><input type = "number" id = "col_vi1"><br>
-					Velocity initial 2:<br><input type = "number" id = "col_vi2"><br>
-					Velocity final 1:<br><input type = "number" id = "col_vf1"><br>
-					Velocity final 2:<br><input type = "number" id = "col_vf2">
+					Mass 1:<br><input type="number" id="col_m1"><br>
+					Mass 2:<br><input type="number" id="col_m2"><br>
+					Velocity initial 1:<br><input type="number" id="col_vi1"><br>
+					Velocity initial 2:<br><input type="number" id="col_vi2"><br>
+					Velocity final 1:<br><input type="number" id="col_vf1"><br>
+					Velocity final 2:<br><input type="number" id="col_vf2">
 				</form>
 				<button type="button" onclick="reset('col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')">Reset</button><br>
 				<button type="button" onclick="collisionCalculate()">Calculate</button><br>
@@ -95,18 +95,18 @@
 				</div>
 			</div>
 		</div>
-		<div class = "row">
-			<div class = "column" id="lpTitle">
+		<div class="row">
+			<div class="column" id="lpTitle">
 				<h1>Launched Projectile</h1>
 				<form>
 					<input type="radio" 
-					onclick = "changeType('lp_vi', 'number'),
+					onclick="changeType('lp_vi', 'number'),
 					enableInput('lp_angle')"
-					name="lpInputType" id = "lpInputMagnitude" checked> Magnitude<br>
+					name="lpInputType" id="lpInputMagnitude" checked> Magnitude<br>
 					<input type="radio"
-					onclick = "changeType('lp_vi', 'text'),
+					onclick="changeType('lp_vi', 'text'),
 					disableInput('lp_angle')"
-					name="lpInputType" id = "lpInputVector"> Vector<br>
+					name="lpInputType" id="lpInputVector"> Vector<br>
 				</form>
 				<form>
 					Height Initial<br><input type="number" id="lp_hi"><br>
@@ -124,13 +124,13 @@
 					<h1>Time Step</h1>
 					<form>
 						<input type="radio" 
-						onclick = "changeType('ts_v', 'number'), changeType('ts_f', 'number'),
+						onclick="changeType('ts_v', 'number'), changeType('ts_f', 'number'),
 						changeType('ts_r', 'number')"
-						name="collisionInputType" id = "collisionInputMagnitude" checked> Magnitude<br>
+						name="collisionInputType" id="collisionInputMagnitude" checked> Magnitude<br>
 						<input type="radio"
-						onclick = "changeType('ts_v', 'text'), changeType('ts_f', 'text'),
+						onclick="changeType('ts_v', 'text'), changeType('ts_f', 'text'),
 						changeType('ts_r', 'text')"
-						name="collisionInputType" id = "collisionInputVector"> Vector<br>
+						name="collisionInputType" id="collisionInputVector"> Vector<br>
 					</form>
 					<form>
 						Mass:<br><input type="number" id="ts_m"><br>

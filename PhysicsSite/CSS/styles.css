@@ -36,6 +36,11 @@ input {
 .homeTitle h1:hover {
 	text-decoration: none;
 }
+.homeNote {
+	color: aqua;
+	text-emphasis: bold;
+	font-size: 125%;
+}
 /* Add a black background color to the top navigation */
 .topNavigation {
     background-color: #333;
@@ -70,7 +75,7 @@ input {
 	float: left;
 	margin-top: 85px;
 	position: fixed;
-	overflow: hidden;
+	overflow: scroll;
 }
 .sideNav h2 {
 	padding: 14px 16px;
