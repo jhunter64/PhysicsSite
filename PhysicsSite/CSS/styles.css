@@ -3,8 +3,11 @@ html, body {
 	margin: 0;
 }
 body {
-	background-color: #000a41;
-    color: white;
+	background-size: 100%;
+	color: white;
+}
+.mainContent {
+	top: 100px;
 }
 form:hover {
 	color: rgb(255, 110, 154);
@@ -36,46 +39,39 @@ input {
 .homeTitle h1:hover {
 	text-decoration: none;
 }
+.homeTitle h1 {
+	color: white;
+}
 .homeNote {
 	color: aqua;
 	text-emphasis: bold;
 	font-size: 125%;
 }
-/* Add a black background color to the top navigation */
-.topNavigation {
-    background-color: #333;
-	overflow: hidden;
-	position: fixed;
-	width: 100%;
+.topNav a {
+	font-size: 20px;
+	color: rgb(255, 65, 65);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+	transition: 0.5s ease;
 }
-/* Style the links inside the navigation bar */
-.topNavigation a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-	font-size: 17px;
-	border: solid;
-	border-color: white;
-	border-top: #333;
-	border-bottom: #333;
-	border-left: #333;
-	border-width: 1px;
-}
-/* Change the color of links on hover */
-.topNavigation a:hover {
-    background-color: rgb(43, 52, 136);
-    color: yellow;
+.topNav a:hover {
+	color: rgb(79, 79, 255);
+	text-decoration: none;
+	text-shadow: 0 0 2px rgb(79, 79, 255);
+	border-bottom: 1px solid white;
 }
 .sideNav {
-	background-color: #333;
-	width: 10%;
-	height: 80%;
+    width: 15%;
+    /* min-width: 115px; */
+	height: 80vh;
 	float: left;
 	margin-top: 85px;
 	position: fixed;
 	overflow: scroll;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+.sideNav:hover {
+	border-color: red;
 }
 .sideNav h2 {
 	padding: 14px 16px;
@@ -90,33 +86,74 @@ input {
 .sideNav a {
 	color: white;
 	text-decoration: none;
+	transition: all 0.5s ease;
 }
 .sideNav h2:hover {
-	background-color: rgb(43, 52, 136);
+	border-color: red;
 }
 .sideNav h2:hover a {
-	color: yellow;
+	color: rgb(255, 65, 65);
 }
 .rightNav {
-	background-color: #333;
-	width: 10%;
-	height: 80%;
-	float: right;
-	margin-top: 50px;
+    width: 15%;
+    min-width: 115px;
+	height: 80vh;
+	float: left;
+	margin-top: 131px;
 	position: fixed;
-	overflow: hidden;
+	overflow: scroll;
+    z-index: 1;
+    top: 0;
+	left: 85%;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+.rightNav:hover {
+	border-color: red;
 }
 .navTitle {
-	width: 60%;
+	width: 50%;
 	margin: auto;
 	border-bottom: 2px solid gold;
+	margin-bottom: 10px;
 }
 .navTitle h1:hover {
 	text-decoration: none;
 }
+.pageLinks {
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	width: 55%;
+	margin: auto;
+	margin-bottom: 15px;
+}
+.pageLinks:hover {
+	border-color: rgb(79, 79, 255);
+}
+.pageLinks:hover a {
+	color: rgb(79, 79, 255);
+}
+.pageLinks a {
+	color: white;
+	transition: 0.25s ease;
+}
+.pageLinks a:hover {
+	color: rgb(79, 79, 255);
+	text-decoration: none;
+}
 .emailInfo {
 	margin: 5px;
+	margin-bottom: 30px;
 	text-align: center;
+}
+.emailInfo:hover {
+	text-decoration: none;
+}
+.emailInfo:hover i {
+	color: rgb(79, 79, 255);;
+}
+.emailInfo h1 {
+	color: white;
 }
 .emailInfo h3 {
 	color: white;
@@ -125,12 +162,19 @@ input {
 	color: gray;
 }
 .emailInfo a {
-	color: cyan;
+	color: rgb(255, 65, 65);
+}
+.emailInfo a:hover {
+	text-decoration: none;
+	color: rgb(79, 79, 255);
+}
+.emailInfo:hover p {
+	color: white;
 }
 .logoContainer {
 	width: 50%;
 	margin: auto;
-	margin-top: 65px;
+	margin-top: 30px;
 }
 .logoContainer img {
 	width: 100%;
@@ -140,20 +184,82 @@ input {
 	padding-left: 20%;
 }
 /* Create three equal columns that floats next to each other */
-.column {
-	float: left;
-	width: 33.33%;
-	padding: 10px;
-}
 .row {
-	width: 75%;
-	margin: auto;
-	float: right;
-	margin-top: 25px;
+    margin-top: 50px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
+.center {
+    text-align: center;
+}
+input {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+select {
+    margin-bottom: 10px;
+}
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+button {
+    border-radius: 2px;
+    border-style: none;
+    background-color: rgb(43, 172, 43);
+}
+button:hover {
+    background-color: rgb(96, 192, 96);
+}
+.resetButton {
+    background-color: rgb(187, 55, 55);
+}
+.resetButton:hover {
+    background-color: rgb(182, 87, 87);
+}
+.homeInfo {
+	text-align: left;
+}
+.homeInfo li {
+	font-size: 135%;
+	margin-bottom: 10px;
+}
+.homeInfo a {
+	color: rgb(255, 65, 65);
+}
+.homeInfo a:hover {
+	text-decoration: none;
+	color: rgb(79, 79, 255);
+}
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.gold {
+	color: gold;
+}
+.red {
+	color: rgb(255, 65, 65);
+}
+.blue {
+	color: rgb(79, 79, 255);
 }

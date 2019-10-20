@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<link href="../../fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
+		<title>Linear Momentum</title>
 		<link rel="stylesheet" href="../CSS/styles.css">
 		<script type="text/javascript" src="../Scripts/general.js"></script>
+		<!-- individual page JavaScript -->
+		<!-- <link rel="stylesheet" href="../CSS/styles.css"> -->
 		<script type="text/javascript" src="../Scripts/linearMomentumJS.js"></script>
 		<script type="text/javascript" src="../Scripts/Vector.js"></script>
 	</head>
-	<div class="topNavigation">
-		<a href="../../index.html">Home</a>
-		<a href="LinearMomentum.html">Linear Momentum</a>
-		<a href="AngularMomentum.html">Angular Momentum</a>
-		<a href="WEP.html">Work, Energy, and Power</a>
-		<a href="VectorMath.html">Vector Math</a>
-	</div>
-	<body>
+	<body background="../Images/spaceBackground.jpg">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container topNav">
+				<a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+				<a href="LinearMomentum.html"><i class="fas fa-rocket gold"></i> Linear Momentum</a>
+				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
+				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
+				<a href="VectorMath.html"><i class="fas fa-laptop-code"></i> Vector Math</a>
+			</div>
+		</nav>
 		<div class="sideNav">
-			<div class="navTitle">
+			<div class="navTitle center">
 				<h1>Index</h1>
 			</div>
 			<h2><a href="#momentumTitle">Momentum</a></h2>
@@ -24,103 +34,84 @@
 			<h2><a href="#collisionTitle">2 Object Collision</a></h2>
 			<h2><a href="#timestepTitle">Time Step</a></h2>
 		</div>
-		<div class="row">
-			<div class="column" id="momentumTitle">
-				<h1>Momentum</h1>
-				<form>
-					<input type="radio" 
-					onclick="changeType('velocity', 'number'), 
-					changeType('momentum', 'number')"
-					name="inputType" id="inputMagnitude" checked> Magnitude<br>
-					<input type="radio"
-					onclick="changeType('velocity', 'text'),
-					changeType('momentum', 'text')"
-					name="inputType" id="inputVector"> Vector<br>
-				</form>
-				<form>
-					Mass:<br><input type="number" id="mass"><br>
-					Velocity:<br><input type="number" id="velocity"><br>
-					Momentum:<br><input type="number" id="momentum">
-				</form>
-				<button type="button" onclick="reset('mass', 'velocity', 'momentum')">Reset</button><br>
-				<button type="button" onclick="momentumCalculate()">Calculate</button>
-			</div>
-			<div class="column" id="collisionTitle">
-				<h1>2-Object Collision</h1>
-				<form>
-					<input type="radio" 
-					onclick="changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
-					changeType('col_vf1', 'number'), changeType('col_vf2', 'number')"
-					name="collisionInputType" id="collisionInputMagnitude" checked> Magnitude<br>
-					<input type="radio"
-					onclick="changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
-					changeType('col_vf1', 'text'), changeType('col_vf2', 'text')";
-					name="collisionInputType" id="collisionInputVector"> Vector<br>
-				</form>
-				<form>
-					Mass 1:<br><input type="number" id="col_m1"><br>
-					Mass 2:<br><input type="number" id="col_m2"><br>
-					Velocity initial 1:<br><input type="number" id="col_vi1"><br>
-					Velocity initial 2:<br><input type="number" id="col_vi2"><br>
-					Velocity final 1:<br><input type="number" id="col_vf1"><br>
-					Velocity final 2:<br><input type="number" id="col_vf2">
-				</form>
-				<button type="button" onclick="reset('col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')">Reset</button><br>
-				<button type="button" onclick="collisionCalculate()">Calculate</button><br>
-			</div>
-			<div class="column" id="rightNavColumn">
-				<div class="rightNav">
-					<div class="emailInfo">
-						<h3>
-							See an incorrect answer or want to see other equations added?
-							<a href="mailto:jhunter64@gatech.edu" target="_top"> Email me</a> and I'll look into it!
-						</h3>
-					</div>
-					<a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank">
-						<div class="logoContainer">
-							<img src="../Images/github.png">
-						</div>
-					</a>
-					<div class="emailInfo">
-						<p>Find the code here</p>
-					</div>
-					<a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank">
-						<div class="logoContainer">
-							<img src="../Images/linkedin.png">
-						</div>
-					</a>
-					<div class="emailInfo">
-						<p>Find me on LinkedIn</p>
-					</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md center" id="momentumTitle">
+					<h1>Momentum</h1>
+					<form>
+						<input type="radio" 
+						onclick="changeType('velocity', 'number'), 
+						changeType('momentum', 'number')"
+						name="inputType" id="inputMagnitude" checked> Magnitude<br>
+						<input type="radio"
+						onclick="changeType('velocity', 'text'),
+						changeType('momentum', 'text')"
+						name="inputType" id="inputVector"> Vector<br>
+					</form>
+					<form>
+						<input type="number" id="mass" placeholder="Mass"><br>
+						<input type="number" id="velocity" placeholder="Velocity"><br>
+						<input type="number" id="momentum" placeholder="Momentum">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('mass', 'velocity', 'momentum')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="momentumCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
+				</div>
+				<div class="col-md center" id="collisionTitle">
+					<h1>2-Object Collision</h1>
+					<form>
+						<input type="radio" 
+						onclick="changeType('col_vi1', 'number'), changeType('col_vi2', 'number'),
+						changeType('col_vf1', 'number'), changeType('col_vf2', 'number')"
+						name="collisionInputType" id="collisionInputMagnitude" checked> Magnitude<br>
+						<input type="radio"
+						onclick="changeType('col_vi1', 'text'), changeType('col_vi2', 'text'),
+						changeType('col_vf1', 'text'), changeType('col_vf2', 'text')";
+						name="collisionInputType" id="collisionInputVector"> Vector<br>
+					</form>
+					<form>
+						<input type="number" id="col_m1" placeholder="Mass 1"><br>
+						<input type="number" id="col_m2" placeholder="Mass 2"><br>
+						<input type="number" id="col_vi1" placeholder="Initial Velocity 1"><br>
+						<input type="number" id="col_vi2" placeholder="Initial Velocity 2"><br>
+						<input type="number" id="col_vf1" placeholder="Final Velocity 1"><br>
+						<input type="number" id="col_vf2" placeholder="Final Velocity 2">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="collisionCalculate()"><span class="fa fa-calculator"></span> Calculate</button><br>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="column" id="lpTitle">
-				<h1>Launched Projectile</h1>
-				<form>
-					<input type="radio" 
-					onclick="changeType('lp_vi', 'number'),
-					enableInput('lp_angle')"
-					name="lpInputType" id="lpInputMagnitude" checked> Magnitude<br>
-					<input type="radio"
-					onclick="changeType('lp_vi', 'text'),
-					disableInput('lp_angle')"
-					name="lpInputType" id="lpInputVector"> Vector<br>
-				</form>
-				<form>
-					Height Initial<br><input type="number" id="lp_hi"><br>
-					Velocity Initial<br><input type="number" id="lp_vi"><br>
-					Angle (Radians)<br><input type="number" id="lp_angle"><br>
-					Max Height<br><input type="number" id="lp_mh"><br>
-					Max Distance<br><input type="number" id="lp_md"><br>
-					Time to Max Distance<br><input type="number" id="lp_tmd"><br>
-					Time to Max Height<br><input type="number" id="lp_tmh"><br>
-				</form>
-				<button type="button" onclick="reset('lp_hi', 'lp_vi', 'lp_angle', 'lp_mh', 'lp_md', 'lp_tmd', 'lp_tmh')">Reset</button><br>
-				<button type="button" onclick="launchedProjectileCalculate()">Calculate</button><br>
-			</div>
-			<div class="column" id="timestepTitle">
+			<div class="row">
+				<div class="col-md center" id="lpTitle">
+					<h1>Launched Projectile</h1>
+					<form>
+						<input type="radio" 
+						onclick="changeType('lp_vi', 'number'),
+						enableInput('lp_angle')"
+						name="lpInputType" id="lpInputMagnitude" checked> Magnitude<br>
+						<input type="radio"
+						onclick="changeType('lp_vi', 'text'),
+						disableInput('lp_angle')"
+						name="lpInputType" id="lpInputVector"> Vector<br>
+					</form>
+					<form>
+						<input type="number" id="lp_hi" placeholder="Initial Height"><br>
+						<input type="number" id="lp_vi" placeholder="Initial Velocity"><br>
+						<input type="number" id="lp_angle" placeholder="Angle (Radians)"><br>
+						<input type="number" id="lp_mh" placeholder="Max Height"><br>
+						<input type="number" id="lp_md" placeholder="Max Distance"><br>
+						<input type="number" id="lp_tmd" placeholder="Time to Max Distance"><br>
+						<input type="number" id="lp_tmh" placeholder="Time to Max Height"><br>
+					</form>
+					<button class="resetButton" type="button" onclick="reset('lp_hi', 'lp_vi', 'lp_angle', 'lp_mh', 'lp_md', 'lp_tmd', 'lp_tmh')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="launchedProjectileCalculate()"><span class="fa fa-calculator"></span> Calculate</button><br>
+				</div>
+				<div class="col-md center" id="timestepTitle">
 					<h1>Time Step</h1>
 					<form>
 						<input type="radio" 
@@ -133,15 +124,34 @@
 						name="collisionInputType" id="collisionInputVector"> Vector<br>
 					</form>
 					<form>
-						Mass:<br><input type="number" id="ts_m"><br>
-						Velocity:<br><input type="number" id="ts_v"><br>
-						Force:<br><input type="number" id="ts_f"><br>
-						Position:<br><input type="number" id="ts_r"><br>
-						Interval:<br><input type="number" id="ts_t"><br>
+						<input type="number" id="ts_m" placeholder="Mass"><br>
+						<input type="number" id="ts_v" placeholder="Velocity"><br>
+						<input type="number" id="ts_f" placeholder="Force"><br>
+						<input type="number" id="ts_r" placeholder="Position"><br>
+						<input type="number" id="ts_t" placeholder="Interval"><br>
 					</form>
-					<button type="button" onclick="reset('ts_m', 'ts_v', 'ts_f', 'ts_r', 'ts_t')">Reset</button><br>
-					<button type="button" onclick="timeStepCalculate()">Calculate</button><br>
+					<button class="resetButton" type="button" onclick="reset('ts_m', 'ts_v', 'ts_f', 'ts_r', 'ts_t')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="timeStepCalculate()"><span class="fa fa-calculator"></span> Calculate</button><br>
 				</div>
+			</div>
+		</div>
+		<div class="rightNav">
+			<div class="emailInfo">
+				<h3>
+					See an incorrect answer or want other equations added?
+					<a href="mailto:jhunter64@gatech.edu" target="_top"> Email me</a> and I'll look into it!
+				</h3>
+			</div>
+			<a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank" class="emailInfo">
+				<h1><i class="fab fa-github fa-3x"></i></h1>
+				<p>Find the code here</p>
+			</a>
+			<a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank" class="emailInfo">
+				<h1><i class="fab fa-linkedin fa-3x"></i></h1>
+				<p>Find me on LinkedIn</p>
+			</a>
 		</div>
 	</body>
 </html>

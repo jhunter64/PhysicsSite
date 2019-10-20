@@ -12,62 +12,118 @@
 		<link href="../../fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
 		<!-- used by all pages -->
 		<title>Vector Math</title>
-		<link rel="stylesheet" href="../CSS/testStyles.css">
+		<link rel="stylesheet" href="../CSS/styles.css">
 		<script type="text/javascript" src="../Scripts/general.js"></script>
 		<!-- individual page JavaScript -->
 		<script type="text/javascript" src="../Scripts/Vector.js"></script>
+		<script type="text/javascript" src="../Scripts/vectorMathJS.js"></script>
 	</head>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="topNavigation">
+	<body background="../Images/spaceBackground.jpg">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container topNav">
 				<a href="../../index.html"><i class="fas fa-home"></i> Home</a>
-				<a href="LinearMomentum.html"><i class="fas fa-running"></i> Linear Momentum</a>
-				<a href="AngularMomentum.html"><i class="fas fa-compact-disc"></i> Angular Momentum</a>
+				<a href="LinearMomentum.html"><i class="fas fa-rocket"></i> Linear Momentum</a>
+				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
 				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
-				<a href="VectorMath.html"><i class="fas fa-laptop-code"></i> Vector Math</a>
+				<a href="VectorMath.html"><i class="fas fa-laptop-code gold"></i> Vector Math</a>
 			</div>
-		</div>
-	</div>
-	<body>
+		</nav>
 		<div class="sideNav">
 			<div class="navTitle center">
 				<h1>Index</h1>
 			</div>
 			<ul>
-				<li><h2><i class="fas fa-plus"></i> Add</h2></li>
-				<li><h2><i class="fas fa-minus"></i> Subtract</h2></li>
+				<li><h2><a href="#addTitle">Add</a></h2></li>
+				<li><h2><a href="#subtractTitle">Subtract</a></h2></li>
+				<li><h2><a href="#magnitudeTitle">Magnitude</a></h2></li>
+				<li><h2><a href="#unitTitle">Unit Vector</a></h2></li>
+				<li><h2><a href="#dotProductTitle">Dot Product</a></h2></li>
 			</ul>
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md" id="">
-					<div class="center">
-						<h1>Add</h1>
-						<form>
-							<input type="text" id="addVector1" placeholder="Vector 1"><br>
-							<input type="text" id="addVector2" placeholder="Vector 2"><br>
-							<input type="text" id="addVectorResult" placeholder="Result">
-						</form>
-						<button class="resetButton" type="button" onclick="reset()"><span class="fa fa-window-close"></span> Reset</button>
-						<button type="button" onclick=""><span class="fa fa-calculator"></span> Calculate</span></button>
-					</div>
+				<div class="col-md center" id="addTitle">
+					<h1>Add</h1>
+					<form>
+						<input type="text" id="addVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Tooltip on right"><br>
+						<input type="text" id="addVector2" placeholder="Vector 2"><br>
+						<input type="text" id="addVectorResult" placeholder="V1 + V2" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('addVector1', 'addVector2', 'addVectorResult')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="addSubtractCalculate('add')"><span class="fa fa-calculator"></span> Calculate</span></button>					
 				</div>
-				<div class="col-md" id="">
-					<div class="center">
-						<h1>Subtract</h1>
-						<form>
-							<input type="text" id="subtractVector1" placeholder="Vector 1"><br>
-							<input type="text" id="subtractVector2" placeholder="Vector 2"><br>
-							<input type="text" id="subtractVectorResult" placeholder="Result">
-						</form>
-						<button class="resetButton" type="button" onclick="reset()"><span class="fa fa-window-close"></span> Reset</button>
-						<button type="button" onclick=""><span class="fa fa-calculator"></span> Calculate</button>
-					</div>
+				<div class="col-md center" id="subtractTitle">
+					<h1>Subtract</h1>
+					<form>
+						<input type="text" id="subtractVector1" placeholder="Vector 1"><br>
+						<input type="text" id="subtractVector2" placeholder="Vector 2"><br>
+						<input type="text" id="subtractVectorResult" placeholder="V1 - V2" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('subtractVector1', 'subtractVector2', 'subtractVectorResult')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="addSubtractCalculate('subtract')"><span class="fa fa-calculator"></span> Calculate</button>				
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md center" id="magnitudeTitle">
+					<h1>Magnitude</h1>
+					<form>
+						<input type="text" id="magnitudeVector" placeholder="Vector"><br>
+						<input type="text" id="magnitude" placeholder="Magnitude" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('magnitudeVector', 'magnitude')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="calculateMagnitude()"><span class="fa fa-calculator"></span> Calculate</button>
+				</div>
+				<div class="col-md center" id="unitTitle">
+					<h1>Unit Vector</h1>
+					<form>
+						<input type="text" id="unitV1" placeholder="Vector"><br>
+						<input type="text" id="unitVector" placeholder="Unit Vector" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('unitV1', 'unitVector')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="calculateUnitVector()"><span class="fa fa-calculator"></span> Calculate</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md center" id="dotProductTitle">
+					<h1>Dot Product</h1>
+					<form>
+						<input type="text" id="dotVector1" placeholder="Vector 1"><br>
+						<input type="text" id="dotVector2" placeholder="Vector 2"><br>
+						<input type="text" id="dotProduct" placeholder="Dot Product" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="reset('dotVector1', 'dotVector2', 'dotProduct')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="calculateDotProduct()"><span class="fa fa-calculator"></span> Calculate</button>
+				</div>
+				<div class="col-md center">
+
 				</div>
 			</div>
 		</div>
 		<div class="rightNav">
-			rightNav
+			<div class="emailInfo">
+				<h3>
+					See an incorrect answer or want other equations added?
+					<a href="mailto:jhunter64@gatech.edu" target="_top"> Email me</a> and I'll look into it!
+				</h3>
+			</div>
+			<a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank" class="emailInfo">
+				<h1><i class="fab fa-github fa-3x"></i></h1>
+				<p>Find the code here</p>
+			</a>
+			<a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank" class="emailInfo">
+				<h1><i class="fab fa-linkedin fa-3x"></i></h1>
+				<p>Find me on LinkedIn</p>
+			</a>
 		</div>
 	</body>
 </html>

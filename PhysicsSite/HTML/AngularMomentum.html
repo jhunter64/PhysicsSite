@@ -10,38 +10,37 @@
         <link href="../../fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
         <!-- used by all pages -->
         <title>Angular Momentum</title>
-        <link rel="stylesheet" href="../CSS/testStyles.css">
+        <link rel="stylesheet" href="../CSS/styles.css">
         <script type="text/javascript" src="../Scripts/general.js"></script>
         <!-- individual page JavaScript -->
-		<!-- <link rel="stylesheet" href="../CSS/styles.css"> -->
 		<script type="text/javascript" src="../Scripts/angularMomentumJS.js"></script>
 		<script type="text/javascript" src="../Scripts/Vector.js"></script>
 	</head>
-	<div class="navbar">
-        <div class="navbar-inner">
-            <div class="topNavigation">
+    <body background="../Images/spaceBackground.jpg">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container topNav">
                 <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
-                <a href="LinearMomentum.html"><i class="fas fa-running"></i> Linear Momentum</a>
-                <a href="AngularMomentum.html"><i class="fas fa-compact-disc"></i> Angular Momentum</a>
+                <a href="LinearMomentum.html"><i class="fas fa-rocket"></i> Linear Momentum</a>
+                <a href="AngularMomentum.html"><i class="fas fa-fan fa-spin fa-fw gold"></i> Angular Momentum</a>
                 <a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
                 <a href="VectorMath.html"><i class="fas fa-laptop-code"></i> Vector Math</a>
             </div>
-        </div>
-    </div>
-	<body>
+        </nav>
 		<div class="sideNav">
 			<div class="navTitle center">
 				<h1>Index</h1>
             </div>
-            <h2><a href="#momentumTitle">Momentum</a></h2>
+            <h2><a href="#momentTitle">Moment of Inertia</a></h2>
             <h2><a href="#torqueTitle">Torque</a></h2>
+            <h2><a href="#angularVelocityTitle">Angular Velocity</a></h2>
+            <h2><a href="#angularMomentumTitle">Angular Momentum</a></h2>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md" id="momentumTitle">
+                <div class="col-md" id="momentTitle">
                     <div class="center">
                         <h1>Moment of Inertia</h1>
-                        <select id="momentSelect" onchange="momentSelect()">
+                        <select id="momentSelect">
                             <option value="particle">Particle</option>
                             <option value="solidSphere">Solid Sphere</option>
                             <option value="hollowSphere">Hollow Sphere</option>
@@ -60,14 +59,24 @@
                         <button class="resetButton" type="button" onclick="reset('momentMass', 'momentRL', 'momentOfInertia')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="momentCalculate()">Calculate</button>
+                        <button type="button" onclick="momentCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
                 <div class="col-md" id="torqueTitle">
                     <div class="center">
                         <h1>Torque</h1>
                         <form>
-                            <input type="number" id="torqueRadius" placeholder="Radius"><br>
+                            <input type="radio" 
+                            onclick="changeType('torqueRadius', 'number'), 
+                            changeType('torqueForce', 'number'), enableInput('torqueAngle')"
+                            name="inputType" id="torqueMagnitude" checked> Magnitude<br>
+                            <input type="radio"
+                            onclick="changeType('torqueRadius', 'text'),
+                            changeType('torqueForce', 'text'), disableInput('torqueAngle')"
+                            name="inputType" id="torqueVector"> Vector<br>
+                        </form>
+                        <form>
+                            <input type="number" id="torqueRadius" placeholder="Radius/Displacement"><br>
                             <input type="number" id="torqueForce" placeholder="Force"><br>
                             <input type="number" id="torqueAngle" placeholder="Angle"><br>
                             <input type="number" id="torque" placeholder="Torque"><br>
@@ -75,7 +84,7 @@
                         <button class="resetButton" type="button" onclick="reset('torqueRadius', 'torqueForce', 'torqueAngle', 'torque')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="torqueCalculate()">Calculate</button>
+                        <button type="button" onclick="torqueCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
             </div>
@@ -91,7 +100,7 @@
                         <button class="resetButton" type="button" onclick="reset('linearVelocity', 'avRadius', 'angularVelocity')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="angularVelocityCalculate()">Calculate</button>
+                        <button type="button" onclick="angularVelocityCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
                 <div class="col-md" id="angularMomentumTitle">
@@ -105,7 +114,7 @@
                         <button class="resetButton" type="button" onclick="reset('amMoment', 'amAngularVelocity', 'angularMomentum')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="angularMomentumCalculate()">Calculate</button>
+                        <button type="button" onclick="angularMomentumCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
             </div>
@@ -113,26 +122,18 @@
         <div class="rightNav">
             <div class="emailInfo">
                 <h3>
-                    See an incorrect answer or want to see other equations added?
+                    See an incorrect answer or want other equations added?
                     <a href="mailto:jhunter64@gatech.edu" target="_top"> Email me</a> and I'll look into it!
                 </h3>
             </div>
-            <a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank">
-                <div class="logoContainer">
-                    <img src="../Images/github.png">
-                </div>
-            </a>
-            <div class="emailInfo">
+            <a href="https://github.com/jhunter64/PhysicsSite.git" target="_blank" class="emailInfo">
+                <h1><i class="fab fa-github fa-3x"></i></h1>
                 <p>Find the code here</p>
-            </div>
-            <a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank">
-                <div class="logoContainer">
-                    <img src="../Images/linkedin.png">
-                </div>
             </a>
-            <div class="emailInfo">
+            <a href="https://www.linkedin.com/in/john-william-hunter-0b044214b" target="_blank" class="emailInfo">
+                <h1><i class="fab fa-linkedin fa-3x"></i></h1>
                 <p>Find me on LinkedIn</p>
-            </div>
+            </a>
         </div>
     </body>
 </html>

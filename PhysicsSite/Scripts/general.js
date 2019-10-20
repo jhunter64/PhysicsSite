@@ -18,8 +18,6 @@ function checkBlanks(maxBlanks) {
 	blanks = 0;
 	for (i = 1; i < arguments.length; i++) {
 		if (!document.getElementById(arguments[i]) || document.getElementById(arguments[i]).value == "") {
-			// console.log(arguments[i]);
-			// console.log('---BLANK---');
 			blanks++;
 		}
 		if (blanks > maxBlanks) {

@@ -5,41 +5,48 @@ function workCalculate() {
     var work = document.getElementById("work").value;
     var isMagnitude = document.getElementById("workMagnitude").checked;
     var isVector = document.getElementById("workVector").checked;
-    if (isMagnitude && angle == "") {
-        if (force == "" || work == "" || displacement == "") {
-            angle = 0.0;
-        } else {
-            angle = Math.acos(work / (force * displacement));
-            document.getElementById("angle").value = angle;
-            highlight("angle");
-        }
+    if (isMagnitude) {
+        checkBlanks(1, 'force', 'displacement', 'angle', 'work');
+    } else {
+        checkBlanks(1, 'force', 'displacement', 'work');
     }
-    if (work == "") {
+    if (isMagnitude && angle == "") {
+        angle = Math.acos(work / (force * displacement));
+        document.getElementById("angle").value = angle;
+        highlight("angle");
+    } else if (work == "") {
         if (isMagnitude) {
             work = force * Math.cos(angle) * displacement;
             document.getElementById("work").value = work;
-        } else if (isVector) {
+            highlight("work");
+        } else {
             force = parseVector(force);
             displacement = parseVector(displacement);
-            var x = force.arr[0] * displacement.arr[0];
-            var y = force.arr[1] * displacement.arr[1];
-            var z = force.arr[2] * displacement.arr[2];
-            work = new Vector([x, y, z]);
-            document.getElementById("work").value = getMagnitude(work);
+            work = dotProduct(force, displacement);
+            document.getElementById("work").value = work;
+            highlight("work");
         }
-        highlight("work");
     } else if (force == "") {
         if (isMagnitude) {
             force = work / Math.cos(angle) / displacement;
             document.getElementById("force").value = force;
         } else if (isVector) {
-            work = parseVector(work);
+            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
             displacement = parseVector(displacement);
-            var forceX = work.arr[0] / displacement.arr[0];
-            var forceY = work.arr[1] / displacement.arr[1];
-            var forceZ = work.arr[2] / displacement.arr[2];
-            force = new Vector([forceX, forceY, forceZ]);
-            document.getElementById("force").value = toStringVector(force);
+            var vectorComponents = [0, 0, 0];
+            if (displacement.x && displacement.x != 0) {
+                vectorComponents[0] = work / displacement.x;
+            } else if (displacement.y && displacement.y != 0) {
+                vectorComponents[1] = work / displacement.y;
+            } else if (displacement.z && displacement.z != 0) {
+                vectorComponents[2] = work / displacement.z;
+            } else {
+                alert("Error parsing displacement vector. Vector input should be in format 'x, y, z'");
+            }
+            force = new Vector(vectorComponents);
+            force = toStringVector(force);
+            document.getElementById("force").value = force;
+            highlight("force");
         }
         highlight("force");
     } else if (displacement == "") {
@@ -47,14 +54,22 @@ function workCalculate() {
             displacement = work / (force * Math.cos(angle));
             document.getElementById("displacement").value = displacement;
         } else if (isVector) {
-            work = parseVector(work);
+            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
             force = parseVector(force);
-            var dX = work.arr[0] / force.arr[0];
-            var dY = work.arr[1] / force.arr[1];
-            var dZ = work.arr[2] / force.arr[2];
-            displacement = new Vector([dX, dY, dZ]);
-            document.getElementById("displacement").value = 
-                toStringVector(displacement);
+            var vectorComponents = [0, 0, 0];
+            if (force.x && force.x != 0) {
+                vectorComponents[0] = work / force.x;
+            } else if (force.y && force.y != 0) {
+                vectorComponents[1] = work / force.y;
+            } else if (force.z && force.z != 0) {
+                vectorComponents[2] = work / force.z;
+            } else {
+                alert("Error parsing force vector. Vector input should be in format 'x, y, z'");
+            }
+            displacement = new Vector(vectorComponents);
+            displacement = toStringVector(displacement);
+            document.getElementById("displacement").value = displacement;
+            highlight("displacement");
         }
         highlight("displacement");
     }
@@ -78,18 +93,74 @@ function powerCalculate() {
             force = parseVector(force);
             displacement = parseVector(displacement);
             work = dotProduct(force, displacement);
-            power = getMagnitude(work) / time;
+            power = work / time;
         }
         document.getElementById("power").value = power;
         highlight("power");
-    }
-
-    if (force == "") {
+    } else if (force == "") {
+        var work = power * time;
         if (isMagnitude) {
-            force = (power * time) / displacement;
+            console.log(Math.cos(angle));
+            force = work / Math.cos(angle) / displacement;
+            document.getElementById("power_force").value = force;
         } else if (isVector) {
+            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
             displacement = parseVector(displacement);
+            var vectorComponents = [0, 0, 0];
+            if (displacement.x && displacement.x != 0) {
+                vectorComponents[0] = work / displacement.x;
+            } else if (displacement.y && displacement.y != 0) {
+                vectorComponents[1] = work / displacement.y;
+            } else if (displacement.z && displacement.z != 0) {
+                vectorComponents[2] = work / displacement.z;
+            } else {
+                alert("Error parsing displacement vector. Vector input should be in format 'x, y, z'");
+            }
+            force = new Vector(vectorComponents);
+            force = toStringVector(force);
+            document.getElementById("power_force").value = force;
         }
+        highlight("power_force");
+    } else if (displacement == "") {
+        var work = power * time;
+        if (isMagnitude) {
+            displacement = work / (force * Math.cos(angle));
+            document.getElementById("power_displacement").value = displacement;
+        } else if (isVector) {
+            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
+            force = parseVector(force);
+            var vectorComponents = [0, 0, 0];
+            if (force.x && force.x != 0) {
+                vectorComponents[0] = work / force.x;
+            } else if (force.y && force.y != 0) {
+                vectorComponents[1] = work / force.y;
+            } else if (force.z && force.z != 0) {
+                vectorComponents[2] = work / force.z;
+            } else {
+                alert("Error parsing force vector. Vector input should be in format 'x, y, z'");
+            }
+            displacement = new Vector(vectorComponents);
+            displacement = toStringVector(displacement);
+            document.getElementById("power_displacement").value = displacement;
+        }
+        highlight("power_displacement");
+    } else if (isMagnitude && angle == "") {
+        angle = power * time / (force * displacement);
+        angle = Math.acos(angle);
+        document.getElementById("power_angle").value = angle;
+        highlight("power_angle");
+    } else if (time == "") {
+        if (isMagnitude) {
+            var work = force * Math.cos(angle) * displacement;
+            time = work / power;
+        } else {
+            force = parseVector(force);
+            displacement = parseVector(displacement);
+            var work = dotProduct(force, displacement);
+            time = work / power;
+        }
+        document.getElementById("power_time").value = time;
+        highlight("power_time");
     }
 }
 
@@ -182,33 +253,4 @@ function uSpringCalculate() {
         document.getElementById("uSpringK").value = springCoefficient;
         highlight("uSpringK");
     }
-}
-
-function resetKinetic() {
-    document.getElementById("mass").value = "";
-    document.getElementById("mass").style.borderColor = "white";
-    document.getElementById("velocity").value = "";
-    document.getElementById("velocity").style.borderColor = "white";
-    document.getElementById("kineticEnergy").value = "";
-    document.getElementById("kineticEnergy").style.borderColor = "white";
-}
-
-function resetUGrav() {
-    document.getElementById("uGravMass").value = "";
-    document.getElementById("uGravMass").style.borderColor = "white";
-    document.getElementById("uGravHeight").value = "";
-    document.getElementById("uGravHeight").style.borderColor = "white";
-    document.getElementById("uGravEnergy").value = "";
-    document.getElementById("uGravEnergy").style.borderColor = "white";
-}
-
-function resetUSpring() {
-    document.getElementById("uSpringRelaxed").value = "";
-    document.getElementById("uSpringRelaxed").style.borderColor = "white";
-    document.getElementById("uSpringCurrent").value = "";
-    document.getElementById("uSpringCurrent").style.borderColor = "white";
-    document.getElementById("uSpringK").value = "";
-    document.getElementById("uSpringK").style.borderColor = "white";
-    document.getElementById("uSpring").value = "";
-    document.getElementById("uSpring").style.borderColor = "white";
 }

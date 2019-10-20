@@ -19,20 +19,6 @@ function angularMomentumCalculate() {
     }
 }
 
-/**
- * Change the text for the input box on the moment of inertia
- * form since rods have Length and the other shapes have Radii
- */
-function momentSelect() {
-    var select = document.getElementById("momentSelect").value;
-    var radiusOrLength = document.getElementById("momentRL_text");
-    if (select == "rodCenter" || select == "rodEnd") {
-        radiusOrLength.textContent = "Length:";
-    } else {
-        radiusOrLength.textContent = "Radius:";
-    }
-}
-
 function momentCalculate() {
     var select = document.getElementById("momentSelect").value;
     var mass = document.getElementById("momentMass").value;
@@ -117,26 +103,42 @@ function torqueCalculate() {
     var force = document.getElementById("torqueForce").value;
     var angle = document.getElementById("torqueAngle").value;
     var torque = document.getElementById("torque").value;
-    checkBlanks(1, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
+    var torqueVector = document.getElementById("torqueVector").checked;
+    var torqueMagnitude = document.getElementById("torqueMagnitude").checked;
+    checkBlanks(2, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
 
     if (angle != "") {
         var sin_theta = Math.sin(angle);
     }
     if (radius == "") {
-        radius = torque / (force * sin_theta);
-        document.getElementById("torqueRadius").value = radius;
-        highlight("torqueRadius");
+        if (torqueVector) {
+            alert("Cannot go from scalar to vector without direction");
+        } else {
+            radius = torque / (force * sin_theta);
+            document.getElementById("torqueRadius").value = radius;
+            highlight("torqueRadius");
+        }
     } else if (force == "") {
-        force = torque / (radius * sin_theta);
-        document.getElementById("torqueForce").value = force;
-        highlight("torqueForce");
-    } else if (angle == "") {
+        if (torqueVector) {
+            alert("Cannot go from scalar to vector without direction");
+        } else {
+            force = torque / (radius * sin_theta);
+            document.getElementById("torqueForce").value = force;
+            highlight("torqueForce");
+        }
+    } else if (torqueMagnitude && angle == "") {
         var sin_theta = torque / (radius * force);
         angle = Math.asin(sin_theta);
         document.getElementById("torqueAngle").value = angle;
         highlight("torqueAngle");
     } else if (torque == "") {
-        torque = radius * force * sin_theta;
+        if (torqueVector) {
+            radius = parseVector(radius);
+            force = parseVector(force);
+            torque = dotProduct(radius, force);
+        } else {
+            torque = radius * force * sin_theta;
+        }
         document.getElementById("torque").value = torque;
         highlight("torque");
     }

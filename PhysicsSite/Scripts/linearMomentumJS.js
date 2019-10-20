@@ -82,13 +82,13 @@ function collisionCalculate() {
 			vf2 = pf2 / m2;
 			document.getElementById("col_vf2").value = vf2;
 		} else if (isVector) {
-			var v_i1 = parseVector(vi1);
-			var v_i2 = parseVector(vi2);
-			var v_f1 = parseVector(vf1);
-			var pi1 = multiplyVector(v_i1, m1);
-			var pi2 = multiplyVector(vi_2, m2);
+			var vi1 = parseVector(vi1);
+			var vi2 = parseVector(vi2);
+			var vf1 = parseVector(vf1);
+			var pi1 = multiplyVector(vi1, m1);
+			var pi2 = multiplyVector(vi2, m2);
 			var pi = addVector(pi1, pi2);
-			var pf1 = multiplyVector(vf_1, m1);
+			var pf1 = multiplyVector(vf1, m1);
 			var pf2 = subtractVector(pi, pf1);
 			vf2 = multiplyVector(pf2, 1.0 / m2);
 			document.getElementById("col_vf2").value = toStringVector(vf2);
@@ -179,7 +179,7 @@ function timeStepCalculate() {
 }
 
 function launchedProjectileCalculate() {
-	var heightInitial = parseInt(document.getElementById("lp_hi").value);
+	var heightInitial = document.getElementById("lp_hi").value;
 	var velocity = document.getElementById("lp_vi").value;
 	var angle = document.getElementById("lp_angle").value;
 	var maxHeight = document.getElementById("lp_mh").value;
@@ -189,20 +189,14 @@ function launchedProjectileCalculate() {
 	var g = 9.8;
 	var isMagnitude = document.getElementById("lpInputMagnitude").checked;
 	var isVector = document.getElementById("lpInputVector").checked;
-	
-	var solveHeight, solveAngle, solveVelocity;
-	solveHeight = (maxHeight == "" && maxDistance == "" && timeMaxHeight == "" && timeMaxDistance == "");
-	solveAngle = (angle == "");
-	solveVelocity = (velocity == "");
 
-	if (solveHeight) {
-		if (velocity == "") {
-			alert("Missing initial velocity");
-		}
-		if (isMagnitude && angle == "") {
-			alert("Missing initial angle");
-		}
+	var eq1 = (heightInitial != "" && velocity != "" && (angle != "" || isVector)); // solve for max distance and height and times
+	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
+	var eq3 = (heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
+	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle
+	var eq5; // solve for initial height 
 
+	if (eq1) {
 		var viy;
 		if (isMagnitude) {
 			viy = velocity * Math.sin(angle);
@@ -210,10 +204,7 @@ function launchedProjectileCalculate() {
 			v = parseVector(velocity);
 			viy = v.y;
 			velocity = getMagnitude(v);
-		} else {
-			alert("Error receiving input for magnitude/vector");
 		}
-
 		maxHeight = heightInitial + ((viy * viy) / (2 * 9.8));
 
 		var leftSide = (velocity * velocity / (2 * g));
@@ -232,14 +223,15 @@ function launchedProjectileCalculate() {
 		timeMaxDistance = maxDistance / vix;
 
 		document.getElementById("lp_mh").value = maxHeight;
+		highlight("lp_mh");
 		document.getElementById("lp_md").value = maxDistance;
+		highlight("lp_md");
 		document.getElementById("lp_tmh").value = timeMaxHeight;
+		highlight("lp_tmh");
 		document.getElementById("lp_tmd").value = timeMaxDistance;
-	} else if (solveAngle) {
-		alert("Sorry, this equation is not supported yet...");
-	} else if (solveVelocity) {
+		highlight("lp_tmd");
+	} else if (eq2) {
 		if (isMagnitude) {
-			console.log("Solving velocity");
 			var lhs = 1 / Math.cos(angle);
 			var numerator = (1/2) * g * maxDistance * maxDistance;
 			var denominator = maxDistance * Math.tan(angle) + heightInitial;
@@ -247,27 +239,36 @@ function launchedProjectileCalculate() {
 			velocity = lhs * rhs;
 			console.log("Velocity: " + velocity);
 		} else if (isVector) {
-			alert("This calculation is not supported because it would require an initial direction. " + 
-			"If you have an initial direction, use the magnitude equation and plug the result into your direction unit vector.");
+			alert("This calculation is not supported because it would require an initial direction.\n" + 
+			"If you have an initial direction, use the magnitude calculation and plug the result into your direction unit vector.");
 		}
 		document.getElementById("lp_vi").value = velocity;
+	} else if (eq3) {
+		if (isVector) {
+			alert("The velocity given is a vector.\nThe angle can be calculated using the vector components");
+		} else {
+			var lambda = 9.8 * heightInitial / (velocity * velocity);
+			angle = 1 / (Math.sqrt(2 * (1 + lambda)));
+			angle = Math.asin(angle);
+			document.getElementById("lp_angle").value = angle;
+			highlight("lp_angle");
+		}
+	} else if (eq4) {
+		if (heightInitial && heightInitial != 0) {
+			alert("Sorry! This equation isn't supported yet with a non-zero height...");
+		} else if (isVector) {
+			alert("The velocity given is a vector.\nThe angle can be calculated using the vector components");
+		} else {
+			angle = (1 / 2) * Math.asin((maxDistance * 9.8) / (velocity * velocity));
+			if (isNaN(angle)) {
+				alert("Invalid input");
+			}
+			document.getElementById("lp_angle").value = angle;
+			highlight("lp_angle");
+		}
+	} else if (eq5) {
+		alert("Sorry! This equation isn't supported yet...");
 	} else {
-		alert("Sorry! That calculation isn't supported yet.\nSend me a message and I'll fix the problem");
+		alert("Sorry! The inputs given don't correspond to a currently supported equation...");
 	}
-}
-
-function resetMomentum() {
-	reset("mass", "velocity", "momentum");
-}
-
-function resetCollision() {
-	reset("col_m1", "col_m2", "col_vi1", "col_vi2", "col_vf1", "col_vf2");
-}
-
-function resetTimeStep() {
-	reset("ts_m", "ts_v", "ts_f", "ts_r", "ts_t");
-}
-
-function resetLaunchedProjectile() {
-	reset("lp_hi", "lp_vi", "lp_angle", "lp_mh", "lp_md", "lp_tmd", "lp_tmh");
 }

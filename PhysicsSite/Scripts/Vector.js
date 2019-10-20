@@ -19,7 +19,12 @@ function parseVector(str) {
 }
 
 function toStringVector(v1) {
-    return "<" + v1.arr + ">";
+    var stringComponents = [];
+    stringComponents[0] = v1.arr[0].toFixed(3);
+    for (var i = 1; i < v1.arr.length; i++) {
+        stringComponents[i] = " " + v1.arr[i].toFixed(3);
+    }
+    return "" + stringComponents + "";
 }
 
 function addVector(v1, v2) {
@@ -35,7 +40,7 @@ function subtractVector(v1, v2) {
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] - v2.arr[i];
     }
-    return new Vector(newComponents);
+    return new Vector(newComponents); // v1 - v2
 }
 
 function multiplyVector(v1, num) {
@@ -64,9 +69,9 @@ function getUnitVector(v1) {
 }
 
 function dotProduct(v1, v2) {
-    newComponents = [];
+    sum = 0;
     for (i = 0; i < v1.arr.length; i++) {
-        newComponents[i] = v1.arr[i] * v2.arr[i];
+        sum += v1.arr[i] * v2.arr[i];
     }
-    return new Vector(newComponents);
+    return sum;
 }
