@@ -9,10 +9,14 @@ function f_coul_calculate() {
     var coulomb_constant = 9 * Math.pow(10, 9);
 
     if (isVector) {
-        if (radius == "") {
-            alert("Cannot go from magnitude to vector values");
-        } else {
+        if (q1 == "") {
 
+        } else if (q2 == "") {
+
+        } else if (force == "") {
+
+        } else if (radius == "") {
+            alert("Cannot go from scalar to vector quantities");
         }
     }
 }
