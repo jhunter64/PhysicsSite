@@ -76,10 +76,9 @@ function linearMomentum() {
 	var mass = document.getElementById("mass").value 
 	var velocity = document.getElementById("velocity").value
 	var momentum = document.getElementById("momentum").value
-	var isMagnitude = document.getElementById("inputMagnitude").checked
-	var isVector = document.getElementById("inputVector").checked
-	if (checkBlanks(1, 'mass', 'velocity', 'momentum', 'inputMagnitude', 'inputVector')) {
-		var result = momentumCalculate(mass, velocity, momentum, isMagnitude, isVector);
+	var _isMagnitude = isMagnitude(velocity);
+	if (checkBlanks(1, 'mass', 'velocity', 'momentum')) {
+		var result = momentumCalculate(mass, velocity, momentum, _isMagnitude);
 
 		if (momentum == "") {
 			document.getElementById("momentum").value = result;
@@ -142,16 +141,13 @@ function collision() {
 	var vi2 = document.getElementById("col_vi2").value;
 	var vf1 = document.getElementById("col_vf1").value;
 	var vf2 = document.getElementById("col_vf2").value;
-	var isMagnitude = document.getElementById("collisionInputMagnitude").checked;
+	var _isMagnitude = isMagnitude(vi1);
 	if (checkBlanks(2, 'col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')) {
 		blanks = numBlanks(2, 'col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')
 		if (blanks == 2 && vf2 == "" && vf1 != "") {
 			vf2 = vf1;
-		} else {
-			console.log(blanks);
-			console.log(vf2);
 		}
-		var result = collisionCalculate(m1, m2, vi1, vi2, vf1, vf2, isMagnitude);
+		var result = collisionCalculate(m1, m2, vi1, vi2, vf1, vf2, _isMagnitude);
 		if (m1 == "") {
 			document.getElementById("col_m1").value = result;
 			highlight("col_m1");
@@ -304,7 +300,6 @@ function timeStep() {
 	var mass = document.getElementById("ts_m").value;
 	var velocity = document.getElementById("ts_v").value;
 	var _isMagnitude = isMagnitude(velocity);
-	console.log(_isMagnitude);
 	var force = document.getElementById("ts_f").value;
 	var position = document.getElementById("ts_r").value;
 	if (position == "") {
@@ -360,10 +355,38 @@ function launchedProjectile() {
 	var maxDistance = document.getElementById("lp_md").value;
 	var timeMaxDistance = document.getElementById("lp_tmd").value;
 	var timeMaxHeight = document.getElementById("lp_tmh").value;
-	var isMagnitude = document.getElementById("lpInputMagnitude").checked;
+	var _isMagnitude = isMagnitude(velocity);
 
 	var result = launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
-		maxDistance, timeMaxDistance, timeMaxHeight, isMagnitude);
+		maxDistance, timeMaxDistance, timeMaxHeight, _isMagnitude);
+
+	var eq1 = (heightInitial != "" && velocity != "" && (angle != "" || isVector)); // solve for max distance and height and times
+	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
+	var eq3 = (heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
+	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle
+	var eq5 = (velocity != "" && maxDistance != "" && (angle != "" || isVector) && heightInitial == ""); // solve for initial height
+
+	if (eq1) {
+		maxDistance = result[0];
+		maxHeight = result[1];
+		timeMaxDistance = result[2];
+		timeMaxHeight = result[3];
+		document.getElementById("lp_mh").value = maxHeight;
+		document.getElementById("lp_md").value = maxDistance;
+		document.getElementById("lp_tmd").value = timeMaxDistance;
+		document.getElementById("lp_tmh").value = timeMaxHeight;
+	} else if (eq2) {
+		velocity = result[0];
+		document.getElementById("lp_vi").value = velocity;
+	} else if (eq3 || eq4) {
+		angle = result[0];
+		document.getElementById("lp_angle").value = angle;
+	} else if (eq5) {
+		heightInitial = result[0];
+		document.getElementById("lp_hi").value = heightInitial;
+	} else {
+		console.log("Unknown equation");
+	}
 }
 function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 	maxDistance, timeMaxDistance, timeMaxHeight, isMagnitude) {
@@ -373,7 +396,7 @@ function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
 	var eq3 = (heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
 	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle
-	var eq5; // solve for initial height 
+	var eq5 = (velocity != "" && maxDistance != "" && (angle != "" || isVector) && heightInitial == ""); // solve for initial height
 
 	if (eq1) {
 		var viy;

@@ -32,7 +32,7 @@ footer {
 	text-align: center;
 }
 h1:hover {
-	text-decoration: underline;
+	text-shadow: 2px 2px rgb(79, 79, 255);
 }
 * {
 	box-sizing: border-box;
@@ -175,7 +175,7 @@ input {
 	text-decoration: none;
 }
 .emailInfo:hover i {
-	color: rgb(79, 79, 255);;
+	color: rgb(79, 79, 255);
 }
 .emailInfo h1 {
 	color: white;
