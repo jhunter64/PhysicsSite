@@ -103,5 +103,7 @@ describe('#timeStepCalculate()', function() {
 
 
 describe('#launchedProjectileCalculate()', function() {
-    
+    it('should calculate eq1 (magnitude)', function() {
+        // let result = LinearMomentum.launchedProjectileCalculate("0", "12", "0.8", );
+    });
 });

@@ -109,11 +109,11 @@
 					<button class="resetButton" type="button" onclick="reset('lp_hi', 'lp_vi', 'lp_angle', 'lp_mh', 'lp_md', 'lp_tmd', 'lp_tmh')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
-					<button type="button" onclick="launchedProjectileCalculate()"><span class="fa fa-calculator"></span> Calculate</button><br>
+					<button type="button" onclick="launchedProjectile()"><span class="fa fa-calculator"></span> Calculate</button><br>
 				</div>
 				<div class="col-md center" id="timestepTitle">
 					<h1>Time Step</h1>
-					<!-- <form>
+					<form>
 						<input type="radio" 
 						onclick="changeType('ts_v', 'number'), changeType('ts_f', 'number'),
 						changeType('ts_r', 'number')"
@@ -122,7 +122,7 @@
 						onclick="changeType('ts_v', 'text'), changeType('ts_f', 'text'),
 						changeType('ts_r', 'text')"
 						name="collisionInputType" id="collisionInputVector"> Vector<br>
-					</form> -->
+					</form>
 					<form>
 						<input type="text" id="ts_m" placeholder="Mass"><br>
 						<input type="text" id="ts_v" placeholder="Velocity"><br>

@@ -352,8 +352,7 @@ function timeStepCalculate(mass, velocity, force, position, timeInterval, _isMag
 }
 exports.timeStepCalculate = timeStepCalculate;
 
-
-function launchedProjectileCalculate() {
+function launchedProjectile() {
 	var heightInitial = document.getElementById("lp_hi").value;
 	var velocity = document.getElementById("lp_vi").value;
 	var angle = document.getElementById("lp_angle").value;
@@ -361,9 +360,14 @@ function launchedProjectileCalculate() {
 	var maxDistance = document.getElementById("lp_md").value;
 	var timeMaxDistance = document.getElementById("lp_tmd").value;
 	var timeMaxHeight = document.getElementById("lp_tmh").value;
-	var g = 9.8;
 	var isMagnitude = document.getElementById("lpInputMagnitude").checked;
-	var isVector = document.getElementById("lpInputVector").checked;
+
+	var result = launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
+		maxDistance, timeMaxDistance, timeMaxHeight, isMagnitude);
+}
+function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
+	maxDistance, timeMaxDistance, timeMaxHeight, isMagnitude) {
+	var g = 9.8;
 
 	var eq1 = (heightInitial != "" && velocity != "" && (angle != "" || isVector)); // solve for max distance and height and times
 	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
@@ -447,3 +451,4 @@ function launchedProjectileCalculate() {
 		alert("Sorry! The inputs given don't correspond to a currently supported equation...");
 	}
 }
+exports.launchedProjectileCalculate = launchedProjectileCalculate;
