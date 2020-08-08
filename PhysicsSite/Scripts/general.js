@@ -1,5 +1,11 @@
-function changeType(curr, newType) {
-	document.getElementById(curr).type = newType;
+function changeType(id, newType) {
+	console.log(id);
+	console.log(document.getElementById(id).value);
+	console.log(document.getElementById("velocity").value);
+	var value = document.getElementById(id).value;
+	console.log(value);
+	document.getElementById(id).type = newType;
+	document.getElementById(id).value = value;
 }
 
 
