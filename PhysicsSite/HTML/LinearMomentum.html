@@ -39,9 +39,9 @@
 				<div class="col-md center" id="momentumTitle">
 					<h1>Momentum</h1>
 					<form>
-						<input type="text" id="mass" placeholder="Mass"><br>
-						<input type="text" id="velocity" placeholder="Velocity"><br>
-						<input type="text" id="momentum" placeholder="Momentum">
+						<input type="text" id="mass" placeholder="Mass" data-toggle="tooltip" data-placement="right" title="Mass"><br>
+						<input type="text" id="velocity" placeholder="Velocity" data-toggle="tooltip" data-placement="right" title="Velocity"><br>
+						<input type="text" id="momentum" placeholder="Momentum" data-toggle="tooltip" data-placement="right" title="Momentum">
 					</form>
 					<button class="resetButton" type="button" onclick="reset('mass', 'velocity', 'momentum')">
 						<span class="fa fa-window-close"></span> Reset
@@ -51,12 +51,12 @@
 				<div class="col-md center" id="collisionTitle">
 					<h1>2-Object Collision</h1>
 					<form>
-						<input type="text" id="col_m1" placeholder="Mass 1"><br>
-						<input type="text" id="col_m2" placeholder="Mass 2"><br>
-						<input type="text" id="col_vi1" placeholder="Initial Velocity 1"><br>
-						<input type="text" id="col_vi2" placeholder="Initial Velocity 2"><br>
-						<input type="text" id="col_vf1" placeholder="Final Velocity 1"><br>
-						<input type="text" id="col_vf2" placeholder="Final Velocity 2 (if needed)">
+						<input type="text" id="col_m1" placeholder="Mass 1" data-toggle="tooltip" data-placement="right" title="Mass 1"><br>
+						<input type="text" id="col_m2" placeholder="Mass 2" data-toggle="tooltip" data-placement="right" title="Mass 2"><br>
+						<input type="text" id="col_vi1" placeholder="Initial Velocity 1" data-toggle="tooltip" data-placement="right" title="Initial Velocity 1"><br>
+						<input type="text" id="col_vi2" placeholder="Initial Velocity 2" data-toggle="tooltip" data-placement="right" title="Initial Velocity 2"><br>
+						<input type="text" id="col_vf1" placeholder="Final Velocity 1" data-toggle="tooltip" data-placement="right" title="Final Velocity 1"><br>
+						<input type="text" id="col_vf2" placeholder="Final Velocity 2 (if needed)" data-toggle="tooltip" data-placement="right" title="Final Velocity 2 (if needed)">
 					</form>
 					<button class="resetButton" type="button" onclick="reset('col_m1', 'col_m2', 'col_vi1', 'col_vi2', 'col_vf1', 'col_vf2')">
 						<span class="fa fa-window-close"></span> Reset
@@ -68,13 +68,13 @@
 				<div class="col-md center" id="lpTitle">
 					<h1>Launched Projectile</h1>
 					<form>
-						<input type="text" id="lp_hi" placeholder="Initial Height"><br>
-						<input type="text" id="lp_vi" placeholder="Initial Velocity"><br>
-						<input type="text" id="lp_angle" placeholder="Angle (Radians)"><br>
-						<input type="text" id="lp_mh" placeholder="Max Height"><br>
-						<input type="text" id="lp_md" placeholder="Max Distance"><br>
-						<input type="text" id="lp_tmd" placeholder="Time to Max Distance"><br>
-						<input type="text" id="lp_tmh" placeholder="Time to Max Height"><br>
+						<input type="text" id="lp_hi" placeholder="Initial Height" data-toggle="tooltip" data-placement="right" title="Initial Height"><br>
+						<input type="text" id="lp_vi" placeholder="Initial Velocity" data-toggle="tooltip" data-placement="right" title="Initial Velocity"><br>
+						<input type="text" id="lp_angle" placeholder="Angle (Radians)" data-toggle="tooltip" data-placement="right" title="Angle (Radians)"><br>
+						<input type="text" id="lp_mh" placeholder="Max Height" data-toggle="tooltip" data-placement="right" title="Max Height"><br>
+						<input type="text" id="lp_md" placeholder="Max Distance" data-toggle="tooltip" data-placement="right" title="Max Distance"><br>
+						<input type="text" id="lp_tmd" placeholder="Time to Max Distance" data-toggle="tooltip" data-placement="right" title="Time to Max Distance"><br>
+						<input type="text" id="lp_tmh" placeholder="Time to Max Height" data-toggle="tooltip" data-placement="right" title="Time to Max Height"><br>
 					</form>
 					<button class="resetButton" type="button" onclick="reset('lp_hi', 'lp_vi', 'lp_angle', 'lp_mh', 'lp_md', 'lp_tmd', 'lp_tmh')">
 						<span class="fa fa-window-close"></span> Reset
@@ -84,11 +84,11 @@
 				<div class="col-md center" id="timestepTitle">
 					<h1>Time Step</h1>
 					<form>
-						<input type="text" id="ts_m" placeholder="Mass"><br>
-						<input type="text" id="ts_v" placeholder="Velocity"><br>
-						<input type="text" id="ts_f" placeholder="Force"><br>
-						<input type="text" id="ts_r" placeholder="Position"><br>
-						<input type="text" id="ts_t" placeholder="Interval"><br>
+						<input type="text" id="ts_m" placeholder="Mass" data-toggle="tooltip" data-placement="right" title="Mass"><br>
+						<input type="text" id="ts_v" placeholder="Velocity" data-toggle="tooltip" data-placement="right" title="Velocity"><br>
+						<input type="text" id="ts_f" placeholder="Force" data-toggle="tooltip" data-placement="right" title="Force"><br>
+						<input type="text" id="ts_r" placeholder="Position" data-toggle="tooltip" data-placement="right" title="Position"><br>
+						<input type="text" id="ts_t" placeholder="Interval" data-toggle="tooltip" data-placement="right" title="Interval"><br>
 					</form>
 					<button class="resetButton" type="button" onclick="reset('ts_m', 'ts_v', 'ts_f', 'ts_r', 'ts_t')">
 						<span class="fa fa-window-close"></span> Reset

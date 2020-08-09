@@ -104,6 +104,15 @@ describe('#timeStepCalculate()', function() {
 
 describe('#launchedProjectileCalculate()', function() {
     it('should calculate eq1 (magnitude)', function() {
-        // let result = LinearMomentum.launchedProjectileCalculate("0", "12", "0.8", );
+        let result = LinearMomentum.launchedProjectileCalculate("83.69", "1.524", "0.78", "", "", "", "", true);
+        assert(result[0] > 4.59 && result[0] < 4.6);
+        assert(result[1] > 83.74 && result[1] < 83.75);
+        assert(result[2] > 4.24 && result[2] < 4.25);
+        assert(result[3] > 0.10 && result[3] < 0.11);
+    });
+    it('should calculate eq2 (magnitude)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("5", "", "0.5", "", "5.63", "", "", true);
+        console.log(result[0]);
+        assert(result[0] == 5);
     });
 });
