@@ -112,7 +112,6 @@ describe('#launchedProjectileCalculate()', function() {
     });
     it('should calculate eq2 (magnitude)', function() {
         let result = LinearMomentum.launchedProjectileCalculate("5", "", "0.5", "", "5.63", "", "", true);
-        console.log(result[0]);
-        assert(result[0] == 5);
+        assert(result[0] > 4.99 && result[0] < 5.00);
     });
 });

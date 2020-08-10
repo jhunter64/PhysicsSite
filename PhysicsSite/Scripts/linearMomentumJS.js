@@ -431,7 +431,7 @@ function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 		if (isMagnitude) {
 			var lhs = 1 / Math.cos(angle);
 			var numerator = (1/2) * g * maxDistance * maxDistance;
-			var denominator = maxDistance * Math.tan(angle) + heightInitial;
+			var denominator = 1 * maxDistance * Math.tan(angle) + 1 * heightInitial;
 			var rhs = Math.sqrt(numerator / denominator);
 			velocity = lhs * rhs;
 			return [velocity];
