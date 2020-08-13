@@ -105,13 +105,57 @@ describe('#timeStepCalculate()', function() {
 describe('#launchedProjectileCalculate()', function() {
     it('should calculate eq1 (magnitude)', function() {
         let result = LinearMomentum.launchedProjectileCalculate("83.69", "1.524", "0.78", "", "", "", "", true);
-        assert(result[0] > 4.59 && result[0] < 4.6);
-        assert(result[1] > 83.74 && result[1] < 83.75);
-        assert(result[2] > 4.24 && result[2] < 4.25);
-        assert(result[3] > 0.10 && result[3] < 0.11);
+        assert(result[0] > 4.59 && result[0] < 4.6); // max distance
+        assert(result[1] > 83.74 && result[1] < 83.75); // max height
+        assert(result[2] > 4.24 && result[2] < 4.25); // time max distance
+        assert(result[3] > 0.10 && result[3] < 0.11); // time max height
     });
     it('should calculate eq2 (magnitude)', function() {
         let result = LinearMomentum.launchedProjectileCalculate("5", "", "0.5", "", "5.63", "", "", true);
         assert(result[0] > 4.99 && result[0] < 5.00);
+    });
+    it('should calculate eq3 (magnitude)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("0", "7", "", "", "10", "", "", true);
+        assert(result.length == 1);
+        assert(result[0] > 0);
+    });
+    it('should calculate eq1 (vector, x-only)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("83.69", "1.524,0,0", "", "", "", "", "", false);
+        assert(result[0] > 6.29 && result[0] < 6.30); // max distance
+        assert(result[1] == 83.69); // max height
+        assert(result[2] > 4.13 && result[2] < 4.14); // time max distance
+        assert(result[3] == 0); // time max height
+    });
+    it('should calculate eq1 (vector, y-only)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("5", "0,1.524,0", "", "", "", "", "", false);
+        assert(result[0] == 0); // max distance
+        assert(result[1] > 5.11 && result[1] < 5.12); // max height
+        assert(result[2] == 0); // time max distance
+        assert(result[3] > 0.15 && result[3] < 0.16); // time max height
+    });
+    it('should calculate eq1 (vector, X & Y)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("83.69", "1.0834,1.0718,0", "", "", "", "", "", false);
+        assert(result[0] > 4.59 && result[0] < 4.6); // max distance
+        assert(result[1] > 83.74 && result[1] < 83.75); // max height
+        assert(result[2] > 4.24 && result[2] < 4.25); // time max distance
+        assert(result[3] > 0.10 && result[3] < 0.11); // time max height
+    });
+    it('should calculate eq2 (vector)', function() {
+        let caught = false;
+        try {
+            let result = LinearMomentum.launchedProjectileCalculate("83.69", "", "0.5", "", "15", "", "", false);
+        } catch(error) {
+            caught = true;
+        }
+        assert(caught);
+    });
+    it('should calculate eq3 (vector)', function() {
+        let caught = false;
+        try {
+            let result = LinearMomentum.launchedProjectileCalculate("123", "123", "", "", "", "", "", false);
+        } catch(error) {
+            caught = true;
+        }
+        assert(caught);
     });
 });

@@ -397,34 +397,55 @@ function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 
 	var eq1 = (heightInitial != "" && velocity != "" && (angle != "" || !isMagnitude)); // solve for max distance and height and times
 	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
-	var eq3 = (heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
-	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle
+	var eq3 = (maxDistance != "" && heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
+	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle	
 
 	if (eq1) {
-		var viy;
+		var viy, vix;
 		if (isMagnitude) {
 			viy = velocity * Math.sin(angle);
-		} else if (!isMagnitude) {
-			v = _parseVector(velocity);
-			viy = v.y;
-			velocity = _getMagnitude(v);
-		}
-		maxHeight = 1 * heightInitial + ((viy * viy) / (2 * 9.8));
-
-		var leftSide = (velocity * velocity / (2 * g));
-		var rightSide = 1 + Math.sqrt(1 + ((2 * g * heightInitial) / (viy * viy)));
-		maxDistance = leftSide * rightSide * Math.sin(2 * angle);
-
-		timeMaxHeight = (Math.sin(angle) * velocity) / g;
-
-		var vix;
-		if (isMagnitude) {
-			vix = Math.cos(angle) * velocity;
+			vix = velocity * Math.cos(angle);
 		} else {
 			v = _parseVector(velocity);
+			if (v.z && v.z != 0) {
+				alert('Equation only supported in two dimensions.\n',
+				'Please only use X and Y coordinates');
+				return [0, 0, 0, 0];
+			} 
+			viy = v.y;
 			vix = v.x;
+			velocity = _getMagnitude(v);
+			angle = Math.atan(v.y / v.x);
 		}
-		timeMaxDistance = maxDistance / vix;
+		if (viy == 0) {
+			maxHeight = heightInitial;
+		} else {
+			maxHeight = 1 * heightInitial + ((viy * viy) / (2 * 9.8));
+		}
+
+		if (vix == 0) {
+			maxDistance = 0;
+			timeMaxDistance = 0;
+		} else {
+			if (viy == 0) {
+				if (heightInitial > 0) { // shoot forward from height
+					var t = Math.sqrt(2 * heightInitial / g);
+					maxDistance = t * vix;
+					return [maxDistance, 1 * heightInitial, t, 0];
+				} else { // shoot forward from ground level
+					return [0, 0, 0, 0];
+				}
+			}
+			var leftSide = (velocity * velocity / (2 * g));
+			var rightSide = 1 + Math.sqrt(1 + ((2 * g * heightInitial) / (viy * viy)));
+			maxDistance = leftSide * rightSide * Math.sin(2 * angle);
+			timeMaxDistance = maxDistance / vix;
+		}
+
+		timeMaxHeight = viy / g;
+		if (maxHeight == heightInitial) {
+			timeMaxHeight = 0;
+		}
 
 		return [maxDistance, maxHeight, timeMaxDistance, timeMaxHeight];
 	} else if (eq2) {
@@ -443,9 +464,12 @@ function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 		if (!isMagnitude) {
 			alert("The velocity given is already a vector\nThe angle can be calculated using the vector components");
 		} else {
-			var lambda = 9.8 * heightInitial / (velocity * velocity);
-			angle = 1 / (Math.sqrt(2 * (1 + lambda)));
-			angle = Math.asin(angle);
+			if (heightInitial == 0) {
+				var lambda = 9.8 * maxDistance / (velocity * velocity);
+				angle = 1 / (Math.sqrt(2 * (1 + lambda)));
+				angle = Math.asin(angle);
+				return [angle];
+			}
 		}
 	} else if (eq4) {
 		if (heightInitial && heightInitial != 0) {
