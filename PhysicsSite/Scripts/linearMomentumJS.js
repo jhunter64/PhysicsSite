@@ -362,8 +362,7 @@ function launchedProjectile() {
 
 	var eq1 = (heightInitial != "" && velocity != "" && (angle != "" || !_isMagnitude)); // solve for max distance and height and times
 	var eq2 = (maxDistance != "" && angle != "" && heightInitial != "" && velocity == ""); // solve for velocity
-	var eq3 = (heightInitial != "" && velocity != "" && angle == ""); // solve for optimum launch angle
-	var eq4 = (velocity != "" && maxDistance != "" && angle == ""); // solve for actual launch angle
+	var eq3 = (velocity != "" && maxDistance != "" && angle == ""); // solve for launch angle
 
 	if (eq1) {
 		maxDistance = result[0];
@@ -466,26 +465,16 @@ function launchedProjectileCalculate(heightInitial, velocity, angle, maxHeight,
 		} else {
 			if (heightInitial == 0) {
 				var lambda = 9.8 * maxDistance / (velocity * velocity);
-				angle = 1 / (Math.sqrt(2 * (1 + lambda)));
-				angle = Math.asin(angle);
+				angle = Math.asin(lambda) / 2;
 				return [angle];
+			} else {
+				alert("Sorry! This equation isn't supported yet with a non-zero height");
 			}
-		}
-	} else if (eq4) {
-		if (heightInitial && heightInitial != 0) {
-			alert("Sorry! This equation isn't supported yet with a non-zero height...");
-		} else if (!isMagnitude) {
-			alert("The velocity given is already a vector\nThe angle can be calculated using the vector components");
-		} else {
-			angle = (1 / 2) * Math.asin((maxDistance * 9.8) / (velocity * velocity));
-			if (isNaN(angle)) {
-				alert("Invalid input");
-			}
-			document.getElementById("lp_angle").value = angle;
-			highlight("lp_angle");
 		}
 	} else {
-		alert("Sorry! The inputs given don't correspond to a currently supported equation...");
+		alert("Sorry! The inputs given don't correspond to a currently supported equation...\n\n" +
+		"Remember to leave the field(s) you're solving for blank,\n" +
+		"and fill in the other values you know (even if they are zero).");
 	}
 }
 exports.launchedProjectileCalculate = launchedProjectileCalculate;

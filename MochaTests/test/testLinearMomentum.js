@@ -115,9 +115,13 @@ describe('#launchedProjectileCalculate()', function() {
         assert(result[0] > 4.99 && result[0] < 5.00);
     });
     it('should calculate eq3 (magnitude)', function() {
-        let result = LinearMomentum.launchedProjectileCalculate("0", "7", "", "", "10", "", "", true);
+        let result = LinearMomentum.launchedProjectileCalculate("0", "7", "", "", "5", "", "", true);
         assert(result.length == 1);
-        assert(result[0] > 0);
+        assert(result[0] > 0.78 && result[0] < 0.79);
+    });
+    it('should calculate eq4 (magnitude)', function() {
+        let result = LinearMomentum.launchedProjectileCalculate("0", "7", "", "", "5", "", "", true);
+        
     });
     it('should calculate eq1 (vector, x-only)', function() {
         let result = LinearMomentum.launchedProjectileCalculate("83.69", "1.524,0,0", "", "", "", "", "", false);

@@ -4,9 +4,15 @@ function Vector(components) {
     this.y = components[1];
     this.z = components[2];
 }
+function createVector(components) { return new Vector(components); }
+exports.createVector = createVector;
 
 
 function parseVector(str) {
+    if (!str || str == '') {
+        return null;
+    }
+    str = str + '';
     if (!str.includes(",")) {
         return null;
     }
@@ -22,6 +28,9 @@ exports.parseVector = parseVector;
 
 
 function toStringVector(v) {
+    if (!v) {
+        return '';
+    }
     var stringComponents = [];
     stringComponents[0] = v.arr[0].toFixed(3);
     for (var i = 1; i < v.arr.length; i++) {
@@ -90,6 +99,9 @@ exports.getUnitVector = getUnitVector;
 
 
 function dotProduct(v1, v2) {
+    if (!v1 || !v2) {
+        return 0;
+    }
     sum = 0;
     for (i = 0; i < v1.arr.length; i++) {
         sum += v1.arr[i] * v2.arr[i];
@@ -97,3 +109,14 @@ function dotProduct(v1, v2) {
     return sum;
 }
 exports.dotProduct = dotProduct;
+
+
+function crossProduct(a, b) {
+    var i_term = (a.y * b.z) - (a.z * b.y);
+    var j_term = (a.x * b.z) - (a.z * b.x);
+    var k_term = (a.x * b.y) - (a.y * b.x);
+    var product = Vector(i_term, j_term, k_term);
+
+    return product;
+}
+exports.crossProduct = crossProduct;

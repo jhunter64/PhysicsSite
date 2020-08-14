@@ -59,6 +59,9 @@ function reset() {
 
 
 function isMagnitude(value) {
+	if (!value || value == "") {
+		return false;
+	}
 	try {
 		var numCommas = value.split(',').length - 1;
 		if (numCommas == 2) {

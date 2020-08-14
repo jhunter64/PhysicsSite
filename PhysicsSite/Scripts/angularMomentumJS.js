@@ -97,16 +97,22 @@ function momentCalculate() {
     }
 }
 
-function torqueCalculate() {
+
+function torque() {
     // T = r * F * sin(theta)
     var radius = document.getElementById("torqueRadius").value;
     var force = document.getElementById("torqueForce").value;
     var angle = document.getElementById("torqueAngle").value;
     var torque = document.getElementById("torque").value;
-    var torqueVector = document.getElementById("torqueVector").checked;
-    var torqueMagnitude = document.getElementById("torqueMagnitude").checked;
+    var _isMagnitude1 = isMagnitude(radius);
+    var _isMagnitude2 = isMagnitude(force);
+    var _isMagnitude = (_isMagnitude1 || _isMagnitude2);
     checkBlanks(2, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
+    var result = torqueCalculate(radius, force, angle, torque, _isMagnitude);
+}
 
+
+function torqueCalculate(radius, force, angle, torque, isMagnitude) {
     if (angle != "") {
         var sin_theta = Math.sin(angle);
     }

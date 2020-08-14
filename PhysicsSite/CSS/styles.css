@@ -34,6 +34,9 @@ footer {
 h1:hover {
 	text-shadow: 2px 2px rgb(79, 79, 255);
 }
+.emailInfo h1:hover {
+	text-shadow: none;
+}
 * {
 	box-sizing: border-box;
 }
@@ -48,6 +51,9 @@ h3 {
 }
 input {
 	border: solid white;
+}
+input:hover {
+	border: solid rgb(255, 65, 65);
 }
 .homeTitle {
 	text-align: center;
@@ -232,13 +238,14 @@ ul {
 button {
     border-radius: 2px;
     border-style: none;
-    background-color: rgb(40, 175, 40);
+	background-color: rgb(40, 175, 40);
+	margin-bottom: 10px;
 }
 button:hover {
     background-color: rgb(105, 192, 105);
 }
 .resetButton {
-    background-color: rgb(190, 50, 50);
+	background-color: rgb(190, 50, 50);
 }
 .resetButton:hover {
     background-color: rgb(182, 101, 101);
