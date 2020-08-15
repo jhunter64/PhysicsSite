@@ -117,7 +117,8 @@ function crossProduct(a, b) {
     var i_term = (a.y * b.z) - (a.z * b.y);
     var j_term = (a.x * b.z) - (a.z * b.x);
     var k_term = (a.x * b.y) - (a.y * b.x);
-    var product = Vector(i_term, j_term, k_term);
+    var components = [i_term, j_term, k_term];
+    var product = new Vector(components);
 
     return product;
 }

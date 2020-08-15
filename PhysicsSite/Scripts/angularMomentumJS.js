@@ -72,6 +72,15 @@ function _dotProduct(v1, v2) {
 	}
 }
 
+function _crossProduct(v1, v2) {
+    try {
+        var v = Vector.crossProduct(v1, v2);
+        return v;
+    } catch(error) {
+        return crossProduct(v1, v2);
+    }
+}
+
 
 function angularMomentum() {
     var moment = document.getElementById("amMoment").value;
@@ -224,8 +233,22 @@ function torque() {
     var _isMagnitude1 = isMagnitude(radius);
     var _isMagnitude2 = isMagnitude(force);
     var _isMagnitude = (_isMagnitude1 || _isMagnitude2);
-    checkBlanks(2, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque');
-    var result = torqueCalculate(radius, force, angle, torque, _isMagnitude)
+    if (checkBlanks(2, 'torqueRadius', 'torqueForce', 'torqueAngle', 'torque')) {
+        var result = torqueCalculate(radius, force, angle, torque, _isMagnitude);
+        if (radius == "") {
+            document.getElementById("torqueRadius").value = result;
+            highlight("torqueRadius");
+        } else if (force == "") {
+            document.getElementById("torqueForce").value = result;
+            highlight("torqueForce");
+        } else if (_isMagnitude && angle == "") {
+            document.getElementById("torqueAngle").value = result;
+            highlight("torqueAngle");
+        } else if (torque == "") {
+            document.getElementById("torque").value = result;
+            highlight("torque");
+        }
+    }
 }
 
 
@@ -234,36 +257,35 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
         var sin_theta = Math.sin(angle);
     }
     if (radius == "") {
-        if (torqueVector) {
+        if (!isMagnitude) {
             alert("Cannot go from scalar to vector without direction");
         } else {
             radius = torque / (force * sin_theta);
-            document.getElementById("torqueRadius").value = radius;
-            highlight("torqueRadius");
+            return radius;
         }
     } else if (force == "") {
-        if (torqueVector) {
+        if (!isMagnitude) {
             alert("Cannot go from scalar to vector without direction");
         } else {
             force = torque / (radius * sin_theta);
-            document.getElementById("torqueForce").value = force;
-            highlight("torqueForce");
+            return force
         }
-    } else if (torqueMagnitude && angle == "") {
+    } else if (isMagnitude && angle == "") {
         var sin_theta = torque / (radius * force);
         angle = Math.asin(sin_theta);
-        document.getElementById("torqueAngle").value = angle;
-        highlight("torqueAngle");
+        return angle;
     } else if (torque == "") {
-        if (torqueVector) {
-            radius = parseVector(radius);
-            force = parseVector(force);
-            torque = dotProduct(radius, force);
+        if (!isMagnitude) {
+            radius = _parseVector(radius);
+            force = _parseVector(force);
+            torque = _crossProduct(radius, force);
+            console.log(torque);
+            torque = _toStringVector(torque);
         } else {
             torque = radius * force * sin_theta;
         }
-        document.getElementById("torque").value = torque;
-        highlight("torque");
+        console.log(torque);
+        return torque;
     }
 }
 
