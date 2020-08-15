@@ -20,7 +20,12 @@ function enableInput(elementId) {
 
 
 function highlight(elementId) {
-	document.getElementById(elementId).style.border = "solid red";
+	document.getElementById(elementId).style.border = "solid rgb(255, 65, 65)";
+}
+
+
+function displayDropNav() {
+	var current = document.getElementById('dropcontent').style.display;
 }
 
 

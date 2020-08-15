@@ -2,6 +2,14 @@ html, body {
 	height: 100%;
 	margin: 0;
 }
+@media only screen and (max-width: 600px) {
+	.dropnav {
+		display: block !important;
+	}
+	.navbar {
+		display: none;
+	}
+}
 @media only screen and (max-width: 900px) {
 	body {
 		width: 100%;
@@ -11,6 +19,21 @@ html, body {
 	}
 	.rightNav {
 		visibility: hidden;
+	}
+	.pageLinks {
+		border: 0px !important;
+		width: 100% !important;
+	}
+	.homeInfo {
+		font-size: 12px !important;
+	}
+	.row {
+		width: 100% !important;
+		margin-left: 0% !important;
+		margin-right: 0% !important;
+	}
+	#homeContainer {
+		padding: 0px !important;
 	}
 }
 @media only screen and (max-width: 1075px) {
@@ -83,6 +106,37 @@ input:hover {
 	text-decoration: none;
 	text-shadow: 0 0 2px rgb(79, 79, 255);
 	border-bottom: 1px solid white;
+}
+#homeMobile {
+	float: right;
+}
+.dropnav {
+	display: none;
+	overflow: hidden;
+}
+.dropnav-content {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	margin-top: 30px;
+	background-color: black;
+}
+.dropnav-content a {
+	float: none;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+.dropnav:hover .dropnav-content {
+	display: block;
+}
+.dropbtn {
+	color: rgb(255, 65, 65);
+	background: transparent;
+	float: left;
 }
 #navSwitch {
 	color: aqua;
@@ -243,6 +297,9 @@ button {
 }
 button:hover {
     background-color: rgb(105, 192, 105);
+}
+.dropbtn:hover {
+	background: transparent;
 }
 .resetButton {
 	background-color: rgb(190, 50, 50);

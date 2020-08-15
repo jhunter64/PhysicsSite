@@ -53,34 +53,24 @@
                             <option value="rodEnd">Rod (rotating about one end)</option>
                         </select>
                         <form>
-                            <input type="number" id="momentMass" placeholder="Mass"><br>
-                            <input type="number" id="momentRL" placeholder="Radius (or Length)"><br>
-                            <input type="number" id="momentOfInertia" placeholder="Moment of Inertia">
+                            <input type="number" id="momentMass" placeholder="Mass" data-toggle="tooltip" data-placement="right" title="Mass"><br>
+                            <input type="number" id="momentRL" placeholder="Radius (or Length)" data-toggle="tooltip" data-placement="right" title="Radius (or Length)"><br>
+                            <input type="number" id="momentOfInertia" placeholder="Moment of Inertia" data-toggle="tooltip" data-placement="right" title="Moment of Intertia">
                         </form>
                         <button class="resetButton" type="button" onclick="reset('momentMass', 'momentRL', 'momentOfInertia')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="momentCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
+                        <button type="button" onclick="moment()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
                 <div class="col-md" id="torqueTitle">
                     <div class="center">
                         <h1>Torque</h1>
                         <form>
-                            <input type="radio" 
-                            onclick="changeType('torqueRadius', 'number'), 
-                            changeType('torqueForce', 'number'), enableInput('torqueAngle')"
-                            name="inputType" id="torqueMagnitude" checked> Magnitude<br>
-                            <input type="radio"
-                            onclick="changeType('torqueRadius', 'text'),
-                            changeType('torqueForce', 'text'), disableInput('torqueAngle')"
-                            name="inputType" id="torqueVector"> Vector<br>
-                        </form>
-                        <form>
-                            <input type="text" id="torqueRadius" placeholder="Radius/Displacement"><br>
-                            <input type="text" id="torqueForce" placeholder="Force"><br>
-                            <input type="text" id="torqueAngle" placeholder="Angle"><br>
-                            <input type="text" id="torque" placeholder="Torque"><br>
+                            <input type="text" id="torqueRadius" placeholder="Radius/Displacement" data-toggle="tooltip" data-placement="right" title="Radius/Displacement"><br>
+                            <input type="text" id="torqueForce" placeholder="Force" data-toggle="tooltip" data-placement="right" title="Force"><br>
+                            <input type="text" id="torqueAngle" placeholder="Angle" data-toggle="tooltip" data-placement="right" title="Angle"><br>
+                            <input type="text" id="torque" placeholder="Torque" data-toggle="tooltip" data-placement="right" title="Torque"><br>
                         </form>
                         <button class="resetButton" type="button" onclick="reset('torqueRadius', 'torqueForce', 'torqueAngle', 'torque')">
                             <span class="fa fa-window-close"></span> Reset
@@ -94,9 +84,9 @@
                     <div class="center">
                         <h1>Angular Velocity</h1>
                         <form>
-                            <input type="number" id="linearVelocity" placeholder="Linear Velocity"><br>
-                            <input type="number" id="avRadius" placeholder="Radius"><br>
-                            <input type="number" id="angularVelocity" placeholder="Angular Velocity"><br>
+                            <input type="number" id="linearVelocity" placeholder="Linear Velocity" data-toggle="tooltip" data-placement="right" title="Linear Velocity"><br>
+                            <input type="number" id="avRadius" placeholder="Radius" data-toggle="tooltip" data-placement="right" title="Radius"><br>
+                            <input type="number" id="angularVelocity" placeholder="Angular Velocity" data-toggle="tooltip" data-placement="right" title="Angular Velocity"><br>
                         </form>
                         <button class="resetButton" type="button" onclick="reset('linearVelocity', 'avRadius', 'angularVelocity')">
                             <span class="fa fa-window-close"></span> Reset
@@ -108,14 +98,14 @@
                     <div class="center">
                         <h1>Angular Momentum</h1>
                         <form>
-                            <input type="number" id="amMoment" placeholder="Moment of Inertia"><br>
-                            <input type="number" id="amAngularVelocity" placeholder="Angular Velocity"><br>
-                            <input type="number" id="angularMomentum" placeholder="Angular Momentum"><br>
+                            <input type="number" id="amMoment" placeholder="Moment of Inertia" data-toggle="tooltip" data-placement="right" title="Moment of Intertia"><br>
+                            <input type="number" id="amAngularVelocity" placeholder="Angular Velocity" data-toggle="tooltip" data-placement="right" title="Angular Velocity"><br>
+                            <input type="number" id="angularMomentum" placeholder="Angular Momentum" data-toggle="tooltip" data-placement="right" title="Angular Momentum"><br>
                         </form>
                         <button class="resetButton" type="button" onclick="reset('amMoment', 'amAngularVelocity', 'angularMomentum')">
                             <span class="fa fa-window-close"></span> Reset
                         </button>
-                        <button type="button" onclick="angularMomentumCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
+                        <button type="button" onclick="angularMomentum()"><span class="fa fa-calculator"></span> Calculate</button>
                     </div>
                 </div>
             </div>
