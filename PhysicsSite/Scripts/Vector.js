@@ -4,7 +4,9 @@ function Vector(components) {
     this.y = components[1];
     this.z = components[2];
 }
-function createVector(components) { return new Vector(components); }
+
+
+function createVector(x, y, z) { return new Vector([x, y, z]); }
 exports.createVector = createVector;
 
 

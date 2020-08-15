@@ -24,11 +24,6 @@ function highlight(elementId) {
 }
 
 
-function displayDropNav() {
-	var current = document.getElementById('dropcontent').style.display;
-}
-
-
 function checkBlanks(maxBlanks) {
 	var blanks = 0;
 	for (i = 1; i < arguments.length; i++) {
