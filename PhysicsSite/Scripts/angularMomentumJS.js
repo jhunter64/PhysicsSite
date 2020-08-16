@@ -289,23 +289,37 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
     }
 }
 
-function angularVelocityCalculate() {
-    // w = v/r
+
+function angularVelocity() {
     var linearVelocity = document.getElementById("linearVelocity").value;
     var radius = document.getElementById("avRadius").value;
     var angularVelocity = document.getElementById("angularVelocity").value;
-    checkBlanks(1, 'linearVelocity', 'avRadius', 'angularVelocity');
+    if (checkBlanks(1, 'linearVelocity', 'avRadius', 'angularVelocity')) {
+        var result = angularVelocityCalculate(linearVelocity, radius, angularVelocity);
+        if (linearVelocity == "") {
+            document.getElementById("linearVelocity").value = result;
+            highlight('linearVelocity');
+        } else if (radius == "") {
+            document.getElementById("avRadius").value = result;
+            highlight('avRadius');
+        } else if (angularVelocity == "") {
+            document.getElementById("angularVelocity").value = result;
+            highlight('angularVelocity');
+        }
+    }
+}
+
+
+function angularVelocityCalculate(linearVelocity, radius, angularVelocity) {
+    // w = v/r
     if (linearVelocity == "") {
         linearVelocity = angularVelocity * radius;
-        document.getElementById("linearVelocity").value = linearVelocity;
-        highlight('linearVelocity');
+        return linearVelocity;
     } else if (radius == "") {
         radius = linearVelocity / angularVelocity;
-        document.getElementById("avRadius").value = radius;
-        highlight('avRadius');
+        return radius;
     } else if (angularVelocity == "") {
         angularVelocity = linearVelocity / radius;
-        document.getElementById("angularVelocity").value = angularVelocity;
-        highlight('angularVelocity');
+        return angularVelocity
     }
 }

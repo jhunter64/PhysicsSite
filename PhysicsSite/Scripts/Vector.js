@@ -23,6 +23,15 @@ function parseVector(str) {
     var y = parseFloat(str);
     str = str.slice(str.indexOf(",") + 1);
     var z = parseFloat(str);
+    if (!x) {
+        x = 0;
+    }
+    if (!y) {
+        y = 0;
+    }
+    if (!z) {
+        z = 0;
+    }
     var components = [x, y, z];
     return new Vector(components);
 }
@@ -44,6 +53,15 @@ exports.toStringVector = toStringVector;
 
 
 function addVector(v1, v2) {
+    if (!v1 && v2) {
+        return v2;
+    }
+    if (!v2 && v1) {
+        return v1;
+    }
+    if (!v1 && !v2) {
+        return null;
+    }
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] + v2.arr[i];
@@ -60,6 +78,15 @@ exports.addVector = addVector;
  * @returns v1 - v2
  */
 function subtractVector(v1, v2) {
+    if (!v1 && v2) {
+        return v2;
+    }
+    if (!v2 && v1) {
+        return v1;
+    }
+    if (!v1 && !v2) {
+        return null;
+    }
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = v1.arr[i] - v2.arr[i];
@@ -70,6 +97,12 @@ exports.subtractVector = subtractVector;
 
 
 function multiplyVector(v1, num) {
+    if (!num && v1) {
+        return v1;
+    }
+    if (!v1) {
+        return null;
+    }
     newComponents = [];
     for (i = 0; i < v1.arr.length; i++) {
         newComponents[i] = Number(v1.arr[i]) * Number(num);
@@ -80,6 +113,9 @@ exports.multiplyVector = multiplyVector;
 
 
 function getMagnitude(v) {
+    if (!v) {
+        return null;
+    }
     sum = 0.0;
     for (i = 0; i < v.arr.length; i++) {
         sum += v.arr[i] * v.arr[i];
@@ -90,6 +126,9 @@ exports.getMagnitude = getMagnitude;
 
 
 function getUnitVector(v) {
+    if (!v) {
+        return null;
+    }
     magnitude = getMagnitude(v);
     newComponents = [];
     for (i = 0; i < v.arr.length; i++) {
@@ -114,10 +153,13 @@ exports.dotProduct = dotProduct;
 
 
 function crossProduct(a, b) {
+    if (!a || !b) {
+        return null;
+    }
     var i_term = (a.y * b.z) - (a.z * b.y);
     var j_term = (a.x * b.z) - (a.z * b.x);
     var k_term = (a.x * b.y) - (a.y * b.x);
-    var components = [i_term, j_term, k_term];
+    var components = [i_term, -1 * j_term, k_term];
     var product = new Vector(components);
 
     return product;
