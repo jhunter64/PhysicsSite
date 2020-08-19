@@ -117,6 +117,7 @@ function angularMomentumCalculate(moment, angularVelocity, angularMomentum) {
         return angularMomentum;
     }
 }
+exports.angularMomentumCalculate = angularMomentumCalculate;
 
 
 function moment() {
@@ -156,10 +157,10 @@ function momentCalculate(select, mass, RL, moment) {
         }
     } else if (select == "solidSphere") { // I = (2/5)MR^2
         if (mass == "") {
-            mass = (5 / 2) (moment / (RL * RL));
+            mass = (5 / 2) * (moment / (RL * RL));
             return mass;
         } else if (RL == "") {
-            RL = Math.sqrt((5 / 2) (moment / mass));
+            RL = Math.sqrt((5 / 2) * (moment / mass));
             return RL;
         } else if (moment == "") {
             moment = (2 / 5) * mass * RL * RL;
@@ -167,10 +168,10 @@ function momentCalculate(select, mass, RL, moment) {
         }
     } else if (select == "hollowSphere") { // I = (2/3)MR^2
         if (mass == "") {
-            mass = (3 / 2) (moment / (RL * RL));
+            mass = (3 / 2) * (moment / (RL * RL));
             return mass;
         } else if (RL == "") {
-            RL = Math.sqrt((3 / 2) (moment / mass));
+            RL = Math.sqrt((3 / 2) * (moment / mass));
             return RL;
         } else if (moment == "") {
             moment = (2 / 3) * (mass * RL * RL);
@@ -222,6 +223,7 @@ function momentCalculate(select, mass, RL, moment) {
         }
     }
 }
+exports.momentCalculate = momentCalculate;
 
 
 function torque() {
@@ -288,6 +290,7 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
         return torque;
     }
 }
+exports.torqueCalculate = torqueCalculate;
 
 
 function angularVelocity() {
