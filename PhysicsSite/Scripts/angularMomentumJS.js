@@ -260,7 +260,7 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
     }
     if (radius == "") {
         if (!isMagnitude) {
-            alert("Cannot go from scalar to vector without direction");
+            alert("Cannot calculate inverse cross product");
         } else {
             radius = torque / (force * sin_theta);
             return radius;
@@ -270,7 +270,7 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
             alert("Cannot go from scalar to vector without direction");
         } else {
             force = torque / (radius * sin_theta);
-            return force
+            return force;
         }
     } else if (isMagnitude && angle == "") {
         var sin_theta = torque / (radius * force);
@@ -286,7 +286,6 @@ function torqueCalculate(radius, force, angle, torque, isMagnitude) {
         } else {
             torque = radius * force * sin_theta;
         }
-        console.log(torque);
         return torque;
     }
 }
@@ -326,3 +325,4 @@ function angularVelocityCalculate(linearVelocity, radius, angularVelocity) {
         return angularVelocity
     }
 }
+exports.angularVelocityCalculate = angularVelocityCalculate;

@@ -94,6 +94,55 @@ describe('#momentCalculate()', function() {
 
 describe('#torqueCalculate()', function() {
     it('should calculate radius (magnitude)', function() {
-        let result = AngularMomentum.torqueCalculate();
+        let result = AngularMomentum.torqueCalculate('', '17', '0.8', '50', true);
+        assert(result.toFixed(3) == 4.100);
+    });
+    it('should calculate force (magnitude)', function() {
+        let result = AngularMomentum.torqueCalculate('4.100', '', '0.8', '50', true);
+        assert(result.toFixed(3) == 17.000);
+    });
+    it('should calculate torque (magnitude)', function() {
+        let result = AngularMomentum.torqueCalculate('4.100', '17', '0.8', '', true);
+        assert(result.toFixed(3) == 50.000);
+    });
+    it('should calculate angle (magnitude)', function() {
+        let result = AngularMomentum.torqueCalculate('4.100', '17', '', '50', true);
+        assert(result.toFixed(3) == 0.800);
+    });
+    it('should not calculate radius (vector)', function() {
+        let caught = false;
+        try {
+            AngularMomentum.torqueCalculate('', '1', '2', '3', false);
+        } catch(error) {
+            caught = true;
+        }
+        assert(caught);
+    });
+    it('should not calculate force (vector)', function() {
+        let caught = false;
+        try {
+            AngularMomentum.torqueCalculate('0', '', '2', '3', false);
+        } catch(error) {
+            caught = true;
+        }
+        assert(caught);
+    });
+});
+
+
+describe('#angularVelocityCalculate()', function() {
+    // w = v/r
+    // 27.5 = 14.3 / 0.52
+    it('should calculate linear velocity', function() {
+        let result = AngularMomentum.angularVelocityCalculate('', '0.52', '27.5');
+        assert(result == 14.3);
+    });
+    it('should calculate radius', function() {
+        let result = AngularMomentum.angularVelocityCalculate('14.3', '', '27.5');
+        assert(result == 0.52);
+    });
+    it('should calculate angular velocity', function() {
+        let result = AngularMomentum.angularVelocityCalculate('14.3', '0.52', '');
+        assert(result == 27.5);
     });
 });
