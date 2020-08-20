@@ -1,9 +1,97 @@
-function workCalculate() {
+var Vector = require('./Vector');
+
+function _parseVector(str) {
+	try {
+		var v = Vector.parseVector(str);
+		return v;
+	} catch(error) {
+		return parseVector(str);
+	}
+}
+
+function _toStringVector(v) {
+	try {
+		var s = Vector.toStringVector(v);
+		return s;
+	} catch(error) {
+		return toStringVector(v);
+	}
+}
+
+function _addVector(v1, v2) {
+	try {
+		var v = Vector.addVector(v1, v2);
+		return v;
+	} catch(error) {
+		return addVector(v1, v2);
+	}
+}
+
+function _subtractVector(v1, v2) {
+	try {
+		var v = Vector.subtractVector(v1, v2);
+		return v;
+	} catch(error) {
+		return subtractVector(v1, v2);
+	}
+}
+
+function _multiplyVector(v1, num) {
+	try {
+		var v = Vector.multiplyVector(v1, num);
+		return v;
+	} catch(error) {
+		return multiplyVector(v1, num);
+	}
+}
+
+function _getMagnitude(v) {
+	try {
+		var v = Vector.getMagnitude(v);
+		return v;
+	} catch(error) {
+		return getMagnitude(v);
+	}
+}
+
+function _getUnitVector(v) {
+	try {
+		var v = Vector.getUnitVector(v);
+		return v;
+	} catch(error) {
+		return getUnitVector(v);
+	}
+}
+
+function _dotProduct(v1, v2) {
+	try {
+		var v = Vector.dotProduct(v1, v2);
+		return v;
+	} catch(error) {
+		return dotProduct(v1, v2);
+	}
+}
+
+function _crossProduct(v1, v2) {
+    try {
+        var v = Vector.crossProduct(v1, v2);
+        return v;
+    } catch(error) {
+        return crossProduct(v1, v2);
+    }
+}
+
+
+function work() {
     var force = document.getElementById("force").value;
     var displacement = document.getElementById("displacement").value;
     var angle = document.getElementById("angle").value;
     var work = document.getElementById("work").value;
-    var isMagnitude = document.getElementById("workMagnitude").checked;
+    var _isMagnitude = document.getElementById("workMagnitude").checked;
+}
+
+
+function workCalculate() {
     var isVector = document.getElementById("workVector").checked;
     if (isMagnitude) {
         checkBlanks(1, 'force', 'displacement', 'angle', 'work');

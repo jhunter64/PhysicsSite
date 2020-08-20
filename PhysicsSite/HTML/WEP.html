@@ -54,17 +54,9 @@
                 <div class="col-md center" id="kineticEnergyTitle">
                     <h1>Kinetic Energy</h1>
                     <form>
-                        <input type="radio" 
-                        onclick="changeType('velocity', 'number')";
-                        name="inputType" id="inputMagnitude" checked> Magnitude<br>
-                        <input type="radio"
-                        onclick="changeType('velocity', 'text')";
-                        name="inputType" id="inputVector"> Vector<br>
-                    </form>
-                    <form>
-                        <input type="number" id="mass" placeholder="Mass"><br>
-                        <input type="number" id="velocity" placeholder="Velocity"><br>
-                        <input type="number" id="kineticEnergy" placeholder="Kinetic Energy">
+                        <input type="text" id="mass" placeholder="Mass"><br>
+                        <input type="text" id="velocity" placeholder="Velocity"><br>
+                        <input type="text" id="kineticEnergy" placeholder="Kinetic Energy">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('mass', 'velocity', 'kineticEnergy')">
                         <span class="fa fa-window-close"></span> Reset
@@ -74,18 +66,10 @@
                 <div class="col-md center" id="workTitle">
                     <h1>Work</h1>
                     <form>
-                        <input type="radio" 
-                        onclick="changeType('force', 'number'), changeType('displacement', 'number'), enableInput('angle')";
-                        name="inputType" id="workMagnitude" checked> Magnitude<br>
-                        <input type="radio"
-                        onclick="changeType('force', 'text'), changeType('displacement', 'text'), disableInput('angle')";
-                        name="inputType" id="workVector"> Vector<br>
-                    </form>
-                    <form>
-                        <input type="number" id="force" placeholder="Force"><br>
-                        <input type="number" id="displacement" placeholder="Displacement"><br>
-                        <input type="number" id="angle" placeholder="Angle (Radians)"><br>
-                        <input type="number" id="work" placeholder="Work">
+                        <input type="text" id="force" placeholder="Force"><br>
+                        <input type="text" id="displacement" placeholder="Displacement"><br>
+                        <input type="text" id="angle" placeholder="Angle (Radians)"><br>
+                        <input type="text" id="work" placeholder="Work">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('force', 'displacement', 'angle', 'work')">
                         <span class="fa fa-window-close"></span> Reset
@@ -121,18 +105,6 @@
                 </div>
                 <div class="col-md center" id="powerTitle">
                     <h1>Power</h1>
-                    <form>
-                        <input type="radio"
-                        onclick="changeType('power_force', 'number'), 
-                        changeType('power_displacement', 'number'),
-                        enableInput('power_angle')";
-                        name="inputType" id="powerMagnitude" checked> Magnitude<br>
-                        <input type="radio"
-                        onclick="changeType('power_force', 'text'), 
-                        changeType('power_displacement', 'text'),
-                        disableInput('power_angle')";
-                        name="inputType" id="powerVector"> Vector<br>
-                    </form>
                     <form>
                         <input type="number" id="power_force" placeholder="Force"><br>
                         <input type="number" id="power_displacement" placeholder="Displacement"><br>
