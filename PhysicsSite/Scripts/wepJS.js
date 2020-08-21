@@ -87,11 +87,28 @@ function work() {
     var displacement = document.getElementById("displacement").value;
     var angle = document.getElementById("angle").value;
     var work = document.getElementById("work").value;
-    var _isMagnitude = document.getElementById("workMagnitude").checked;
+    var _isMagnitude = isMagnitude(force) || isMagnitude(displacement);
+
+    if (checkBlanks(2, 'force', 'displacement', 'angle', 'work')) {
+        var result = workCalculate(force, displacement, angle, work, _isMagnitude);
+        if (isMagnitude && angle == "") {
+            document.getElementById("angle").value = result;
+            highlight("angle");
+        } else if (work == "") {
+            document.getElementById("work").value = result;
+            highlight("work");
+        } else if (force == "") {
+            document.getElementById("force").value = result;
+            highlight("force");
+        } else if (displacement == "") {
+            document.getElementById("displacement").value = result;
+            highlight("displacement");
+        }
+    }
 }
 
 
-function workCalculate() {
+function workCalculate(force, displacement, angle, work, isMagnitude) {
     var isVector = document.getElementById("workVector").checked;
     if (isMagnitude) {
         checkBlanks(1, 'force', 'displacement', 'angle', 'work');
@@ -100,24 +117,17 @@ function workCalculate() {
     }
     if (isMagnitude && angle == "") {
         angle = Math.acos(work / (force * displacement));
-        document.getElementById("angle").value = angle;
-        highlight("angle");
     } else if (work == "") {
         if (isMagnitude) {
             work = force * Math.cos(angle) * displacement;
-            document.getElementById("work").value = work;
-            highlight("work");
         } else {
             force = parseVector(force);
             displacement = parseVector(displacement);
             work = dotProduct(force, displacement);
-            document.getElementById("work").value = work;
-            highlight("work");
         }
     } else if (force == "") {
         if (isMagnitude) {
             force = work / Math.cos(angle) / displacement;
-            document.getElementById("force").value = force;
         } else if (isVector) {
             alert("Since we are going from a scalar to a vector, there are multiple possible answers");
             displacement = parseVector(displacement);
@@ -133,14 +143,10 @@ function workCalculate() {
             }
             force = new Vector(vectorComponents);
             force = toStringVector(force);
-            document.getElementById("force").value = force;
-            highlight("force");
         }
-        highlight("force");
     } else if (displacement == "") {
         if (isMagnitude) {
             displacement = work / (force * Math.cos(angle));
-            document.getElementById("displacement").value = displacement;
         } else if (isVector) {
             alert("Since we are going from a scalar to a vector, there are multiple possible answers");
             force = parseVector(force);
@@ -156,10 +162,7 @@ function workCalculate() {
             }
             displacement = new Vector(vectorComponents);
             displacement = toStringVector(displacement);
-            document.getElementById("displacement").value = displacement;
-            highlight("displacement");
         }
-        highlight("displacement");
     }
 }
 
