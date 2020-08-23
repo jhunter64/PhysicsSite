@@ -9,6 +9,9 @@ html, body {
 	.navbar {
 		display: none;
 	}
+	.homeTitle h1 {
+		font-size: 30px;
+	}
 }
 @media only screen and (max-width: 900px) {
 	body {
@@ -80,6 +83,9 @@ input:hover {
 }
 .homeTitle {
 	text-align: center;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 }
 .homeTitle h1:hover {
 	text-decoration: none;
