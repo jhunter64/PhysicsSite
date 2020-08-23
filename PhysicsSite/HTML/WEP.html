@@ -54,9 +54,9 @@
                 <div class="col-md center" id="kineticEnergyTitle">
                     <h1>Kinetic Energy</h1>
                     <form>
-                        <input type="text" id="mass" placeholder="Mass"><br>
-                        <input type="text" id="velocity" placeholder="Velocity"><br>
-                        <input type="text" id="kineticEnergy" placeholder="Kinetic Energy">
+                        <input type="text" id="mass" placeholder="Mass" data-toggle="tooltip" data-placement="right" title="Mass"><br>
+                        <input type="text" id="velocity" placeholder="Velocity" data-toggle="tooltip" data-placement="right" title="Velocity"><br>
+                        <input type="text" id="kineticEnergy" placeholder="Kinetic Energy" data-toggle="tooltip" data-placement="right" title="Kinetic Energy">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('mass', 'velocity', 'kineticEnergy')">
                         <span class="fa fa-window-close"></span> Reset
@@ -66,15 +66,15 @@
                 <div class="col-md center" id="workTitle">
                     <h1>Work</h1>
                     <form>
-                        <input type="text" id="force" placeholder="Force"><br>
-                        <input type="text" id="displacement" placeholder="Displacement"><br>
-                        <input type="text" id="angle" placeholder="Angle (Radians)"><br>
-                        <input type="text" id="work" placeholder="Work">
+                        <input type="text" id="force" placeholder="Force" data-toggle="tooltip" data-placement="right" title="Force"><br>
+                        <input type="text" id="displacement" placeholder="Displacement" data-toggle="tooltip" data-placement="right" title="Displacement"><br>
+                        <input type="text" id="angle" placeholder="Angle (Radians)" data-toggle="tooltip" data-placement="right" title="Angle (Radians)"><br>
+                        <input type="text" id="work" placeholder="Work" data-toggle="tooltip" data-placement="right" title="Work">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('force', 'displacement', 'angle', 'work')">
                         <span class="fa fa-window-close"></span> Reset
                     </button>
-                    <button type="button" onclick="workCalculate()"><span class="fa fa-calculator"></span> Calculate</button>
+                    <button type="button" onclick="work()"><span class="fa fa-calculator"></span> Calculate</button>
                 </div>
             </div>
             <div class="row">
@@ -82,9 +82,9 @@
                     <h1>Potential Energy</h1>
                     <h3>Gravitational</h3>
                     <form>
-                        <input type="number" id="uGravMass" placeholder="Mass"><br>
-                        <input type="number" id="uGravHeight" placeholder="Height"><br>
-                        <input type="number" id="uGravEnergy" placeholder="Potential Energy">
+                        <input type="number" id="uGravMass" placeholder="Mass" data-toggle="tooltip" data-placement="right" title="Mass"><br>
+                        <input type="number" id="uGravHeight" placeholder="Height" data-toggle="tooltip" data-placement="right" title="Height"><br>
+                        <input type="number" id="uGravEnergy" placeholder="Potential Energy" data-toggle="tooltip" data-placement="right" title="Potential Energy">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('uGravMass', 'uGravHeight', 'uGravEnergy')">
                         <span class="fa fa-window-close"></span> Reset
@@ -93,10 +93,10 @@
                     <br>
                     <h3>Spring</h3>
                     <form>
-                        <input type="number" id="uSpringRelaxed" placeholder="Relaxed Length"><br>
-                        <input type="number" id="uSpringCurrent" placeholder="Current Length"><br>
-                        <input type="number" id="uSpringK" placeholder="Spring Coefficient"><br>
-                        <input type="number" id="uSpring" placeholder="Potential Energy"><br>
+                        <input type="number" id="uSpringRelaxed" placeholder="Relaxed Length" data-toggle="tooltip" data-placement="right" title="Relaxed Length"><br>
+                        <input type="number" id="uSpringCurrent" placeholder="Current Length" data-toggle="tooltip" data-placement="right" title="Current Length"><br>
+                        <input type="number" id="uSpringK" placeholder="Spring Coefficient" data-toggle="tooltip" data-placement="right" title="Spring Coefficient"><br>
+                        <input type="number" id="uSpring" placeholder="Potential Energy" data-toggle="tooltip" data-placement="right" title="Potential Energy"><br>
                     </form>
                     <button class="resetButton" type="button" onclick="reset('uSpringRelaxed', 'uSpringCurrent', 'uSpringK', 'uSpring')">
                         <span class="fa fa-window-close"></span> Reset
@@ -106,11 +106,11 @@
                 <div class="col-md center" id="powerTitle">
                     <h1>Power</h1>
                     <form>
-                        <input type="number" id="power_force" placeholder="Force"><br>
-                        <input type="number" id="power_displacement" placeholder="Displacement"><br>
-                        <input type="number" id="power_angle" placeholder="Angle (Radians)"><br>
-                        <input type="number" id="power_time" placeholder="Time"><br>
-                        <input type="number" id="power" placeholder="Power">
+                        <input type="number" id="power_force" placeholder="Force" data-toggle="tooltip" data-placement="right" title="Force"><br>
+                        <input type="number" id="power_displacement" placeholder="Displacement" data-toggle="tooltip" data-placement="right" title="Displacement"><br>
+                        <input type="number" id="power_angle" placeholder="Angle (Radians)" data-toggle="tooltip" data-placement="right" title="Angle (Radians)"><br>
+                        <input type="number" id="power_time" placeholder="Time" data-toggle="tooltip" data-placement="right" title="Time"><br>
+                        <input type="number" id="power" placeholder="Power" data-toggle="tooltip" data-placement="right" title="Power">
                     </form>
                     <button class="resetButton" type="button" onclick="reset('power_force', 'power_displacement', 'power_angle', 'power_time', 'power')">Reset</button>
                     <button type="button" onclick="powerCalculate()"><span class="fa fa-calculator"></span> Calculate</button>           
