@@ -32,3 +32,8 @@ describe('#workCalculate()', function() {
         assert(result == '6.000, 0.000, 0.000');
     });
 });
+
+
+describe('#powerCalculate()', function() {
+    
+});
