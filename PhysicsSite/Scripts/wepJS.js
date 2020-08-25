@@ -185,39 +185,60 @@ exports.workCalculate = workCalculate;
 
 
 function power() {
-
-}
-
-function powerCalculate() {
     var force = document.getElementById("power_force").value;
     var displacement = document.getElementById("power_displacement").value;
     var angle = document.getElementById("power_angle").value;
     var time = document.getElementById("power_time").value;
     var power = document.getElementById("power").value;
-    var isMagnitude = document.getElementById("powerMagnitude").checked;
-    var isVector = document.getElementById("powerVector").checked;
+    var _isMagnitude = isMagnitude(force) || isMagnitude(displacement);
 
-    checkBlanks(2, "power_force", "power_displacement", "power_angle", "power_time", "power");
+    if (checkBlanks(2, "power_force", "power_displacement", "power_angle", "power_time", "power")) {
+        var result = powerCalculate(force, displacement, angle, time, power, _isMagnitude);
+        if (_isMagnitude && angle == "") {
+            document.getElementById("power_angle").value = result;
+            highlight("power_angle");
+        } else if (power == "") {
+            document.getElementById("power").value = result;
+            highlight("power");
+        } else if (force == "") {
+            if (!_isMagnitude) {
+                alert("Multiple possible answers exist going from scalar to vector."
+                + "\nThis calculator will assume the force is in one direction only.");
+            }
+            document.getElementById("power_force").value = result;
+            highlight("power_force");
+        } else if (displacement == "") {
+            if (!_isMagnitude) {
+                alert("Multiple possible answers exist going from scalar to vector."
+                + "\nThis calculator will assume the displacement is in one direction only.");
+            }
+            document.getElementById("power_displacement").value = result;
+            highlight("power_displacement");
+        } else if (time == "") {
+            document.getElementById("power_time").value = result;
+            highlight("power_time");
+        }
+    }
+}
 
+
+function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
     if (power == "") {
         if (isMagnitude) {
             power = (force * displacement * Math.cos(angle)) / time;
-        } else if (isVector) {
+        } else {
             force = _parseVector(force);
             displacement = _parseVector(displacement);
             work = _dotProduct(force, displacement);
             power = work / time;
         }
-        document.getElementById("power").value = power;
-        highlight("power");
+        return power;
     } else if (force == "") {
         var work = power * time;
         if (isMagnitude) {
             console.log(Math.cos(angle));
             force = work / Math.cos(angle) / displacement;
-            document.getElementById("power_force").value = force;
-        } else if (isVector) {
-            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
+        } else {
             displacement = _parseVector(displacement);
             var vectorComponents = [0, 0, 0];
             if (displacement.x && displacement.x != 0) {
@@ -231,16 +252,13 @@ function powerCalculate() {
             }
             force = new Vector(vectorComponents);
             force = _toStringVector(force);
-            document.getElementById("power_force").value = force;
         }
-        highlight("power_force");
+        return force;
     } else if (displacement == "") {
         var work = power * time;
         if (isMagnitude) {
             displacement = work / (force * Math.cos(angle));
-            document.getElementById("power_displacement").value = displacement;
-        } else if (isVector) {
-            alert("Since we are going from a scalar to a vector, there are multiple possible answers");
+        } else {
             force = _parseVector(force);
             var vectorComponents = [0, 0, 0];
             if (force.x && force.x != 0) {
@@ -254,14 +272,11 @@ function powerCalculate() {
             }
             displacement = new Vector(vectorComponents);
             displacement = _toStringVector(displacement);
-            document.getElementById("power_displacement").value = displacement;
         }
-        highlight("power_displacement");
+        return displacement;
     } else if (isMagnitude && angle == "") {
         angle = power * time / (force * displacement);
         angle = Math.acos(angle);
-        document.getElementById("power_angle").value = angle;
-        highlight("power_angle");
     } else if (time == "") {
         if (isMagnitude) {
             var work = force * Math.cos(angle) * displacement;
@@ -272,10 +287,10 @@ function powerCalculate() {
             var work = _dotProduct(force, displacement);
             time = work / power;
         }
-        document.getElementById("power_time").value = time;
-        highlight("power_time");
+        return time;
     }
 }
+
 
 function kineticCalculate() {
     var mass = document.getElementById("mass").value;
