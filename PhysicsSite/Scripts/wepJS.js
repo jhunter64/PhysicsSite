@@ -236,7 +236,6 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
     } else if (force == "") {
         var work = power * time;
         if (isMagnitude) {
-            console.log(Math.cos(angle));
             force = work / Math.cos(angle) / displacement;
         } else {
             displacement = _parseVector(displacement);
@@ -277,6 +276,7 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
     } else if (isMagnitude && angle == "") {
         angle = power * time / (force * displacement);
         angle = Math.acos(angle);
+        return angle;
     } else if (time == "") {
         if (isMagnitude) {
             var work = force * Math.cos(angle) * displacement;
@@ -290,42 +290,50 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
         return time;
     }
 }
+exports.powerCalculate = powerCalculate;
 
-
-function kineticCalculate() {
+function kineticEnergy() {
     var mass = document.getElementById("mass").value;
     var velocity = document.getElementById("velocity").value;
     var kineticEnergy = document.getElementById("kineticEnergy").value;
-    var isMagnitude = document.getElementById("inputMagnitude").checked;
-    var isVector = document.getElementById("inputVector").checked;
-    if (kineticEnergy == "") {
-        if (isMagnitude) {
-            document.getElementById("kineticEnergy").value = 0.5 * mass * velocity * velocity;
-        } else if (isVector) {
-            var v = _parseVector(velocity);
-            velocity = getMagnitude(v);
-            document.getElementById("kineticEnergy").value = 0.5 * mass * velocity * velocity;
+    var _isMagnitude = isMagnitude(velocity);
+
+    if (checkBlanks(1, 'mass', 'velocity', 'kineticEnergy')) {
+        var result = kineticCalculate(mass, velocity, kineticEnergy, _isMagnitude);
+
+        if (kineticEnergy == "") {
+            document.getElementById("kineticEnergy").value = result;
+            highlight("kineticEnergy");
+        } else if (velocity == "") {
+            document.getElementById("velocity").value = result;
+            highlight('velocity');
+        } else if (mass == "") {
+            document.getElementById("mass").value = result;
+            highlight("mass");
         }
-        highlight("kineticEnergy");
-    } else if (velocity == "") {
-        if (isMagnitude) {
-            document.getElementById("velocity").value = Math.sqrt(2.0 * kineticEnergy / mass);
-        } else if (isVector) {
-            alert("Cannot calculate velocity vector, only magnitude");
-            document.getElementById("velocity").value = Math.sqrt(2.0 * kineticEnergy / mass);
-        }
-        highlight("velocity");
-    } else if (mass == "") {
-        if (isMagnitude) {
-            document.getElementById("mass").value = 2.0 * kineticEnergy / (velocity * velocity);
-        } else if (isVector) {
-            var v = _parseVector(velocity);
-            var vMag = getMagnitude(v);
-            document.getElementById("mass").value = 2.0 * kineticEnergy / (vMag * vMag);
-        }
-        highlight("mass");
     }
 }
+
+
+function kineticCalculate(mass, velocity, kineticEnergy, isMagnitude) {
+    if (kineticEnergy == "") {
+        if (!isMagnitude) {
+            var v = _parseVector(velocity);
+            velocity = _getMagnitude(v);
+        }
+        return 0.5 * mass * velocity * velocity;
+    } else if (velocity == "") {
+        return Math.sqrt(2.0 * kineticEnergy / mass);
+    } else if (mass == "") {
+        if (!isMagnitude) {
+            var v = _parseVector(velocity);
+            velocity = _getMagnitude(v);
+        }
+        return 2.0 * kineticEnergy / (velocity * velocity);
+    }
+}
+exports.kineticCalculate = kineticCalculate;
+
 
 function uGravCalculate() {
     var mass = document.getElementById("uGravMass").value;

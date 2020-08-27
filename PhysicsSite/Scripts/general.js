@@ -60,7 +60,7 @@ function reset() {
 
 function isMagnitude(value) {
 	if (!value || value == "") {
-		return false;
+		return true;
 	}
 	try {
 		var numCommas = value.split(',').length - 1;
