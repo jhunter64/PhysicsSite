@@ -249,7 +249,7 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
             } else {
                 alert("Error parsing displacement vector. Vector input should be in format 'x, y, z'");
             }
-            force = new Vector(vectorComponents);
+            force = _createVector(vectorComponents[0], vectorComponents[1], vectorComponents[2]);
             force = _toStringVector(force);
         }
         return force;
@@ -269,7 +269,7 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
             } else {
                 alert("Error parsing force vector. Vector input should be in format 'x, y, z'");
             }
-            displacement = new Vector(vectorComponents);
+            displacement = _createVector(vectorComponents[0], vectorComponents[1], vectorComponents[2]);
             displacement = _toStringVector(displacement);
         }
         return displacement;
@@ -291,6 +291,7 @@ function powerCalculate(force, displacement, angle, time, power, isMagnitude) {
     }
 }
 exports.powerCalculate = powerCalculate;
+
 
 function kineticEnergy() {
     var mass = document.getElementById("mass").value;
@@ -335,58 +336,90 @@ function kineticCalculate(mass, velocity, kineticEnergy, isMagnitude) {
 exports.kineticCalculate = kineticCalculate;
 
 
-function uGravCalculate() {
+function uGrav() {
     var mass = document.getElementById("uGravMass").value;
     var height = document.getElementById("uGravHeight").value;
     var uGrav = document.getElementById("uGravEnergy").value;
-    var g = 9.8;
+
     if (checkBlanks(1, "uGravMass", "uGravHeight", "uGravEnergy")) {
+        let result = uGravCalculate(mass, height, uGrav);
         if (uGrav == "") {
-            uGrav = mass * g * height;
-            document.getElementById("uGravEnergy").value = uGrav;
+            document.getElementById("uGravEnergy").value = result;
             highlight("uGravEnergy");
         } else if (height == "") {
-            height = uGrav / (mass * g);
-            document.getElementById("uGravHeight").value = height;
+            document.getElementById("uGravHeight").value = result;
             highlight("uGravHeight");
         } else if (mass == "") {
-            mass = uGrav / (g * height);
-            document.getElementById("uGravMass").value = mass;
+            document.getElementById("uGravMass").value = result;
             highlight("uGravMass");
         }
     }
 }
 
-function uSpringCalculate() {
+
+function uGravCalculate(mass, height, uGrav) {
+    var g = 9.8;
+    if (uGrav == "") {
+        uGrav = mass * g * height;
+        return uGrav;
+    } else if (height == "") {
+        height = uGrav / (mass * g);
+        return height;
+    } else if (mass == "") {
+        mass = uGrav / (g * height);
+        return mass;
+    }
+}
+exports.uGravCalculate = uGravCalculate;
+
+
+function uSpring() {
     var relaxedLength = document.getElementById("uSpringRelaxed").value;
     var currentLength = document.getElementById("uSpringCurrent").value;
     var springCoefficient = document.getElementById("uSpringK").value;
     var uSpring = document.getElementById("uSpring").value;
+
+    if (checkBlanks(1, 'uSpringRelaxed', 'uSpringCurrent', 'uSpringK', 'uSpring')) {
+        var result = uSpringCalculate(relaxedLength, currentLength, springCoefficient, uSpring);
+        if (uSpring == "") {
+            document.getElementById("uSpring").value = result;
+            highlight("uSpring");
+        } else if (relaxedLength == "") {
+            alert("Relaxed length could be " + result[0] + " or " + result[1]
+            + "\n(relaxed = current +/- deltaX)");
+            document.getElementById("uSpringRelaxed").value = result[0];
+            highlight("uSpringRelaxed");
+        } else if (currentLength == "") {
+            alert("Relaxed length could be " + result[0] + " or " + result[1]
+            + "\n(current = relaxed +/- deltaX)");
+            document.getElementById("uSpringCurrent").value = result[0];
+            highlight("uSpringCurrent");
+        } else if (springCoefficient == "") {
+            document.getElementById("uSpringK").value = result;
+            highlight("uSpringK");
+        }
+    }
+}
+
+function uSpringCalculate(relaxedLength, currentLength, springCoefficient, uSpring) {
     if (uSpring == "") {
         var dx = Math.abs(relaxedLength - currentLength);
         uSpring = .5 * dx * dx * springCoefficient;
-        document.getElementById("uSpring").value = uSpring;
-        highlight("uSpring");
+        return uSpring;
     } else if (relaxedLength == "") {
         var dx = Math.sqrt((2 * uSpring) / springCoefficient);
-        var relaxed1 = currentLength + dx;
-        var relaxed2 = currentLength - dx;
-        alert("Relaxed length could be " + relaxed1 + " or " + relaxed2
-             + "\n(relaxed = current +/- deltaX)");
-        document.getElementById("uSpringRelaxed").value = relaxed1;
-        highlight("uSpringRelaxed");
+        var relaxed1 = 1 * currentLength + dx;
+        var relaxed2 = 1 * currentLength - dx;
+        return [relaxed1, relaxed2];
     } else if (currentLength == "") {
         var dx = Math.sqrt((2 * uSpring) / springCoefficient);
-        var current1 = relaxedLength + dx;
-        var current2 = relaxedLength - dx;
-        alert("Relaxed length could be " + current1 + " or " + current2
-             + "\n(current = relaxed +/- deltaX)");
-        document.getElementById("uSoringCurrent").value = current1;
-        highlight("uSpringCurrent");
+        var current1 = 1 * relaxedLength + dx;
+        var current2 = 1 * relaxedLength - dx;
+        return [current1, current2];
     } else if (springCoefficient == "") {
         var dx = Math.abs(relaxedLength - currentLength);
         springCoefficient = (2 * uSpring) / (dx * dx);
-        document.getElementById("uSpringK").value = springCoefficient;
-        highlight("uSpringK");
+        return springCoefficient;
     }
 }
+exports.uSpringCalculate = uSpringCalculate;

@@ -24,6 +24,7 @@ function addSubtractCalculate(type) {
     result = toStringVector(result);
 
     document.getElementById(element).value = result;
+    enableInput(element);
     highlight(element);
 }
 
@@ -32,6 +33,7 @@ function calculateMagnitude() {
     vector = parseVector(vector);
     var magnitude = getMagnitude(vector);
     document.getElementById("magnitude").value = magnitude;
+    enableInput("magnitude");
     highlight("magnitude");
 }
 
@@ -41,6 +43,7 @@ function calculateUnitVector() {
     var unitVector = getUnitVector(vector);
     unitVector = toStringVector(unitVector);
     document.getElementById("unitVector").value = unitVector;
+    enableInput("inputVector");
     highlight("unitVector");
 }
 
@@ -51,5 +54,18 @@ function calculateDotProduct() {
     var v2 = parseVector(v2);
     var product = dotProduct(v1, v2);
     document.getElementById("dotProduct").value = product;
+    enableInput("dotProduct");
     highlight("dotProduct");
+}
+
+function calculateCrossProduct() {
+    var v1 = document.getElementById("crossVector1").value;
+    var v2 = document.getElementById("crossVector2").value;
+    var v1 = parseVector(v1);
+    var v2 = parseVector(v2);
+    var product = crossProduct(v1, v2);
+    product = toStringVector(product);
+    document.getElementById("crossProduct").value = product;
+    enableInput("crossProduct");
+    highlight("crossProduct");
 }

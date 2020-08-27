@@ -58,6 +58,15 @@ function reset() {
 }
 
 
+function resetVector() {
+	for (i = 0; i < arguments.length; i++) {
+		document.getElementById(arguments[i]).value = "";
+		document.getElementById(arguments[i]).style.borderColor = "white";
+	}
+	disableInput(arguments[arguments.length - 1]);
+}
+
+
 function isMagnitude(value) {
 	if (!value || value == "") {
 		return true;

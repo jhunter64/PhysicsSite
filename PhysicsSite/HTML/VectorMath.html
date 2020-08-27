@@ -30,7 +30,7 @@
 				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
 				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
 				<a href="VectorMath.html"><i class="fas fa-laptop-code gold"></i> Vector Math</a>
-				<a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a>
+				<!-- <a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a> -->
 			</div>
 		</div>
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -40,7 +40,7 @@
 				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
 				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
 				<a href="VectorMath.html"><i class="fas fa-laptop-code gold"></i> Vector Math</a>
-				<a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a>
+				<!-- <a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a> -->
 			</div>
 		</nav>
 		<div class="sideNav">
@@ -53,6 +53,7 @@
 				<li><h2><a href="#magnitudeTitle">Magnitude</a></h2></li>
 				<li><h2><a href="#unitTitle">Unit Vector</a></h2></li>
 				<li><h2><a href="#dotProductTitle">Dot Product</a></h2></li>
+				<li><h2><a href="#crossProductTitle">Cross Product</a></h2></li>
 			</ul>
 		</div>
 		<div class="container">
@@ -64,7 +65,7 @@
 						<input type="text" id="addVector2" placeholder="Vector 2"><br>
 						<input type="text" id="addVectorResult" placeholder="V1 + V2" disabled="true">
 					</form>
-					<button class="resetButton" type="button" onclick="reset('addVector1', 'addVector2', 'addVectorResult')">
+					<button class="resetButton" type="button" onclick="resetVector('addVector1', 'addVector2', 'addVectorResult')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
 					<button type="button" onclick="addSubtractCalculate('add')"><span class="fa fa-calculator"></span> Calculate</span></button>					
@@ -76,7 +77,7 @@
 						<input type="text" id="subtractVector2" placeholder="Vector 2"><br>
 						<input type="text" id="subtractVectorResult" placeholder="V1 - V2" disabled="true">
 					</form>
-					<button class="resetButton" type="button" onclick="reset('subtractVector1', 'subtractVector2', 'subtractVectorResult')">
+					<button class="resetButton" type="button" onclick="resetVector('subtractVector1', 'subtractVector2', 'subtractVectorResult')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
 					<button type="button" onclick="addSubtractCalculate('subtract')"><span class="fa fa-calculator"></span> Calculate</button>				
@@ -89,7 +90,7 @@
 						<input type="text" id="magnitudeVector" placeholder="Vector"><br>
 						<input type="text" id="magnitude" placeholder="Magnitude" disabled="true">
 					</form>
-					<button class="resetButton" type="button" onclick="reset('magnitudeVector', 'magnitude')">
+					<button class="resetButton" type="button" onclick="resetVector('magnitudeVector', 'magnitude')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
 					<button type="button" onclick="calculateMagnitude()"><span class="fa fa-calculator"></span> Calculate</button>
@@ -100,7 +101,7 @@
 						<input type="text" id="unitV1" placeholder="Vector"><br>
 						<input type="text" id="unitVector" placeholder="Unit Vector" disabled="true">
 					</form>
-					<button class="resetButton" type="button" onclick="reset('unitV1', 'unitVector')">
+					<button class="resetButton" type="button" onclick="resetVector('unitV1', 'unitVector')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
 					<button type="button" onclick="calculateUnitVector()"><span class="fa fa-calculator"></span> Calculate</button>
@@ -114,13 +115,22 @@
 						<input type="text" id="dotVector2" placeholder="Vector 2"><br>
 						<input type="text" id="dotProduct" placeholder="Dot Product" disabled="true">
 					</form>
-					<button class="resetButton" type="button" onclick="reset('dotVector1', 'dotVector2', 'dotProduct')">
+					<button class="resetButton" type="button" onclick="resetVector('dotVector1', 'dotVector2', 'dotProduct')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
 					<button type="button" onclick="calculateDotProduct()"><span class="fa fa-calculator"></span> Calculate</button>
 				</div>
-				<div class="col-md center">
-
+				<div class="col-md center" id="crossProductTitle">
+					<h1>Cross Product</h1>
+					<form>
+						<input type="text" id="crossVector1" placeholder="Vector 1"><br>
+						<input type="text" id="crossVector2" placeholder="Vector 2"><br>
+						<input type="text" id="crossProduct" placeholder="Cross Product" disabled="true">
+					</form>
+					<button class="resetButton" type="button" onclick="resetVector('crossVector1', 'crossVector2', 'crossProduct')">
+						<span class="fa fa-window-close"></span> Reset
+					</button>
+					<button type="button" onclick="calculateCrossProduct()"><span class="fa fa-calculator"></span> Calculate</button>
 				</div>
 			</div>
 		</div>
