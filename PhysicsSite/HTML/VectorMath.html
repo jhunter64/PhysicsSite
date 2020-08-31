@@ -30,7 +30,7 @@
 				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
 				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
 				<a href="VectorMath.html"><i class="fas fa-laptop-code gold"></i> Vector Math</a>
-				<!-- <a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a> -->
+				<a href="Maxwell.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a>
 			</div>
 		</div>
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -40,7 +40,7 @@
 				<a href="AngularMomentum.html"><i class="fas fa-fan"></i> Angular Momentum</a>
 				<a href="WEP.html"><i class="fas fa-bolt"></i>  Work, Energy, and Power</a>
 				<a href="VectorMath.html"><i class="fas fa-laptop-code gold"></i> Vector Math</a>
-				<!-- <a href="Electricity.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a> -->
+				<a href="Maxwell.html" id="navSwitch"><i class="fas fa-atom"></i> Electromagnetism</a>
 			</div>
 		</nav>
 		<div class="sideNav">
@@ -61,21 +61,21 @@
 				<div class="col-md center" id="addTitle">
 					<h1>Add</h1>
 					<form>
-						<input type="text" id="addVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Tooltip on right"><br>
-						<input type="text" id="addVector2" placeholder="Vector 2"><br>
-						<input type="text" id="addVectorResult" placeholder="V1 + V2" disabled="true">
+						<input type="text" id="addVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Vector 1"><br>
+						<input type="text" id="addVector2" placeholder="Vector 2" data-toggle="tooltip" data-placement="right" title="Vector 2"><br>
+						<input type="text" id="addVectorResult" placeholder="V1 + V2" disabled="true" data-toggle="tooltip" data-placement="right" title="Vector 1 + Vector 2">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('addVector1', 'addVector2', 'addVectorResult')">
 						<span class="fa fa-window-close"></span> Reset
 					</button>
-					<button type="button" onclick="addSubtractCalculate('add')"><span class="fa fa-calculator"></span> Calculate</span></button>					
+					<button type="button" onclick="addSubtractCalculate('add')"><span class="fa fa-calculator"></span> Calculate</span></button><br>
 				</div>
 				<div class="col-md center" id="subtractTitle">
 					<h1>Subtract</h1>
 					<form>
-						<input type="text" id="subtractVector1" placeholder="Vector 1"><br>
-						<input type="text" id="subtractVector2" placeholder="Vector 2"><br>
-						<input type="text" id="subtractVectorResult" placeholder="V1 - V2" disabled="true">
+						<input type="text" id="subtractVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Vector 1"><br>
+						<input type="text" id="subtractVector2" placeholder="Vector 2" data-toggle="tooltip" data-placement="right" title="Vector 2"><br>
+						<input type="text" id="subtractVectorResult" placeholder="V1 - V2" disabled="true" data-toggle="tooltip" data-placement="right" title="Vector 1 - Vector 2">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('subtractVector1', 'subtractVector2', 'subtractVectorResult')">
 						<span class="fa fa-window-close"></span> Reset
@@ -87,8 +87,8 @@
 				<div class="col-md center" id="magnitudeTitle">
 					<h1>Magnitude</h1>
 					<form>
-						<input type="text" id="magnitudeVector" placeholder="Vector"><br>
-						<input type="text" id="magnitude" placeholder="Magnitude" disabled="true">
+						<input type="text" id="magnitudeVector" placeholder="Vector" data-toggle="tooltip" data-placement="right" title="Vector"><br>
+						<input type="text" id="magnitude" placeholder="Magnitude" disabled="true" data-toggle="tooltip" data-placement="right" title="Magnitude">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('magnitudeVector', 'magnitude')">
 						<span class="fa fa-window-close"></span> Reset
@@ -98,8 +98,8 @@
 				<div class="col-md center" id="unitTitle">
 					<h1>Unit Vector</h1>
 					<form>
-						<input type="text" id="unitV1" placeholder="Vector"><br>
-						<input type="text" id="unitVector" placeholder="Unit Vector" disabled="true">
+						<input type="text" id="unitV1" placeholder="Vector" data-toggle="tooltip" data-placement="right" title="Vector"><br>
+						<input type="text" id="unitVector" placeholder="Unit Vector" disabled="true" data-toggle="tooltip" data-placement="right" title="Unit Vector">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('unitV1', 'unitVector')">
 						<span class="fa fa-window-close"></span> Reset
@@ -111,9 +111,9 @@
 				<div class="col-md center" id="dotProductTitle">
 					<h1>Dot Product</h1>
 					<form>
-						<input type="text" id="dotVector1" placeholder="Vector 1"><br>
-						<input type="text" id="dotVector2" placeholder="Vector 2"><br>
-						<input type="text" id="dotProduct" placeholder="Dot Product" disabled="true">
+						<input type="text" id="dotVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Vector 1"><br>
+						<input type="text" id="dotVector2" placeholder="Vector 2" data-toggle="tooltip" data-placement="right" title="Vector 2"><br>
+						<input type="text" id="dotProduct" placeholder="Dot Product" disabled="true" data-toggle="tooltip" data-placement="right" title="Dot Product">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('dotVector1', 'dotVector2', 'dotProduct')">
 						<span class="fa fa-window-close"></span> Reset
@@ -123,9 +123,9 @@
 				<div class="col-md center" id="crossProductTitle">
 					<h1>Cross Product</h1>
 					<form>
-						<input type="text" id="crossVector1" placeholder="Vector 1"><br>
-						<input type="text" id="crossVector2" placeholder="Vector 2"><br>
-						<input type="text" id="crossProduct" placeholder="Cross Product" disabled="true">
+						<input type="text" id="crossVector1" placeholder="Vector 1" data-toggle="tooltip" data-placement="right" title="Vector 1"><br>
+						<input type="text" id="crossVector2" placeholder="Vector 2" data-toggle="tooltip" data-placement="right" title="Vector 2"><br>
+						<input type="text" id="crossProduct" placeholder="Cross Product" disabled="true" data-toggle="tooltip" data-placement="right" title="Cross Product">
 					</form>
 					<button class="resetButton" type="button" onclick="resetVector('crossVector1', 'crossVector2', 'crossProduct')">
 						<span class="fa fa-window-close"></span> Reset

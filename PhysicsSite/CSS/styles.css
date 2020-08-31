@@ -310,6 +310,22 @@ button {
 button:hover {
     background-color: rgb(105, 192, 105);
 }
+.copyButton {
+	/* border: 1px solid white; */
+	background-color: transparent;
+	color: white;
+}
+.copy {
+	color: transparent;
+	margin-right: 2px;
+}
+.copyButton:hover {
+	/* border: 1px solid rgb(79, 79, 255); */
+	background-color: transparent;
+}
+.copyButton:hover .copy {
+	color: transparent;
+}
 .dropbtn:hover {
 	background: transparent;
 }
@@ -354,6 +370,7 @@ button:hover {
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 }
+
 
 .gold {
 	color: gold;

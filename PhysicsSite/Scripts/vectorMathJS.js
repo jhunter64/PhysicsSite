@@ -25,6 +25,7 @@ function addSubtractCalculate(type) {
 
     document.getElementById(element).value = result;
     enableInput(element);
+    document.getElementById("addVectorResultCopy").style.color = 'red';
     highlight(element);
 }
 
